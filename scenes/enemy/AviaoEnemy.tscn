@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/enemy/AviaoEnemy.gd" type="Script" id=1]
+[ext_resource path="res://graphics/enemy/aviao3.png" type="Texture" id=2]
+
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "normal",
+"speed": 5.0
+} ]
+
+[node name="AviaoEnemy" type="KinematicBody2D"]
+
+position = Vector2( 0.12851, 0 )
+input_pickable = false
+collision_layer = 4
+collision_mask = 11
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pause", "collision" ]
+maxVelocidade = 150
+weapon = "none"
+hp = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "normal"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( 4.93001, 15.1288, -5.16021, 15.0034, -5.03486, 13.0606, -2.0266, 10.5537, -1.96393, 4.85054, -2.84134, 3.97313, -2.96668, 1.02754, -11.9915, 0.96487, -13.2449, -1.04064, -14.9997, -0.977965, -15.9398, -2.23141, -15.9398, -4.0489, -12.7435, -5.86639, -4.22013, -5.92906, -3.09203, -7.43319, -2.96668, -9.68939, -1.02385, -11.0055, 1.67105, -10.8802, 2.79915, -9.81473, 3.04984, -6.99449, 4.11527, -6.17975, 12.8267, -5.92906, 15.8976, -3.98623, 15.8976, -1.98072, 14.8949, -0.977964, 13.1401, -0.977964, 11.8239, 0.902201, 2.98717, 1.02754, 2.9245, 3.91046, 1.98441, 4.85054, 1.85907, 10.7417, 4.86733, 13.1233 )
+
+[node name="Position2D" type="Position2D" parent="." index="2"]
+
+position = Vector2( 0, -16 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="3"]
+
+position = Vector2( 0.0872588, 0.600323 )
+scale = Vector2( 1.59104, 1.46543 )
+rect = Rect2( -10, -10, 20, 20 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://graphics/plane/aviao1.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "normal",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4.93139, 12.6288 )
+
+[node name="Player" type="KinematicBody2D" index="0"]
+
+z_index = 1
+input_pickable = false
+collision_layer = 2
+collision_mask = 13
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
+hp = 1
+aceleracao = 10
+maxVelocidade = 100
+padding = 15
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "normal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.0852585, 1.36412 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Position2D" type="Position2D" parent="." index="2"]
+
+position = Vector2( 0, -18 )
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+process_mode = 0
+wait_time = 0.13
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+
