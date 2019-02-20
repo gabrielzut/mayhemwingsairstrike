@@ -12,7 +12,7 @@ extents = Vector2( 5.85499, 16.0564 )
 
 input_pickable = false
 collision_layer = 8
-collision_mask = 7
+collision_mask = 4
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]

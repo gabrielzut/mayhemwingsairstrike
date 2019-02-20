@@ -4,7 +4,7 @@ var playerSprite = preload("res://graphics/plane/aviao1.png")
 var playerWeapon = preload("res://scenes/props/WLaser.tscn")
 var playerPowerup = 1
 var playerLife = 3
-var playerBomb = 3
+var playerBomb = 2
 var playerScore = 0
 
 func addPower(var power):
@@ -17,10 +17,10 @@ func addLife(var life):
 	playerLife += life
 	
 func addBomb(var bomb):
-	if playerBomb + bomb <= 5:
+	if playerBomb + bomb <= 3:
 		playerBomb += bomb
 	else:
-		playerBomb = 5
+		playerBomb = 3
 
 func addScore(var score):
 	playerScore += score

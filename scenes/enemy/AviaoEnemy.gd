@@ -15,5 +15,5 @@ func _physics_process(delta):
 		damage(1)
 		colisao.collider.damage(1)
 
-#func _on_VisibilityNotifier2D_screen_exited():
-#	queue_free()
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

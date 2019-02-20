@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/enemy/AviaoEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=4]
 
 [node name="Area2D" type="Node2D" index="0"]
 
@@ -16,31 +17,29 @@ position = Vector2( 157.525, 477.987 )
 
 position = Vector2( 64.4876, 26.3251 )
 rotation = 3.14159
-_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
 hp = 3
 
 [node name="AviaoEnemy2" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 29.0306, 237.907 )
 rotation = 1.5708
-_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
 maxVelocidade = 60
 
 [node name="AviaoEnemy3" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 211.529, 331.743 )
-_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
 maxVelocidade = 80
 
 [node name="AviaoEnemy4" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 269.474, 83.8902 )
 rotation = -1.5708
-_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
 maxVelocidade = 30
 
 [node name="BombPowerup" parent="." index="5" instance=ExtResource( 3 )]
 
-position = Vector2( 127.419, 291 )
+position = Vector2( 209.547, 255.803 )
+
+[node name="hud" parent="." index="6" instance=ExtResource( 4 )]
 
 

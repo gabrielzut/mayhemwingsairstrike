@@ -1,4 +1,4 @@
 ﻿# metalwingsairstrike
 Projeto de PRJ - IFSP São Carlos
 
-Made with Godot 3, available under this license: https://godotengine.org/license
+Made with "Godot 3", available under MIT license available at: https://godotengine.org/license

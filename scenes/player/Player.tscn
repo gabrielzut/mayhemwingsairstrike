@@ -47,13 +47,23 @@ _sections_unfolded = [ "Z Index" ]
 position = Vector2( 0, -18 )
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="Timer" type="Timer" parent="." index="3"]
+[node name="TimerShoot" type="Timer" parent="." index="3"]
 
 process_mode = 0
 wait_time = 0.13
 one_shot = false
 autostart = false
+_sections_unfolded = [ "Pause" ]
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="TimerScore" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.7
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="TimerShoot" to="." method="_on_TimerShoot_timeout"]
+
+[connection signal="timeout" from="TimerScore" to="." method="_on_TimerScore_timeout"]
 
 

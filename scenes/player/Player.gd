@@ -17,7 +17,8 @@ func resetPos():
 	$".".position.y = 450
 
 func start():
-	$Timer.start()
+	$TimerShoot.start()
+	$TimerScore.start()
 
 func _process(delta):
 	if Input.is_action_pressed("ui_up"):
@@ -66,16 +67,19 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("player_shoot"):
 		var shoot = singletons.playerWeapon.instance()
-		$Timer.wait_time = shoot.shootInterval
+		$TimerShoot.wait_time = shoot.shootInterval
 		shoot.position = $Position2D.get_global_position()
 		get_parent().add_child(shoot)
-		$Timer.start()
-	
-func _on_Timer_timeout():
+		$TimerShoot.start()
+
+func _on_TimerShoot_timeout():
 	if Input.is_action_pressed("player_shoot"):
 		var shoot = singletons.playerWeapon.instance()
-		$Timer.wait_time = shoot.shootInterval
+		$TimerShoot.wait_time = shoot.shootInterval
 		shoot.position = $Position2D.get_global_position()
 		get_parent().add_child(shoot)
 	else:
-		$Timer.stop()
+		$TimerShoot.stop()
+
+func _on_TimerScore_timeout():
+	singletons.addScore(10)
