@@ -1,7 +1,5 @@
 extends "res://classes/destructable.gd"
 
-onready var singletons = get_node("/root/Singletons")
-
 export var aceleracao = 10
 export var maxVelocidade = 100
 export var padding = 15
@@ -55,6 +53,9 @@ func _process(delta):
 			colisao.collider.damage(1)
 		if "Powerup" in colisao.collider.name and singletons.gameStatus == 2:
 			colisao.collider.pick()
+		if "ENM" in colisao.collider.name and singletons.gameStatus == 2:
+			colisao.collider.queue_free()
+			damage(1)
 	
 	if $".".position.x > get_viewport().size.x - padding:
 		$".".position.x = get_viewport().size.x - padding

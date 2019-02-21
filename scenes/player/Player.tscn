@@ -17,16 +17,17 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 4.93139, 12.6288 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 z_index = 1
 input_pickable = false
 collision_layer = 2
-collision_mask = 13
+collision_mask = 12
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 hp = 1
+score = 0
 aceleracao = 10
 maxVelocidade = 100
 padding = 15

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/enemy/CanhaoEnemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/props/EnemyShot1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/enemy/barcocima.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "normal",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="CanhaoEnemy" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 8
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform" ]
+hp = 10
+score = 0
+weapon = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 2.68669, -0.483604 )
+rotation = -1.5708
+frames = SubResource( 1 )
+animation = "normal"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.160061, -0.0050993 )
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="." index="2"]
+
+position = Vector2( 18, 0 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="3"]
+
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="Timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+

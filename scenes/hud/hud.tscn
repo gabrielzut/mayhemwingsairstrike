@@ -28,7 +28,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 __meta__ = {
-"_edit_horizontal_guides_": [ 12.8147 ]
+"_edit_horizontal_guides_": [  ]
 }
 
 [node name="Bomb1" type="Sprite" parent="." index="0"]

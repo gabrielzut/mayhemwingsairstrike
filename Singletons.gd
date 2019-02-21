@@ -12,6 +12,7 @@ func addPower(var power):
 		playerPowerup += power
 	else:
 		playerPowerup = 3
+		addScore(100)
 		
 func addLife(var life):
 	playerLife += life
@@ -21,6 +22,7 @@ func addBomb(var bomb):
 		playerBomb += bomb
 	else:
 		playerBomb = 3
+		addScore(100)
 
 func addScore(var score):
 	playerScore += score

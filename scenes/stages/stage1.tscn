@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/enemy/AviaoEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/stages/ParallaxBackground.gd" type="Script" id=5]
+[ext_resource path="res://graphics/environment/stage1.png" type="Texture" id=6]
+[ext_resource path="res://graphics/environment/clouds.png" type="Texture" id=7]
+[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=8]
 
 [node name="Area2D" type="Node2D" index="0"]
 
@@ -13,33 +17,91 @@ _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transf
 
 position = Vector2( 157.525, 477.987 )
 
-[node name="AviaoEnemy" parent="." index="1" instance=ExtResource( 2 )]
+[node name="AviaoEnemy2" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 29.0306, 237.907 )
+rotation = 1.5708
+score = 15
+maxVelocidade = 60
+
+[node name="AviaoEnemy3" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 211.529, 331.743 )
+score = 15
+maxVelocidade = 80
+
+[node name="AviaoEnemy4" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 269.474, 83.8902 )
+rotation = -1.5708
+score = 15
+maxVelocidade = 30
+
+[node name="BombPowerup" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 209.547, 255.803 )
+
+[node name="AviaoEnemy" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 64.4876, 26.3251 )
 rotation = 3.14159
 hp = 3
-
-[node name="AviaoEnemy2" parent="." index="2" instance=ExtResource( 2 )]
-
-position = Vector2( 29.0306, 237.907 )
-rotation = 1.5708
-maxVelocidade = 60
-
-[node name="AviaoEnemy3" parent="." index="3" instance=ExtResource( 2 )]
-
-position = Vector2( 211.529, 331.743 )
-maxVelocidade = 80
-
-[node name="AviaoEnemy4" parent="." index="4" instance=ExtResource( 2 )]
-
-position = Vector2( 269.474, 83.8902 )
-rotation = -1.5708
-maxVelocidade = 30
-
-[node name="BombPowerup" parent="." index="5" instance=ExtResource( 3 )]
-
-position = Vector2( 209.547, 255.803 )
+score = 50
 
 [node name="hud" parent="." index="6" instance=ExtResource( 4 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="7"]
+
+layer = -2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+script = ExtResource( 5 )
+_sections_unfolded = [ "Pause", "Scroll" ]
+offPos = 0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+position = Vector2( 0, -3016 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+
+motion_scale = Vector2( 1, 1.5 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 512 )
+_sections_unfolded = [ "Motion", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+
+modulate = Color( 1, 1, 1, 0.237569 )
+texture = ExtResource( 7 )
+centered = false
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="CanhaoEnemy" parent="." index="8" instance=ExtResource( 8 )]
+
+position = Vector2( 196.518, -110.581 )
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+
+[node name="CanhaoEnemy2" parent="." index="9" instance=ExtResource( 8 )]
+
+position = Vector2( 228.896, -117.055 )
 
 
