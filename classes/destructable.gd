@@ -9,4 +9,8 @@ func damage(dmg):
 
 	if hp <= 0:
 		singletons.addScore(score)
+		var explosion = singletons.explosion.instance()
+		explosion.position = position
+		get_parent().add_child(explosion)
+		explosion.explode()
 		queue_free()

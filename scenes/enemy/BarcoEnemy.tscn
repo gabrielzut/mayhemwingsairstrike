@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/enemy/BarcoEnemy.gd" type="Script" id=1]
 [ext_resource path="res://graphics/enemy/barco2.png" type="Texture" id=2]
-[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/particles/explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -13,14 +14,64 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=2]
+
+resource_name = "damage"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.320313, 0.320313, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "explode"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.414063, 0.414063, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="BarcoEnemy" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 0
-collision/safe_margin = 0.08
+collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pickable", "Z Index" ]
+_sections_unfolded = [ "Collision", "Pickable", "Visibility", "Z Index", "collision" ]
 hp = 15
 score = 0
 maxVelocidade = 30
@@ -29,6 +80,27 @@ maxVelocidade = 30
 
 frames = SubResource( 1 )
 animation = "normal"
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Explosion" parent="AnimatedSprite" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 0, -49 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="Explosion2" parent="AnimatedSprite" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 0, -14 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="Explosion3" parent="AnimatedSprite" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 0, 13 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="Explosion4" parent="AnimatedSprite" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 0, 43 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 
@@ -41,18 +113,31 @@ position = Vector2( 0, 1.07717 )
 scale = Vector2( 1, 5.20784 )
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="CanhaoEnemy1" parent="." index="3" instance=ExtResource( 3 )]
+[node name="CanhaoEnemy1" parent="." index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 0, 6 )
 hp = 3
 score = 10
 scrollDown = 0.0
 
-[node name="CanhaoEnemy2" parent="." index="4" instance=ExtResource( 3 )]
+[node name="CanhaoEnemy2" parent="." index="4" instance=ExtResource( 4 )]
 
 position = Vector2( 0, 39 )
 hp = 3
 score = 10
 scrollDown = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+
+root_node = NodePath("../AnimatedSprite")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/damage = SubResource( 2 )
+anims/explode = SubResource( 3 )
+blend_times = [  ]
+
+[connection signal="hide" from="AnimatedSprite/Explosion" to="." method="_on_Explosion_hide"]
 
 

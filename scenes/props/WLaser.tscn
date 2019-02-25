@@ -8,12 +8,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 5.85499, 16.0564 )
 
-[node name="WLaser" type="KinematicBody2D"]
+[node name="WLaser" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 8
 collision_mask = 4
-collision/safe_margin = 0.08
+collision/safe_margin = 0.04
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 aceleracao = 50

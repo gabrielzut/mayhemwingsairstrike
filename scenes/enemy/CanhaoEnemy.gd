@@ -19,9 +19,15 @@ func _on_Timer_timeout():
 		
 func damage(dmg):
 	hp -= dmg
+	$".".get_node("AnimationPlayer").play("damage")
 
 	if hp <= 0 and destroyed == false:
 		singletons.addScore(score)
+		var explosion = singletons.explosion.instance()
+		explosion.position = position
+		get_parent().add_child(explosion)
+		explosion.explode()
+		
 		var fire = preload("res://scenes/particles/fire.tscn")
 		var firedestroyed = fire.instance()
 		destroyed = true
