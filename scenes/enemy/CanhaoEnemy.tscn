@@ -29,6 +29,8 @@ _sections_unfolded = [ "Collision", "Transform" ]
 hp = 10
 score = 0
 weapon = ExtResource( 2 )
+destroyed = false
+scrollDown = 20.2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 

@@ -12,7 +12,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="AviaoEnemy" type="KinematicBody2D" index="0"]
+[node name="AviaoEnemy" type="KinematicBody2D"]
 
 position = Vector2( 0.12851, 0 )
 z_index = 1
