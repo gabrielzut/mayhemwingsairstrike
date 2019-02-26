@@ -2,13 +2,13 @@ extends KinematicBody2D
 
 const VELOCIDADE = 50
 
+onready var singletons = get_node("/root/Singletons")
+
 enum Type{
 	SCORE,BOMB,LIFE,POWER
 }
 
-export var type = Type.SCORE
-
-onready var singletons = get_node("/root/Singletons")
+export(Type) var type = Type.BOMB
 
 var velocidade = Vector2(0,0)
 

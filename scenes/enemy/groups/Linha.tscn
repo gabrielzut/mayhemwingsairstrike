@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/enemy/groups/Linha.gd" type="Script" id=1]
+[ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/enemy/AviaoEnemy.tscn" type="PackedScene" id=3]
+
+[node name="Linha" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+scrollDown = 20.2
+drop = false
+powerup = ExtResource( 2 )
+
+[node name="AviaoEnemy" parent="." index="0" instance=ExtResource( 3 )]
+
+rotation = -3.14159
+score = 10
+
+[node name="AviaoEnemy2" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 0.128514, -44 )
+rotation = -3.14159
+score = 10
+
+[node name="AviaoEnemy3" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 0.128518, -87 )
+rotation = -3.14159
+score = 10
+
+[node name="AviaoEnemy4" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 0.128522, -133 )
+rotation = -3.14159
+score = 10
+
+[node name="AviaoEnemy5" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 0.128526, -178 )
+rotation = -3.14159
+score = 10
+
+

@@ -4,7 +4,7 @@ export var weapon = preload("res://scenes/props/EnemyShot1.tscn")
 export var destroyed = false
 export var scrollDown = 20.2
 
-func _process(delta):
+func _physics_process(delta):
 	if get_tree().get_root().get_child(1).get_node("Player") and destroyed == false:
 		var pos = get_tree().get_root().get_child(1).get_node("Player").position
 		look_at(pos)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://scenes/particles/Explosion.gd" type="Script" id=1]
 [ext_resource path="res://graphics/particles/explosion/explosao1.png" type="Texture" id=2]
 [ext_resource path="res://graphics/particles/explosion/explosao2.png" type="Texture" id=3]
 [ext_resource path="res://graphics/particles/explosion/explosao3.png" type="Texture" id=4]
@@ -22,7 +22,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="Explosion" type="Node2D"]
+[node name="Explosion" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 

@@ -3,6 +3,11 @@ extends Node
 var playerSprite = preload("res://graphics/plane/aviao1.png")
 var playerWeapon = preload("res://scenes/props/WLaser.tscn")
 var explosion = preload("res://scenes/particles/explosion.tscn")
+var bombPowerup = preload("res://scenes/powerups/BombPowerup.tscn")
+var powerPowerup = preload("res://scenes/powerups/PowerPowerup.tscn")
+var lifePowerup = preload("res://scenes/powerups/LifePowerup.tscn")
+var scorePowerup = preload("res://scenes/powerups/ScorePowerup.tscn")
+
 var playerPowerup = 1
 var playerLife = 3
 var playerBomb = 2
@@ -11,6 +16,7 @@ var playerScore = 0
 func addPower(var power):
 	if playerPowerup + power <= 3:
 		playerPowerup += power
+		playerWeapon = playerWeapon.instance().nextLevel
 	else:
 		playerPowerup = 3
 		addScore(100)

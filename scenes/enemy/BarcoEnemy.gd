@@ -21,6 +21,7 @@ func damage(dmg):
 	$".".get_node("AnimationPlayer").play("damage")
 	
 	if hp <= 0:
+		collision_mask = 0
 		$AnimatedSprite/Explosion.explode()
 		$AnimatedSprite/Explosion2.explode()
 		$AnimatedSprite/Explosion3.explode()
