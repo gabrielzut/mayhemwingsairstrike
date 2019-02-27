@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var aceleracao = 50
-export var maxVelocidade = 50
+export var maxVelocidade = 100
 export var dmg = 1
 
 var velocidade = Vector2()

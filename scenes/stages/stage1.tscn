@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/stages/stage1.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -12,11 +12,16 @@
 [ext_resource path="res://scenes/props/Spawner.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/enemy/groups/Linha.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/powerups/PowerPowerup.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/enemy/BarcoEnemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=14]
 
 [node name="Area2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_horizontal_guides_": [ -610.131 ]
+}
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -61,14 +66,12 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 position = Vector2( 196.518, -110.581 )
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
-drop = false
-powerup = ExtResource( 3 )
+pausado = false
 
 [node name="CanhaoEnemy2" parent="." index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 229.273, -117.055 )
-drop = false
-powerup = ExtResource( 3 )
+pausado = false
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="." index="5"]
 
@@ -125,6 +128,30 @@ _sections_unfolded = [ "Transform" ]
 drop = true
 powerup = ExtResource( 12 )
 
+[node name="Spawner2" parent="." index="10" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -279.273 )
+
+[node name="BarcoEnemy" parent="." index="11" instance=ExtResource( 13 )]
+
+position = Vector2( 75.9952, -674.837 )
+
+[node name="BarcoEnemy2" parent="." index="12" instance=ExtResource( 13 )]
+
+position = Vector2( 219.392, -673.441 )
+
+[node name="Spawner3" parent="." index="13" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -10.0638 )
+
+[node name="V" parent="." index="14" instance=ExtResource( 14 )]
+
+position = Vector2( 15.1246, -446.984 )
+
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
+
+[connection signal="collision" from="Spawner2" to="." method="_on_Spawner2_collision"]
+
+[connection signal="collision" from="Spawner3" to="." method="_on_Spawner3_collision"]
 
 

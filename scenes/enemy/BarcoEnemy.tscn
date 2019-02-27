@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/enemy/BarcoEnemy.gd" type="Script" id=1]
-[ext_resource path="res://graphics/enemy/barco2.png" type="Texture" id=2]
-[ext_resource path="res://scenes/particles/explosion.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/enemy/barco2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/particles/explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "normal",
 "speed": 5.0
@@ -46,7 +47,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.414063, 0.414063, 1 ) ]
@@ -58,23 +59,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25 ),
+"times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="BarcoEnemy" type="KinematicBody2D" index="0"]
+[node name="BarcoEnemy" type="KinematicBody2D"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 0
 collision_mask = 0
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Visibility", "Z Index", "collision" ]
 hp = 15
 score = 0
+drop = false
+powerup = ExtResource( 2 )
 maxVelocidade = 30
+scrollDown = 20.2
+pausado = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -82,22 +87,22 @@ frames = SubResource( 1 )
 animation = "normal"
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="Explosion" parent="AnimatedSprite" index="0" instance=ExtResource( 3 )]
+[node name="Explosion" parent="AnimatedSprite" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 0, -49 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="Explosion2" parent="AnimatedSprite" index="1" instance=ExtResource( 3 )]
+[node name="Explosion2" parent="AnimatedSprite" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 0, -14 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="Explosion3" parent="AnimatedSprite" index="2" instance=ExtResource( 3 )]
+[node name="Explosion3" parent="AnimatedSprite" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 0, 13 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="Explosion4" parent="AnimatedSprite" index="3" instance=ExtResource( 3 )]
+[node name="Explosion4" parent="AnimatedSprite" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 0, 43 )
 _sections_unfolded = [ "Pause" ]
@@ -113,14 +118,14 @@ position = Vector2( 0, 1.07717 )
 scale = Vector2( 1, 5.20784 )
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="CanhaoEnemy1" parent="." index="3" instance=ExtResource( 4 )]
+[node name="CanhaoEnemy1" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 0, 6 )
 hp = 3
 score = 10
 scrollDown = 0.0
 
-[node name="CanhaoEnemy2" parent="." index="4" instance=ExtResource( 4 )]
+[node name="CanhaoEnemy2" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 0, 39 )
 hp = 3
@@ -137,6 +142,7 @@ playback_speed = 1.0
 anims/damage = SubResource( 2 )
 anims/explode = SubResource( 3 )
 blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
 
 [connection signal="hide" from="AnimatedSprite/Explosion" to="." method="_on_Explosion_hide"]
 

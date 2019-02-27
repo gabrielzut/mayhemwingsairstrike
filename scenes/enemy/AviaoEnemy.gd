@@ -18,6 +18,8 @@ func _ready():
 		collision_layer = 0
 		collision_mask = 0
 		visible = false
+	else:
+		start()
 
 func _physics_process(delta):
 	var colisao = move_and_collide(velocidade * delta)

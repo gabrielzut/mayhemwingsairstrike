@@ -18,7 +18,7 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 aceleracao = 50
-maxVelocidade = 50
+maxVelocidade = 100
 dmg = 1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

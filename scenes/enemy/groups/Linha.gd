@@ -7,16 +7,11 @@ export var powerup = preload("res://scenes/powerups/BombPowerup.tscn")
 
 onready var singletons = get_node("/root/Singletons")
 
-func _ready():
-	$AviaoEnemy5.drop = drop
-	$AviaoEnemy5.powerup = powerup
-
 func start():
-	$AviaoEnemy.start()
-	$AviaoEnemy2.start()
-	$AviaoEnemy3.start()
-	$AviaoEnemy4.start()
-	$AviaoEnemy5.start()
+	for child in get_children():
+		child.start()
+		if drop == true and child.drop == true:
+			child.powerup = powerup
 	
 func _process(delta):
 	move_and_slide(Vector2(0,scrollDown))
