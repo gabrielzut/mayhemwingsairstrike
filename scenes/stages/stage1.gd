@@ -17,3 +17,13 @@ func _on_Spawner4_collision(confirmation):
 	$Linha4.start()
 	$Linha5.start()
 	$Linha6.start()
+
+
+func _on_Spawner5_collision(confirmation):
+	$BarcoEnemy3.start()
+	$BarcoEnemy4.start()
+
+
+func _on_Spawner6_collision(confirmation):
+	$Linha7.start()
+	$Linha8.start()

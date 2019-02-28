@@ -29,7 +29,7 @@ func _on_Timer_timeout():
 	if $VisibilityNotifier2D.is_on_screen() and destroyed == false and pausado == false:
 		var shoot = weapon.instance()
 		shoot.position = $Position2D.get_global_position()
-		shoot.rotation_degrees = rotation_degrees + 90
+		shoot.rotation_degrees = global_rotation_degrees + 90
 		get_tree().get_root().get_child(1).add_child(shoot)
 		
 func damage(dmg):
@@ -46,10 +46,9 @@ func damage(dmg):
 		var fire = preload("res://scenes/particles/fire.tscn")
 		var firedestroyed = fire.instance()
 		destroyed = true
-		rotation_degrees = -90
 		$Timer.stop()
 		$CollisionShape2D.disabled = true
-		firedestroyed.rotation_degrees = 90
+		firedestroyed.global_rotation_degrees = -90
 		firedestroyed.position = $AnimatedSprite.position
 		add_child(firedestroyed)
 		$AnimatedSprite.hide()

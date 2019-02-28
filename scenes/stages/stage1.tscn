@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/stages/stage1.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -14,13 +14,15 @@
 [ext_resource path="res://scenes/powerups/PowerPowerup.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/enemy/BarcoEnemy.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/enemy/groups/SeguirPlayer.gd" type="Script" id=15]
 
 [node name="Area2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
-"_edit_horizontal_guides_": [  ]
+"_edit_horizontal_guides_": [ -735.819 ],
+"_edit_vertical_guides_": [ 317.479 ]
 }
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
@@ -160,29 +162,59 @@ position = Vector2( 288, 154.577 )
 
 position = Vector2( 333.022, -235.745 )
 rotation = 0.785398
-scale = Vector2( 1, 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Linha4" parent="." index="17" instance=ExtResource( 11 )]
 
 position = Vector2( 374.378, -350.765 )
 rotation = 0.785398
-scale = Vector2( 1, 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Linha6" parent="." index="18" instance=ExtResource( 11 )]
 
 position = Vector2( -82.6223, -350.765 )
 rotation = -0.785398
-scale = Vector2( 1, 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Linha5" parent="." index="19" instance=ExtResource( 11 )]
 
 position = Vector2( -41.714, -234.886 )
 rotation = -0.785398
-scale = Vector2( 1, 1 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Spawner5" parent="." index="20" instance=ExtResource( 10 )]
+
+position = Vector2( 288, 9.5056 )
+
+[node name="BarcoEnemy3" parent="." index="21" instance=ExtResource( 13 )]
+
+position = Vector2( 381.059, -534.8 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+maxVelocidade = 50
+
+[node name="BarcoEnemy4" parent="." index="22" instance=ExtResource( 13 )]
+
+position = Vector2( 381.461, -470.726 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+maxVelocidade = 50
+
+[node name="Spawner6" parent="." index="23" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -253.356 )
+
+[node name="Linha7" parent="." index="24" instance=ExtResource( 11 )]
+
+position = Vector2( 311.944, -749.801 )
+script = ExtResource( 15 )
+pausado = true
+
+[node name="Linha8" parent="." index="25" instance=ExtResource( 11 )]
+
+position = Vector2( -27.2351, -749.713 )
+script = ExtResource( 15 )
+pausado = true
 
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 
@@ -191,5 +223,9 @@ _sections_unfolded = [ "Transform" ]
 [connection signal="collision" from="Spawner3" to="." method="_on_Spawner3_collision"]
 
 [connection signal="collision" from="Spawner4" to="." method="_on_Spawner4_collision"]
+
+[connection signal="collision" from="Spawner5" to="." method="_on_Spawner5_collision"]
+
+[connection signal="collision" from="Spawner6" to="." method="_on_Spawner6_collision"]
 
 
