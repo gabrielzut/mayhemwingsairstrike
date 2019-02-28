@@ -19,7 +19,7 @@ func _ready():
 	if pausado:
 		collision_layer = 0
 		collision_mask = 0
-		visible = false
+		hide()
 	else:
 		start()
 

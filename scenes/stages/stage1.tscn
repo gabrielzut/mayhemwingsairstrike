@@ -20,7 +20,7 @@
 script = ExtResource( 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
-"_edit_horizontal_guides_": [ -610.131 ]
+"_edit_horizontal_guides_": [  ]
 }
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
@@ -66,11 +66,15 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 position = Vector2( 196.518, -110.581 )
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+hp = 21
+score = 30
 pausado = false
 
 [node name="CanhaoEnemy2" parent="." index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 229.273, -117.055 )
+hp = 21
+score = 30
 pausado = false
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="." index="5"]
@@ -112,46 +116,80 @@ _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 
 [node name="Spawner" parent="." index="7" instance=ExtResource( 10 )]
 
-position = Vector2( 287.05, 276.929 )
+position = Vector2( 287.05, 443.929 )
 _sections_unfolded = [ "Transform", "collision" ]
 
 [node name="Linha" parent="." index="8" instance=ExtResource( 11 )]
 
-position = Vector2( 69.5264, -92.6529 )
+position = Vector2( 69.5264, -62.6529 )
 _sections_unfolded = [ "Transform" ]
 drop = true
 
 [node name="Linha2" parent="." index="9" instance=ExtResource( 11 )]
 
-position = Vector2( 117.526, -92.6529 )
+position = Vector2( 117.526, -62.6529 )
 _sections_unfolded = [ "Transform" ]
 drop = true
 powerup = ExtResource( 12 )
 
 [node name="Spawner2" parent="." index="10" instance=ExtResource( 10 )]
 
-position = Vector2( 288, -279.273 )
+position = Vector2( 288, -144.273 )
 
 [node name="BarcoEnemy" parent="." index="11" instance=ExtResource( 13 )]
 
-position = Vector2( 75.9952, -674.837 )
+position = Vector2( 75.9952, -696.837 )
 
 [node name="BarcoEnemy2" parent="." index="12" instance=ExtResource( 13 )]
 
-position = Vector2( 219.392, -673.441 )
+position = Vector2( 219.392, -695.441 )
 
 [node name="Spawner3" parent="." index="13" instance=ExtResource( 10 )]
 
-position = Vector2( 288, -10.0638 )
+position = Vector2( 288, 288.936 )
 
 [node name="V" parent="." index="14" instance=ExtResource( 14 )]
 
-position = Vector2( 15.1246, -446.984 )
+position = Vector2( 15.1246, -315.984 )
+
+[node name="Spawner4" parent="." index="15" instance=ExtResource( 10 )]
+
+position = Vector2( 288, 154.577 )
+
+[node name="Linha3" parent="." index="16" instance=ExtResource( 11 )]
+
+position = Vector2( 333.022, -235.745 )
+rotation = 0.785398
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Linha4" parent="." index="17" instance=ExtResource( 11 )]
+
+position = Vector2( 374.378, -350.765 )
+rotation = 0.785398
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Linha6" parent="." index="18" instance=ExtResource( 11 )]
+
+position = Vector2( -82.6223, -350.765 )
+rotation = -0.785398
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Linha5" parent="." index="19" instance=ExtResource( 11 )]
+
+position = Vector2( -41.714, -234.886 )
+rotation = -0.785398
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 
 [connection signal="collision" from="Spawner2" to="." method="_on_Spawner2_collision"]
 
 [connection signal="collision" from="Spawner3" to="." method="_on_Spawner3_collision"]
+
+[connection signal="collision" from="Spawner4" to="." method="_on_Spawner4_collision"]
 
 

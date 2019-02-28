@@ -14,6 +14,7 @@ var velocidade = Vector2(0,0)
 
 func _ready():
 	velocidade = Vector2(0,VELOCIDADE)
+	global_rotation = 0
 
 func _physics_process(delta):
 	var colisao = move_and_collide(velocidade * delta)

@@ -20,7 +20,7 @@ func start():
 	collision_mask = 8
 
 func _physics_process(delta):
-	if get_tree().get_root().get_child(1).get_node("Player") and destroyed == false:
+	if get_tree().get_root().get_child(1).has_node("Player") and destroyed == false:
 		var pos = get_tree().get_root().get_child(1).get_node("Player").position
 		look_at(pos)
 	move_and_slide(Vector2(0,scrollDown))

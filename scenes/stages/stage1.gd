@@ -11,3 +11,9 @@ func _on_Spawner2_collision(confirmation):
 
 func _on_Spawner3_collision(confirmation):
 	$V.start()
+
+func _on_Spawner4_collision(confirmation):
+	$Linha3.start()
+	$Linha4.start()
+	$Linha5.start()
+	$Linha6.start()

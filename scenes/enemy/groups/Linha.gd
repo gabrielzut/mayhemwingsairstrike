@@ -12,6 +12,8 @@ func start():
 		child.start()
 		if drop == true and child.drop == true:
 			child.powerup = powerup
+		elif drop == false:
+			child.drop = false
 	
 func _process(delta):
 	move_and_slide(Vector2(0,scrollDown))

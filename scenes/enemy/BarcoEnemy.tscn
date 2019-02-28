@@ -74,7 +74,7 @@ collision/safe_margin = 0.001
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Visibility", "Z Index", "collision" ]
 hp = 15
-score = 0
+score = 50
 drop = false
 powerup = ExtResource( 2 )
 maxVelocidade = 30
@@ -121,14 +121,14 @@ rect = Rect2( -10, -10, 20, 20 )
 [node name="CanhaoEnemy1" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 0, 6 )
-hp = 3
+hp = 21
 score = 10
 scrollDown = 0.0
 
 [node name="CanhaoEnemy2" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 0, 39 )
-hp = 3
+hp = 21
 score = 10
 scrollDown = 0.0
 

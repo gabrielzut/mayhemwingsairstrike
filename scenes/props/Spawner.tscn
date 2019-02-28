@@ -2,18 +2,18 @@
 
 [ext_resource path="res://scenes/props/Spawner.gd" type="Script" id=1]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 
 offsets = PoolRealArray( 0, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=1]
+[sub_resource type="GradientTexture" id=2]
 
 flags = 4
-gradient = SubResource( 2 )
+gradient = SubResource( 1 )
 width = 2048
 
-[node name="Spawner" type="KinematicBody2D" index="0"]
+[node name="Spawner" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -26,7 +26,7 @@ scrollDown = 20.2
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 scale = Vector2( 1, 5 )
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Position2D" type="Position2D" parent="." index="1"]
