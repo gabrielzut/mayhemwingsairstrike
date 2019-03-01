@@ -16,6 +16,6 @@ func _process(delta):
 		if 'Player' in colisao.collider.name:
 			colisao.collider.damage(dmg)
 			queue_free()
-	
-	#if !$VisibilityNotifier2D.is_on_screen():
-	#	queue_free()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

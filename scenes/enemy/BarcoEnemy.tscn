@@ -65,7 +65,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="BarcoEnemy" type="KinematicBody2D"]
+[node name="BarcoEnemy" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/stages/stage1.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -15,14 +15,15 @@
 [ext_resource path="res://scenes/enemy/BarcoEnemy.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/enemy/groups/SeguirPlayer.gd" type="Script" id=15]
+[ext_resource path="res://scenes/enemy/boss/Boss1.tscn" type="PackedScene" id=16]
 
-[node name="Area2D" type="Node2D" index="0"]
+[node name="Area2D" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_horizontal_guides_": [ -735.819 ],
-"_edit_vertical_guides_": [ 317.479 ]
+"_edit_vertical_guides_": [  ]
 }
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
@@ -48,6 +49,7 @@ scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = false
 script = ExtResource( 5 )
 _sections_unfolded = [ "Pause", "Scroll" ]
+pausado = false
 offPos = 0
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
@@ -67,7 +69,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="CanhaoEnemy" parent="." index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 196.518, -110.581 )
-_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+_sections_unfolded = [ "Collision", "Transform", "Z Index", "collision" ]
 hp = 21
 score = 30
 pausado = false
@@ -93,6 +95,7 @@ scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = false
 script = ExtResource( 5 )
+pausado = false
 offPos = 0
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2" index="0"]
@@ -142,79 +145,108 @@ position = Vector2( 288, -144.273 )
 
 position = Vector2( 75.9952, -696.837 )
 
-[node name="BarcoEnemy2" parent="." index="12" instance=ExtResource( 13 )]
+[node name="BarcoEnemy5" parent="." index="12" instance=ExtResource( 13 )]
+
+position = Vector2( 146.136, -1029.3 )
+
+[node name="BarcoEnemy2" parent="." index="13" instance=ExtResource( 13 )]
 
 position = Vector2( 219.392, -695.441 )
 
-[node name="Spawner3" parent="." index="13" instance=ExtResource( 10 )]
+[node name="Spawner3" parent="." index="14" instance=ExtResource( 10 )]
 
 position = Vector2( 288, 288.936 )
 
-[node name="V" parent="." index="14" instance=ExtResource( 14 )]
+[node name="V" parent="." index="15" instance=ExtResource( 14 )]
 
 position = Vector2( 15.1246, -315.984 )
 
-[node name="Spawner4" parent="." index="15" instance=ExtResource( 10 )]
+[node name="Spawner4" parent="." index="16" instance=ExtResource( 10 )]
 
 position = Vector2( 288, 154.577 )
 
-[node name="Linha3" parent="." index="16" instance=ExtResource( 11 )]
+[node name="Linha3" parent="." index="17" instance=ExtResource( 11 )]
 
 position = Vector2( 333.022, -235.745 )
 rotation = 0.785398
 _sections_unfolded = [ "Transform" ]
 
-[node name="Linha4" parent="." index="17" instance=ExtResource( 11 )]
+[node name="Linha4" parent="." index="18" instance=ExtResource( 11 )]
 
 position = Vector2( 374.378, -350.765 )
 rotation = 0.785398
 _sections_unfolded = [ "Transform" ]
 
-[node name="Linha6" parent="." index="18" instance=ExtResource( 11 )]
+[node name="Linha6" parent="." index="19" instance=ExtResource( 11 )]
 
 position = Vector2( -82.6223, -350.765 )
 rotation = -0.785398
 _sections_unfolded = [ "Transform" ]
 
-[node name="Linha5" parent="." index="19" instance=ExtResource( 11 )]
+[node name="Linha5" parent="." index="20" instance=ExtResource( 11 )]
 
 position = Vector2( -41.714, -234.886 )
 rotation = -0.785398
 _sections_unfolded = [ "Transform" ]
 
-[node name="Spawner5" parent="." index="20" instance=ExtResource( 10 )]
+[node name="Spawner5" parent="." index="21" instance=ExtResource( 10 )]
 
 position = Vector2( 288, 9.5056 )
 
-[node name="BarcoEnemy3" parent="." index="21" instance=ExtResource( 13 )]
+[node name="BarcoEnemy3" parent="." index="22" instance=ExtResource( 13 )]
 
 position = Vector2( 381.059, -534.8 )
 rotation = 1.5708
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 maxVelocidade = 50
 
-[node name="BarcoEnemy4" parent="." index="22" instance=ExtResource( 13 )]
+[node name="BarcoEnemy4" parent="." index="23" instance=ExtResource( 13 )]
 
 position = Vector2( 381.461, -470.726 )
 rotation = 1.5708
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 maxVelocidade = 50
 
-[node name="Spawner6" parent="." index="23" instance=ExtResource( 10 )]
+[node name="Spawner6" parent="." index="24" instance=ExtResource( 10 )]
 
 position = Vector2( 288, -253.356 )
 
-[node name="Linha7" parent="." index="24" instance=ExtResource( 11 )]
+[node name="Linha7" parent="." index="25" instance=ExtResource( 11 )]
 
 position = Vector2( 311.944, -749.801 )
 script = ExtResource( 15 )
 pausado = true
 
-[node name="Linha8" parent="." index="25" instance=ExtResource( 11 )]
+[node name="Linha9" parent="." index="26" instance=ExtResource( 11 )]
+
+position = Vector2( 311.944, -885.801 )
+script = ExtResource( 15 )
+pausado = true
+
+[node name="Linha8" parent="." index="27" instance=ExtResource( 11 )]
 
 position = Vector2( -27.2351, -749.713 )
 script = ExtResource( 15 )
 pausado = true
+
+[node name="Linha10" parent="." index="28" instance=ExtResource( 11 )]
+
+position = Vector2( -27.2351, -885.713 )
+script = ExtResource( 15 )
+pausado = true
+
+[node name="Spawner7" parent="." index="29" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -366.092 )
+
+[node name="Boss1" parent="." index="30" instance=ExtResource( 16 )]
+
+position = Vector2( 144, -2888 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Spawner8" parent="." index="31" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -2504 )
 
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 
@@ -227,5 +259,9 @@ pausado = true
 [connection signal="collision" from="Spawner5" to="." method="_on_Spawner5_collision"]
 
 [connection signal="collision" from="Spawner6" to="." method="_on_Spawner6_collision"]
+
+[connection signal="collision" from="Spawner7" to="." method="_on_Spawner7_collision"]
+
+[connection signal="collision" from="Spawner8" to="." method="_on_Spawner8_collision"]
 
 

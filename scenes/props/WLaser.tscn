@@ -40,4 +40,6 @@ scale = Vector2( 0.600032, 1.60544 )
 rect = Rect2( -10, -10, 20, 20 )
 _sections_unfolded = [ "Transform" ]
 
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
 

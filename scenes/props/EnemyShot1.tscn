@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 5.85499, 16.0564 )
 
-[node name="ENMShot1" type="KinematicBody2D"]
+[node name="ENMShot1" type="KinematicBody2D" index="0"]
 
 scale = Vector2( 0.5, 0.5 )
 input_pickable = false
@@ -39,5 +39,7 @@ position = Vector2( -0.212971, 0.0989704 )
 scale = Vector2( 0.600032, 1.60544 )
 rect = Rect2( -10, -10, 20, 20 )
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 

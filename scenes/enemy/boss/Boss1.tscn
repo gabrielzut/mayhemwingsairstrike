@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/enemy/boss/Boss1.gd" type="Script" id=1]
+[ext_resource path="res://graphics/enemy/boss/boss1_base.png" type="Texture" id=2]
+[ext_resource path="res://scenes/enemy/boss/Boss1Center.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemy/boss/Boss1Gun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemy/boss/Boss1Launcher.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=6]
+
+[node name="Boss1" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+scrollDown = 20.2
+pausado = true
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="Boss1Center" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 79.4991, -71.1774 )
+
+[node name="Boss1Gun" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 87, 23 )
+
+[node name="Boss1Gun2" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 119, 23 )
+
+[node name="Boss1Launcher" parent="." index="4" instance=ExtResource( 5 )]
+
+position = Vector2( -42.1933, -88.2095 )
+
+[node name="CanhaoEnemy" parent="." index="5" instance=ExtResource( 6 )]
+
+position = Vector2( -86, -39 )
+hp = 90
+score = 100
+scrollDown = 0.0
+
+[node name="CanhaoEnemy2" parent="." index="6" instance=ExtResource( 6 )]
+
+position = Vector2( -59, -40 )
+hp = 90
+score = 100
+scrollDown = 0.0
+
+[node name="CanhaoEnemy3" parent="." index="7" instance=ExtResource( 6 )]
+
+position = Vector2( -33, -40 )
+hp = 90
+score = 100
+scrollDown = 0.0
+
+[node name="CanhaoEnemy4" parent="." index="8" instance=ExtResource( 6 )]
+
+position = Vector2( -7, -40 )
+hp = 90
+score = 100
+scrollDown = 0.0
+
+[node name="CanhaoEnemy5" parent="." index="9" instance=ExtResource( 6 )]
+
+position = Vector2( 18, -40 )
+hp = 90
+score = 100
+scrollDown = 0.0
+
+
