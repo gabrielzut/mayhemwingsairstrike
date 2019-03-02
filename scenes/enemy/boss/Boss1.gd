@@ -24,8 +24,11 @@ func start():
 	$CanhaoEnemy5.get_node("Timer").wait_time = 1.2
 	
 	for child in get_children():
-		if child.has_method("start"):
+		if child.has_method("start") and child.name != "Boss1Center":
 			child.start()
 	
 func _physics_process(delta):
 	move_and_slide(Vector2(0,scrollDown))
+	
+	if $Boss1Center.pausado == true and !has_node("Boss1Gun") and !has_node("Boss1Gun2") and $Boss1Launcher.destroyed == true and $CanhaoEnemy.destroyed == true and $CanhaoEnemy2.destroyed == true and $CanhaoEnemy3.destroyed == true and $CanhaoEnemy4.destroyed == true and $CanhaoEnemy5.destroyed == true:
+		$Boss1Center.start()

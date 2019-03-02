@@ -144,6 +144,4 @@ anims/explode = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[connection signal="hide" from="AnimatedSprite/Explosion" to="." method="_on_Explosion_hide"]
-
 
