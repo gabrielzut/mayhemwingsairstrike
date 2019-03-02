@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/stages/stage1.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/enemy/groups/SeguirPlayer.gd" type="Script" id=15]
 [ext_resource path="res://scenes/enemy/boss/Boss1.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/enemy/boss/Boss1Gun.tscn" type="PackedScene" id=17]
 
 [node name="Area2D" type="Node2D"]
 
@@ -247,6 +248,11 @@ _sections_unfolded = [ "Transform" ]
 [node name="Spawner8" parent="." index="31" instance=ExtResource( 10 )]
 
 position = Vector2( 288, -2504 )
+
+[node name="Boss1Gun" parent="." index="32" instance=ExtResource( 17 )]
+
+position = Vector2( 125.001, 318.613 )
+pausado = false
 
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 

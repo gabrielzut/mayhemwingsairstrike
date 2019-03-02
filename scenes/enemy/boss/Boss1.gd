@@ -17,11 +17,11 @@ func start():
 	pausado = false
 	scrollDown = 0
 	
-	$CanhaoEnemy.get_node("Timer").wait_time = 0.8
-	$CanhaoEnemy2.get_node("Timer").wait_time = 0.8
-	$CanhaoEnemy3.get_node("Timer").wait_time = 0.8
-	$CanhaoEnemy4.get_node("Timer").wait_time = 0.8
-	$CanhaoEnemy5.get_node("Timer").wait_time = 0.8
+	$CanhaoEnemy.get_node("Timer").wait_time = 1.2
+	$CanhaoEnemy2.get_node("Timer").wait_time = 1.5
+	$CanhaoEnemy3.get_node("Timer").wait_time = 1.2
+	$CanhaoEnemy4.get_node("Timer").wait_time = 1.5
+	$CanhaoEnemy5.get_node("Timer").wait_time = 1.2
 	
 	for child in get_children():
 		if child.has_method("start"):

@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/props/ENMDestroyableShot.gd" type="Script" id=1]
+[ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/weapon/tiro6.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 5.45709
+height = 7.45829
+
+[node name="EnemyShot3" type="KinematicBody2D"]
+
+scale = Vector2( 0.5, 0.5 )
+input_pickable = false
+collision_layer = 5
+collision_mask = 2
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+hp = 1
+score = 0
+drop = false
+powerup = ExtResource( 2 )
+aceleracao = 50
+maxVelocidade = 100
+dmg = 1
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.00626183, -0.509088 )
+rotation = 1.57045
+scale = Vector2( 1.02116, 1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+
+position = Vector2( 0.0753044, -0.302271 )
+scale = Vector2( 0.919827, 0.585727 )
+rect = Rect2( -10, -10, 20, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+

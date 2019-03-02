@@ -17,7 +17,7 @@ func _process(delta):
 	var colisao = move_and_collide(velocidade * delta)
 	
 	if colisao:
-		if 'Enemy' in colisao.collider.name:
+		if 'Enemy' in colisao.collider.name or 'Boss' in colisao.collider.name:
 			colisao.collider.damage(dmg)
 			queue_free()
 

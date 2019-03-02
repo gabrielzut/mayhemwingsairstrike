@@ -1,23 +1,76 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/enemy/boss/Boss1Launcher.gd" type="Script" id=1]
 [ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=2]
-[ext_resource path="res://graphics/enemy/boss/boss1_launcher.png" type="Texture" id=3]
+[ext_resource path="res://scenes/props/EnemyShot2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/enemy/boss/boss1_launcher.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "damage"
+length = 0.1
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.5625, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Boss1Launcher" type="KinematicBody2D" index="0"]
 
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 0
+collision_mask = 0
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 hp = 1
 score = 0
 drop = false
 powerup = ExtResource( 2 )
+weapon = ExtResource( 3 )
+destroyed = false
+pausado = true
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+
+build_mode = 0
+polygon = PoolVector2Array( -13.6676, 29.0685, -24.8932, -4.97628, -25.2612, -20.4345, -7.22671, -25.5872, -6.67463, -22.6428, -5.57047, -22.8268, -2.62606, -26.6913, 12.4641, -29.6357, 25.5299, 10.1138, 22.5855, 25.2039, 2.71069, 27.0442, -8.33086, 29.2525 )
+
+[node name="Position2D" type="Position2D" parent="." index="3"]
+
+position = Vector2( 8, 31 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+
+root_node = NodePath("../Sprite")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/damage = SubResource( 1 )
+blend_times = [  ]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

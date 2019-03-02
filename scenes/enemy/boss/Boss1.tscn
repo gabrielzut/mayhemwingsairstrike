@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/enemy/boss/Boss1Launcher.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=6]
 
-[node name="Boss1" type="KinematicBody2D" index="0"]
+[node name="Boss1" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -36,6 +36,7 @@ position = Vector2( 119, 23 )
 [node name="Boss1Launcher" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -42.1933, -88.2095 )
+hp = 150
 
 [node name="CanhaoEnemy" parent="." index="5" instance=ExtResource( 6 )]
 
