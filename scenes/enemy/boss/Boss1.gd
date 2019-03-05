@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var scrollDown = 20.2
+export var scrollDown = 20
 export var pausado = true
 
 func _ready():
@@ -16,12 +16,6 @@ func _ready():
 func start():
 	pausado = false
 	scrollDown = 0
-	
-	$CanhaoEnemy.get_node("Timer").wait_time = 1.2
-	$CanhaoEnemy2.get_node("Timer").wait_time = 1.5
-	$CanhaoEnemy3.get_node("Timer").wait_time = 1.2
-	$CanhaoEnemy4.get_node("Timer").wait_time = 1.5
-	$CanhaoEnemy5.get_node("Timer").wait_time = 1.2
 	
 	for child in get_children():
 		if child.has_method("start") and child.name != "Boss1Center":

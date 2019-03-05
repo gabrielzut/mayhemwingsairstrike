@@ -1,8 +1,9 @@
 extends "res://classes/destructable.gd"
 
 export var maxVelocidade = 30
-export var scrollDown = 20.2
+export var scrollDown = 20
 var velocidade = Vector2(0,0)
+export var tempoMov = 30
 export var pausado = true
 
 func start():
@@ -12,8 +13,12 @@ func start():
 	collision_mask = 0
 	velocidade = Vector2(0,maxVelocidade).rotated(rotation)
 	$AnimatedSprite/Explosion.connect("exploded", self, "_explosion_exploded")
-	$CanhaoEnemy1.start()
-	$CanhaoEnemy2.start()
+	for child in get_children():
+		if child.has_method("start"):
+			child.start()
+	$Timer.wait_time = tempoMov
+	$Timer.one_shot = true
+	$Timer.start()
 
 func _ready():
 	if pausado:
@@ -28,8 +33,12 @@ func _physics_process(delta):
 	
 	var colisao = move_and_collide(velocidade * delta)
 	
-	if $CanhaoEnemy1.destroyed == true and $CanhaoEnemy2.destroyed == true:
-		collision_mask = 8
+	if $CanhaoEnemy1.destroyed == true:
+		if has_node("CanhaoEnemy2"):
+			if $CanhaoEnemy2.destroyed == true:
+				collision_mask = 8
+		else:
+			collision_mask = 8
 	
 func _on_VisibilityNotifier2D_screen_exited():
 	if !pausado:
@@ -40,11 +49,12 @@ func damage(dmg):
 	$".".get_node("AnimationPlayer").play("damage")
 	
 	if hp <= 0:
-		$CollisionPolygon2D.disabled = true
-		$AnimatedSprite/Explosion.explode()
-		$AnimatedSprite/Explosion2.explode()
-		$AnimatedSprite/Explosion3.explode()
-		$AnimatedSprite/Explosion4.explode()
+		$Collision.disabled = true
+		
+		for child in $AnimatedSprite.get_children():
+			if child.has_method("explode"):
+				child.explode()
+				
 		$AnimationPlayer.play("explode")
 		
 		singletons.addScore(score)
@@ -52,3 +62,6 @@ func damage(dmg):
 func _explosion_exploded(confirmation):
 	if(confirmation):
 		queue_free()
+
+func _on_Timer_timeout():
+	velocidade = Vector2(0,0)

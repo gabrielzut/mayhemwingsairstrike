@@ -25,7 +25,6 @@ func _on_Spawner6_collision(confirmation):
 	$Linha7.start()
 	$Linha8.start()
 
-
 func _on_Spawner7_collision(confirmation):
 	$Linha9.start()
 	$Linha10.start()
@@ -34,3 +33,19 @@ func _on_Spawner7_collision(confirmation):
 func _on_Spawner8_collision(confirmation):
 	$Boss1.start()
 	$ParallaxBackground.pausado = true
+	$ParallaxBackground2.pausado = true
+
+func _on_Spawner9_collision(confirmation):
+	$TankEnemy.start()
+	$TankEnemy2.start()
+	$CanhaoEnemy3.start()
+	$CanhaoEnemy4.start()
+
+func _on_Spawner10_collision(confirmation):
+	$AviaoEnemy.start()
+	$AviaoEnemy2.start()
+	$AviaoEnemy3.start()
+
+func _on_Spawner11_collision(confirmation):
+	$V2.start()
+	$V3.start()

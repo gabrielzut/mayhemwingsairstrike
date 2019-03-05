@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/enemy/AviaoEnemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=2]
-[ext_resource path="res://graphics/enemy/aviao3.png" type="Texture" id=3]
+[ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/enemy/aviao3.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "normal",
 "speed": 5.0
@@ -28,8 +29,11 @@ score = 0
 drop = false
 powerup = ExtResource( 2 )
 maxVelocidade = 150
-weapon = "none"
+weapon = ExtResource( 3 )
+shootType = 0
+shootInterval = 1.0
 pausado = true
+scrollDown = 0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -51,6 +55,15 @@ position = Vector2( 0.0872588, 0.600323 )
 scale = Vector2( 1.59104, 1.46543 )
 rect = Rect2( -10, -10, 20, 20 )
 
+[node name="Timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

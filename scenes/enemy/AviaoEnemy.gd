@@ -1,8 +1,15 @@
 extends "res://classes/destructable.gd"
 
+enum ShootType{
+	NONE,STRAIGHT,FOLLOW
+}
+
 export var maxVelocidade = 150
-export var weapon = "none"
+export var weapon = preload("res://scenes/props/EnemyShot4.tscn")
+export(ShootType) var shootType = 0
+export var shootInterval = 1.0
 export var pausado = true
+export var scrollDown = 0
 
 var velocidade = Vector2(0,0)
 
@@ -12,6 +19,10 @@ func start():
 	collision_layer = 4
 	collision_mask = 10
 	velocidade = Vector2(0,-maxVelocidade).rotated(get_global_transform().get_rotation())
+	
+	if shootType != ShootType.NONE:
+		$Timer.wait_time = shootInterval
+		$Timer.start()
 
 func _ready():
 	if pausado:
@@ -22,6 +33,8 @@ func _ready():
 		start()
 
 func _physics_process(delta):
+	move_and_slide(Vector2(0,scrollDown))
+	
 	var colisao = move_and_collide(velocidade * delta)
 	
 	if colisao != null and 'Player' in colisao.collider.name:
@@ -31,3 +44,15 @@ func _physics_process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	if !pausado:
 		queue_free()
+
+func _on_Timer_timeout():
+	if $VisibilityNotifier2D.is_on_screen() and pausado == false:
+		var shoot = weapon.instance()
+		shoot.position = $Position2D.get_global_position()
+		if shootType == ShootType.STRAIGHT:
+			shoot.rotation_degrees = global_rotation_degrees
+		elif shootType == ShootType.FOLLOW:
+			if get_tree().get_root().get_child(1).has_node("Player"):
+				var pos = get_tree().get_root().get_child(1).get_node("Player").position
+				shoot.rotation_degrees = rad2deg(get_angle_to(pos)) - 90
+		get_tree().get_root().get_child(1).add_child(shoot)

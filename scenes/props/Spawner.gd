@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var scrollDown = 20.2
+export var scrollDown = 20
 signal collision(confirmation)
 
 func _physics_process(delta):

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var scrollDown = 20.2
+export var scrollDown = 20
 
 export var drop = false
 export var powerup = preload("res://scenes/powerups/BombPowerup.tscn")

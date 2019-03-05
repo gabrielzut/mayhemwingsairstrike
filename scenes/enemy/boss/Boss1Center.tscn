@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.453125, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Boss1Center" type="KinematicBody2D" index="0"]
+[node name="Boss1Center" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1

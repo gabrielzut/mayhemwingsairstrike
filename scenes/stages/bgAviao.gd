@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var aceleracao = 50
 export var maxVelocidade = 50
-export var scrollDown = 20.2
+export var scrollDown = 20
 
 var velocidade = Vector2()
 var visivel = false

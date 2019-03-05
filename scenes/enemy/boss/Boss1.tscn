@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/enemy/boss/Boss1Launcher.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=6]
 
-[node name="Boss1" type="KinematicBody2D" index="0"]
+[node name="Boss1" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -50,6 +50,7 @@ position = Vector2( -86, -39 )
 hp = 80
 score = 100
 scrollDown = 0.0
+shootInterval = 1.5
 
 [node name="CanhaoEnemy2" parent="." index="6" instance=ExtResource( 6 )]
 
@@ -57,6 +58,7 @@ position = Vector2( -59, -40 )
 hp = 80
 score = 100
 scrollDown = 0.0
+shootInterval = 1.2
 
 [node name="CanhaoEnemy3" parent="." index="7" instance=ExtResource( 6 )]
 
@@ -64,6 +66,7 @@ position = Vector2( -33, -40 )
 hp = 80
 score = 100
 scrollDown = 0.0
+shootInterval = 1.5
 
 [node name="CanhaoEnemy4" parent="." index="8" instance=ExtResource( 6 )]
 
@@ -71,6 +74,7 @@ position = Vector2( -7, -40 )
 hp = 80
 score = 100
 scrollDown = 0.0
+shootInterval = 1.2
 
 [node name="CanhaoEnemy5" parent="." index="9" instance=ExtResource( 6 )]
 
@@ -78,5 +82,6 @@ position = Vector2( 18, -40 )
 hp = 80
 score = 100
 scrollDown = 0.0
+shootInterval = 1.5
 
 

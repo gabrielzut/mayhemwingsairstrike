@@ -2,10 +2,19 @@ extends "res://classes/destructable.gd"
 
 export var weapon = preload("res://scenes/props/EnemyShot1.tscn")
 export var destroyed = false
-export var scrollDown = 20.2
+export var scrollDown = 20
 export var pausado = true
+export var tipo = 0
+export var shootInterval = 2.0
 
 func _ready():
+	if tipo == 0:
+		$AnimatedSprite.play("normal")
+	elif tipo == 1:
+		$AnimatedSprite.play("tank")
+	
+	$Timer.wait_time = shootInterval
+	
 	if pausado:
 		collision_layer = 0
 		collision_mask = 0
@@ -39,6 +48,8 @@ func damage(dmg):
 	if hp <= 0 and destroyed == false:
 		singletons.addScore(score)
 		var explosion = singletons.explosion.instance()
+		if tipo == 1:
+			explosion.scale = Vector2(0.5,0.5)
 		explosion.position = position
 		get_parent().add_child(explosion)
 		explosion.explode()
