@@ -49,3 +49,12 @@ func _on_Spawner10_collision(confirmation):
 func _on_Spawner11_collision(confirmation):
 	$V2.start()
 	$V3.start()
+
+func _on_Spawner12_collision(confirmation):
+	$AviaoEnemy4.start()
+	$AviaoEnemy5.start()
+	$AviaoEnemy6.start()
+
+func _on_Spawner13_collision(confirmation):
+	$AviaoGrandeEnemy.start()
+	$AviaoGrandeEnemy2.start()

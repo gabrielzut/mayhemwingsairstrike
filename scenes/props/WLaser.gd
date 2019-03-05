@@ -18,7 +18,14 @@ func _process(delta):
 	
 	if colisao:
 		if 'Enemy' in colisao.collider.name or 'Boss' in colisao.collider.name:
-			colisao.collider.damage(dmg)
+			if colisao.collider.has_method("damage"):
+				colisao.collider.damage(dmg)
+			else:
+				var parent = colisao.collider.get_parent()
+				while !(parent.has_method("damage")) and parent != get_tree().get_root():
+					parent = parent.get_parent()
+				if parent.has_method("damage"):
+					parent.damage(dmg)
 			queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():

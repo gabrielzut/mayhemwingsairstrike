@@ -54,5 +54,5 @@ func _on_Timer_timeout():
 		elif shootType == ShootType.FOLLOW:
 			if get_tree().get_root().get_child(1).has_node("Player"):
 				var pos = get_tree().get_root().get_child(1).get_node("Player").position
-				shoot.rotation_degrees = rad2deg(get_angle_to(pos)) - 90
+				shoot.global_rotation_degrees = rad2deg(get_angle_to(pos)) + global_rotation_degrees + 90
 		get_tree().get_root().get_child(1).add_child(shoot)
