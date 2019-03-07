@@ -9,6 +9,7 @@ func start():
 	visible = true
 	pausado = false
 	scrollDown = 0
+	$Path2D/PathFollow2D/AviaoGEnemy/Timer.wait_time = shootInterval
 	$Path2D/PathFollow2D/AviaoGEnemy.collision_layer = 4
 	$Path2D/PathFollow2D/AviaoGEnemy.collision_mask = 10
 
@@ -25,17 +26,34 @@ func _physics_process(delta):
 	
 	if pausado == false:
 		$Path2D/PathFollow2D.offset = $Path2D/PathFollow2D.offset + 80 * delta
+		
+		if $Timer.is_stopped():
+			$Timer.start()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	if !pausado:
 		queue_free()
 
 func _on_Timer_timeout():
-	if $VisibilityNotifier2D.is_on_screen() and pausado == false:
-		var shoot = weapon.instance()
-		shoot.position = $Position2D.get_global_position()
-		shoot.rotation_degrees = global_rotation_degrees
-		get_tree().get_root().get_child(1).add_child(shoot)
+	if $Path2D/PathFollow2D/AviaoGEnemy/VisibilityNotifier2D.is_on_screen() and pausado == false:
+		var shoot1 = weapon.instance()
+		var shoot2 = weapon.instance()
+		var shoot3 = weapon.instance()
+		shoot1.position = $Path2D/PathFollow2D/AviaoGEnemy/Position2D.get_global_position()
+		shoot2.position = $Path2D/PathFollow2D/AviaoGEnemy/Position2D.get_global_position()
+		shoot3.position = $Path2D/PathFollow2D/AviaoGEnemy/Position2D.get_global_position()
+		var pos = Vector2(0,0)
+		if get_tree().get_root().get_child(1).has_node("Player"):
+			pos = get_tree().get_root().get_child(1).get_node("Player").position
+		shoot1.look_at(pos)
+		shoot2.look_at(pos)
+		shoot3.look_at(pos)
+		shoot1.global_rotation_degrees += 90
+		shoot2.global_rotation_degrees += 75
+		shoot3.global_rotation_degrees += 105
+		get_tree().get_root().get_child(1).add_child(shoot1)
+		get_tree().get_root().get_child(1).add_child(shoot2)
+		get_tree().get_root().get_child(1).add_child(shoot3)
 
 func damage(dmg):
 	hp -= dmg
@@ -49,3 +67,6 @@ func damage(dmg):
 		get_parent().add_child(explosion)
 		explosion.explode()
 		queue_free()
+
+func _on_Global_Timer_timeout():
+	scrollDown = -50

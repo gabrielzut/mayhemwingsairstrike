@@ -57,4 +57,32 @@ func _on_Spawner12_collision(confirmation):
 
 func _on_Spawner13_collision(confirmation):
 	$AviaoGrandeEnemy.start()
+
+func _on_Spawner14_collision(confirmation):
+	$Linha11.start()
+	$Linha12.start()
+	$Linha13.start()
+
+func _on_Spawner15_collision(confirmation):
 	$AviaoGrandeEnemy2.start()
+	$AviaoEnemy7.start()
+	$AviaoEnemy8.start()
+	$AviaoEnemy9.start()
+
+func _on_Spawner16_collision(confirmation):
+	$V4.start()
+	$V5.start()
+	$V6.start()
+	$V7.start()
+
+func _on_Spawner17_collision(confirmation):
+	$BarcoEnemy6.start()
+	$BarcoEnemy7.start()
+	$BarcoEnemy8.start()
+	$BarcoEnemy9.start()
+
+func _on_Spawner18_collision(confirmation):
+	$Linha14.start()
+	$Linha15.start()
+	$ParallaxBackground2/ParallaxLayer2/Sprite/Tween.interpolate_property($ParallaxBackground2/ParallaxLayer2/Sprite,"modulate",Color("3cffffff"), Color(1, 1, 1, 0),5.0,Tween.TRANS_SINE,Tween.EASE_IN)
+	$ParallaxBackground2/ParallaxLayer2/Sprite/Tween.start()

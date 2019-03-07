@@ -50,7 +50,14 @@ func _process(delta):
 	if colisao:
 		if ("Enemy" in colisao.collider.name or "Hazard" in colisao.collider.name) and singletons.gameStatus == 2:
 			damage(1)
-			colisao.collider.damage(1)
+			if colisao.collider.has_method("damage"):
+				colisao.collider.damage(1)
+			else:
+				var parent = colisao.collider.get_parent()
+				while !(parent.has_method("damage")) and parent != get_tree().get_root():
+					parent = parent.get_parent()
+				if parent.has_method("damage"):
+					parent.damage(1)
 		if "Powerup" in colisao.collider.name and singletons.gameStatus == 2:
 			colisao.collider.pick()
 		if "ENM" in colisao.collider.name and singletons.gameStatus == 2:

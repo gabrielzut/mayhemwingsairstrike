@@ -42,7 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.484375, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="AviaoGrandeEnemy" type="KinematicBody2D" index="0"]
+[node name="AviaoGrandeEnemy" type="KinematicBody2D"]
 
 position = Vector2( 0.12851, 0 )
 z_index = 1
@@ -124,7 +124,7 @@ _sections_unfolded = [ "Transform" ]
 process_mode = 1
 wait_time = 1.0
 one_shot = false
-autostart = false
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/AviaoGEnemy" index="5"]
 
@@ -136,8 +136,17 @@ playback_speed = 1.0
 anims/damage = SubResource( 3 )
 blend_times = [  ]
 
+[node name="Timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = true
+autostart = false
+
 [connection signal="screen_exited" from="Path2D/PathFollow2D/AviaoGEnemy/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [connection signal="timeout" from="Path2D/PathFollow2D/AviaoGEnemy/Timer" to="." method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Global_Timer_timeout"]
 
 

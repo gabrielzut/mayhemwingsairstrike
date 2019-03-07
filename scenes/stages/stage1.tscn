@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/stages/stage1.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -19,13 +19,15 @@
 [ext_resource path="res://scenes/enemy/TankEnemy.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/enemy/AviaoEnemy.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/enemy/AviaoGrandeEnemy.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/powerups/LifePowerup.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=21]
 
-[node name="Area2D" type="Node2D"]
+[node name="Area2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
-"_edit_horizontal_guides_": [  ],
+"_edit_horizontal_guides_": [ -2644.28 ],
 "_edit_vertical_guides_": [  ]
 }
 
@@ -39,6 +41,7 @@ powerup = ExtResource( 3 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2"]
 
+editor/display_folded = true
 layer = -2
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -88,7 +91,6 @@ pausado = false
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="." index="5"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -117,6 +119,15 @@ modulate = Color( 1, 1, 1, 0.237569 )
 texture = ExtResource( 8 )
 centered = false
 _sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="Tween" type="Tween" parent="ParallaxBackground2/ParallaxLayer2/Sprite" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="bgAviao" parent="." index="6" instance=ExtResource( 9 )]
 
@@ -363,6 +374,7 @@ position = Vector2( 288, -662.656 )
 
 position = Vector2( -35.5332, -1002.39 )
 rotation = 1.5708
+score = 20
 shootType = 2
 scrollDown = 20
 
@@ -370,6 +382,7 @@ scrollDown = 20
 
 position = Vector2( -43.1332, -890.294 )
 rotation = 1.5708
+score = 20
 shootType = 2
 shootInterval = 2.0
 scrollDown = 20
@@ -378,6 +391,7 @@ scrollDown = 20
 
 position = Vector2( 320.268, -951.027 )
 rotation = -1.5708
+score = 20
 shootType = 2
 scrollDown = 20
 
@@ -387,14 +401,136 @@ position = Vector2( 288, -792.355 )
 
 [node name="AviaoGrandeEnemy" parent="." index="49" instance=ExtResource( 19 )]
 
-position = Vector2( 373.772, -1143.75 )
+position = Vector2( 367.296, -1161.02 )
+score = 100
 scrollDown = 20
 
-[node name="AviaoGrandeEnemy2" parent="." index="50" instance=ExtResource( 19 )]
+[node name="Spawner14" parent="." index="50" instance=ExtResource( 10 )]
 
-position = Vector2( -82.2278, -1143.75 )
-scale = Vector2( -1, 1 )
+position = Vector2( 288, -1309.41 )
+
+[node name="Linha11" parent="." index="51" instance=ExtResource( 11 )]
+
+position = Vector2( 256.842, -1809.73 )
 scrollDown = 20
+
+[node name="Linha12" parent="." index="52" instance=ExtResource( 11 )]
+
+position = Vector2( 135.831, -1809.19 )
+scrollDown = 20
+
+[node name="Linha13" parent="." index="53" instance=ExtResource( 11 )]
+
+position = Vector2( 195.848, -1810.05 )
+scrollDown = 20
+drop = true
+powerup = ExtResource( 20 )
+
+[node name="Spawner15" parent="." index="54" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -1488.41 )
+
+[node name="AviaoGrandeEnemy2" parent="." index="55" instance=ExtResource( 19 )]
+
+position = Vector2( 365.209, -1820.56 )
+score = 100
+shootInterval = 2.0
+scrollDown = 20
+
+[node name="AviaoEnemy7" parent="." index="56" instance=ExtResource( 18 )]
+
+position = Vector2( 73.3035, -2044.28 )
+rotation = 3.14159
+score = 20
+powerup = ExtResource( 21 )
+shootType = 1
+shootInterval = 2.0
+scrollDown = 20
+
+[node name="AviaoEnemy8" parent="." index="57" instance=ExtResource( 18 )]
+
+position = Vector2( 107.599, -2094.01 )
+rotation = 3.14159
+score = 20
+powerup = ExtResource( 21 )
+shootType = 1
+shootInterval = 2.0
+scrollDown = 20
+
+[node name="AviaoEnemy9" parent="." index="58" instance=ExtResource( 18 )]
+
+position = Vector2( 41.5805, -2124.87 )
+rotation = 3.14159
+score = 20
+shootType = 1
+shootInterval = 2.0
+scrollDown = 20
+
+[node name="Spawner16" parent="." index="59" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -1752.54 )
+
+[node name="V4" parent="." index="60" instance=ExtResource( 14 )]
+
+position = Vector2( 16.8103, -2516.36 )
+scrollDown = 20
+
+[node name="V5" parent="." index="61" instance=ExtResource( 14 )]
+
+position = Vector2( 16.7391, -2586 )
+scrollDown = 20
+
+[node name="V6" parent="." index="62" instance=ExtResource( 14 )]
+
+position = Vector2( 16.5541, -2390.91 )
+scrollDown = 20
+
+[node name="V7" parent="." index="63" instance=ExtResource( 14 )]
+
+position = Vector2( 16.9314, -2452.43 )
+scrollDown = 20
+
+[node name="Spawner17" parent="." index="64" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -1965.16 )
+
+[node name="BarcoEnemy6" parent="." index="65" instance=ExtResource( 13 )]
+
+position = Vector2( 47.0997, -2535.78 )
+scrollDown = 20
+
+[node name="BarcoEnemy7" parent="." index="66" instance=ExtResource( 13 )]
+
+position = Vector2( 114.754, -2535.63 )
+scrollDown = 20
+
+[node name="BarcoEnemy8" parent="." index="67" instance=ExtResource( 13 )]
+
+position = Vector2( 178.13, -2535.46 )
+scrollDown = 20
+
+[node name="BarcoEnemy9" parent="." index="68" instance=ExtResource( 13 )]
+
+position = Vector2( 243.202, -2535.66 )
+scrollDown = 20
+
+[node name="Spawner18" parent="." index="69" instance=ExtResource( 10 )]
+
+position = Vector2( 288, -2281.06 )
+
+[node name="Linha14" parent="." index="70" instance=ExtResource( 11 )]
+
+position = Vector2( 320.066, -2658.34 )
+script = ExtResource( 15 )
+scrollDown = 20
+pausado = true
+
+[node name="Linha15" parent="." index="71" instance=ExtResource( 11 )]
+
+position = Vector2( -34.34, -2658 )
+script = ExtResource( 15 )
+scrollDown = 20
+pausado = true
 
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 
@@ -421,5 +557,15 @@ scrollDown = 20
 [connection signal="collision" from="Spawner12" to="." method="_on_Spawner12_collision"]
 
 [connection signal="collision" from="Spawner13" to="." method="_on_Spawner13_collision"]
+
+[connection signal="collision" from="Spawner14" to="." method="_on_Spawner14_collision"]
+
+[connection signal="collision" from="Spawner15" to="." method="_on_Spawner15_collision"]
+
+[connection signal="collision" from="Spawner16" to="." method="_on_Spawner16_collision"]
+
+[connection signal="collision" from="Spawner17" to="." method="_on_Spawner17_collision"]
+
+[connection signal="collision" from="Spawner18" to="." method="_on_Spawner18_collision"]
 
 
