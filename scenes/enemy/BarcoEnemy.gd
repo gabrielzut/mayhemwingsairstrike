@@ -49,6 +49,11 @@ func damage(dmg):
 	$".".get_node("AnimationPlayer").play("damage")
 	
 	if hp <= 0:
+		if drop != false:
+			var powerupDrop = powerup.instance()
+			powerupDrop.global_position = global_position
+			get_tree().get_root().get_child(1).add_child(powerupDrop)
+			
 		$Collision.disabled = true
 		
 		for child in $AnimatedSprite.get_children():

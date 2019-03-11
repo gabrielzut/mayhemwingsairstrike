@@ -32,6 +32,7 @@ func _on_Spawner7_collision(confirmation):
 
 func _on_Spawner8_collision(confirmation):
 	$Boss1.start()
+	$Boss1Clouds.start()
 	$ParallaxBackground.pausado = true
 	$ParallaxBackground2.pausado = true
 

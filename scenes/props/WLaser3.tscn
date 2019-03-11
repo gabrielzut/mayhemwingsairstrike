@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 5.85499, 16.0564 )
+extents = Vector2( 14.3322, 16.0564 )
 
-[node name="WLaser" type="KinematicBody2D" index="0"]
+[node name="WLaser3" type="KinematicBody2D" index="0"]
 
+position = Vector2( 1, 0 )
 input_pickable = false
 collision_layer = 8
 collision_mask = 4
@@ -19,27 +20,33 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 aceleracao = 50
 maxVelocidade = 600
 shootInterval = 0.13
-dmg = 1
+dmg = 4
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+position = Vector2( -9.5, 0 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="Sprite2" type="Sprite" parent="." index="1"]
 
-position = Vector2( -0.0907269, -0.0473719 )
+position = Vector2( 7.5, 0 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( -1, 0 )
 scale = Vector2( 1.02116, 1 )
 shape = SubResource( 1 )
 one_way_collision = true
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="3"]
 
 position = Vector2( -0.212971, 0.0989704 )
 scale = Vector2( 0.600032, 1.60544 )
 rect = Rect2( -10, -10, 20, 20 )
 _sections_unfolded = [ "Transform" ]
-
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 

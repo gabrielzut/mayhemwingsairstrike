@@ -60,6 +60,10 @@ func damage(dmg):
 	$Path2D/PathFollow2D/AviaoGEnemy/AnimationPlayer.play("damage")
 
 	if hp <= 0:
+		if drop != false:
+			var powerupDrop = powerup.instance()
+			powerupDrop.global_position = $Path2D/PathFollow2D/AviaoGEnemy.global_position
+			get_tree().get_root().get_child(1).add_child(powerupDrop)
 		singletons.addScore(score)
 		var explosion = singletons.explosion.instance()
 		explosion.scale = Vector2(4,4)

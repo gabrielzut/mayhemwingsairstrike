@@ -42,7 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.484375, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="AviaoGrandeEnemy" type="KinematicBody2D"]
+[node name="AviaoGrandeEnemy" type="KinematicBody2D" index="0"]
 
 position = Vector2( 0.12851, 0 )
 z_index = 1

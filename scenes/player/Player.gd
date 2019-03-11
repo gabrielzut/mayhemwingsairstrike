@@ -22,11 +22,15 @@ func _process(delta):
 	if Input.is_action_pressed("ui_up"):
 		if velocidade.y < -maxVelocidade:
 			velocidade.y = -maxVelocidade 
+		elif velocidade.y > 0:
+			velocidade.y = 0
 		else:
 			velocidade.y -= aceleracao
 	if Input.is_action_pressed("ui_down"):
 		if velocidade.y > maxVelocidade:
-			velocidade.y = maxVelocidade 
+			velocidade.y = maxVelocidade
+		elif velocidade.y < 0:
+			velocidade.y = 0
 		else:
 			velocidade.y += aceleracao
 	if Input.is_action_pressed("ui_up") == Input.is_action_pressed("ui_down"):
@@ -35,11 +39,15 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		if velocidade.x > maxVelocidade:
 			velocidade.x = maxVelocidade 
+		elif velocidade.x < 0:
+			velocidade.x = 0
 		else:
 			velocidade.x += aceleracao
 	if Input.is_action_pressed("ui_left"):
 		if velocidade.x < -maxVelocidade:
 			velocidade.x = -maxVelocidade 
+		elif velocidade.x > 0:
+			velocidade.x = 0
 		else:
 			velocidade.x -= aceleracao
 	if Input.is_action_pressed("ui_left") == Input.is_action_pressed("ui_right"):
@@ -74,7 +82,7 @@ func _process(delta):
 		$".".position.y = padding
 		
 	if Input.is_action_just_pressed("player_shoot"):
-		var shoot = singletons.playerWeapon.instance()
+		var shoot = singletons.getPlayerWeapon().instance()
 		$TimerShoot.wait_time = shoot.shootInterval
 		shoot.position = $Position2D.get_global_position()
 		get_parent().add_child(shoot)
@@ -82,7 +90,7 @@ func _process(delta):
 
 func _on_TimerShoot_timeout():
 	if Input.is_action_pressed("player_shoot"):
-		var shoot = singletons.playerWeapon.instance()
+		var shoot = singletons.getPlayerWeapon().instance()
 		$TimerShoot.wait_time = shoot.shootInterval
 		shoot.position = $Position2D.get_global_position()
 		get_parent().add_child(shoot)

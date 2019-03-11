@@ -15,8 +15,8 @@ func damage(dmg):
 		var explosion = singletons.explosion.instance()
 		if drop != false:
 			var powerupDrop = powerup.instance()
-			powerupDrop.position = position
-			get_parent().add_child(powerupDrop)
+			powerupDrop.global_position = global_position
+			get_tree().get_root().get_child(1).add_child(powerupDrop)
 		explosion.position = position
 		get_parent().add_child(explosion)
 		explosion.explode()
