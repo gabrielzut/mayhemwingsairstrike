@@ -11,7 +11,7 @@ var velocidade = Vector2()
 func _ready():
 	add_collision_exception_with(get_tree().get_root().get_child(1).get_node("Player"))
 
-func _process(delta):
+func _physics_process(delta):
 	if velocidade.y > -maxVelocidade:
 		velocidade.y -= aceleracao
 	else:

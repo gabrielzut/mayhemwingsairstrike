@@ -87,6 +87,13 @@ func _process(delta):
 		shoot.position = $Position2D.get_global_position()
 		get_parent().add_child(shoot)
 		$TimerShoot.start()
+		
+	if Input.is_action_just_pressed("player_special"):
+		if singletons.playerBomb >= 1:
+			singletons.playerBomb -= 1
+			var bomb = singletons.playerSpecial.instance()
+			bomb.position = $Position2D.get_global_position()
+			get_parent().add_child(bomb)
 
 func _on_TimerShoot_timeout():
 	if Input.is_action_pressed("player_shoot"):

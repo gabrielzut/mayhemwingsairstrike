@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/props/bombs/Bomb1.gd" type="Script" id=1]
+[ext_resource path="res://graphics/weapon/bomb1w.png" type="Texture" id=2]
+
+[node name="Bomb1" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 0
+collision_mask = 4
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Material", "Visibility", "collision" ]
+aceleracao = 50
+maxVelocidade = 200
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( 3.83137, 8.91864, -4.92081, 8.91864, -4.92081, 7.07294, -4.02773, 7.13248, -3.9682, 6.00125, -3.01558, 6.06079, -2.95604, 5.04863, -2.06296, 5.04863, -2.00342, 2.0717, -2.95604, 2.0717, -2.95604, 1, -3.9682, 1, -4.02773, -0.0716963, -4.92081, -0.131234, -4.92081, -5.96602, -4.02773, -5.96602, -3.9682, -6.97818, -3.07512, -6.97818, -2.8965, -7.99034, -2.06296, -7.9308, -1.94388, -8.88342, 0.913975, -8.82388, 0.854435, -7.99034, 1.92613, -7.99034, 1.92613, -6.91864, 2.99783, -6.79957, 2.99783, -5.96602, 4.00999, -5.90649, 3.95045, -0.0121574, 2.99783, -0.0121574, 2.99783, 1.05954, 1.92613, 1.11908, 1.92613, 2.0717, 0.973515, 2.13124, 0.973515, 5.10817, 1.92613, 5.04863, 1.92613, 6.06079, 2.99783, 6.12033, 3.05737, 7.13248, 4.00999, 7.07294 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+
+position = Vector2( -0.447142, -0.0141852 )
+scale = Vector2( 0.4519, 0.890606 )
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+

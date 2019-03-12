@@ -2,6 +2,7 @@ extends "res://classes/destructable.gd"
 
 export var weapon = preload("res://scenes/props/EnemyShot4.tscn")
 export var shootInterval = 1.0
+export var shootSpeed = 0
 export var pausado = true
 export var scrollDown = 0
 
@@ -39,6 +40,12 @@ func _on_Timer_timeout():
 		var shoot1 = weapon.instance()
 		var shoot2 = weapon.instance()
 		var shoot3 = weapon.instance()
+		
+		if shootSpeed > 0:
+			shoot1.maxVelocidade = shootSpeed
+			shoot2.maxVelocidade = shootSpeed
+			shoot3.maxVelocidade = shootSpeed
+		
 		shoot1.position = $Path2D/PathFollow2D/AviaoGEnemy/Position2D.get_global_position()
 		shoot2.position = $Path2D/PathFollow2D/AviaoGEnemy/Position2D.get_global_position()
 		shoot3.position = $Path2D/PathFollow2D/AviaoGEnemy/Position2D.get_global_position()

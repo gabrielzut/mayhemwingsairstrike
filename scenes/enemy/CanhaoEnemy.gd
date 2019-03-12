@@ -6,6 +6,7 @@ export var scrollDown = 20
 export var pausado = true
 export var tipo = 0
 export var shootInterval = 2.0
+export var shootSpeed = 0
 
 func _ready():
 	if tipo == 0:
@@ -37,6 +38,10 @@ func _physics_process(delta):
 func _on_Timer_timeout():
 	if $VisibilityNotifier2D.is_on_screen() and destroyed == false and pausado == false:
 		var shoot = weapon.instance()
+		
+		if shootSpeed > 0:
+			shoot.maxVelocidade = shootSpeed
+		
 		shoot.position = $Position2D.get_global_position()
 		shoot.rotation_degrees = global_rotation_degrees + 90
 		get_tree().get_root().get_child(1).add_child(shoot)
