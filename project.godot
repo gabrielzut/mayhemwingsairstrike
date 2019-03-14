@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Metal Wings Airstrike"
+config/name="Mayhem Wings Airstrike"
 run/main_scene="res://scenes/stages/stage1.tscn"
 config/icon="res://icon.png"
 
