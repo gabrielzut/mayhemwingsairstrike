@@ -64,6 +64,7 @@ func _on_Timer_timeout():
 
 func damage(dmg):
 	hp -= dmg
+	$Path2D/PathFollow2D/AviaoGEnemy/AnimationPlayer.stop()
 	$Path2D/PathFollow2D/AviaoGEnemy/AnimationPlayer.play("damage")
 
 	if hp <= 0:

@@ -32,7 +32,8 @@ func _on_Timer2_timeout():
 
 func damage(dmg):
 	hp -= dmg
-	$".".get_node("AnimationPlayer").play("damage")
+	get_node("AnimationPlayer").stop()
+	get_node("AnimationPlayer").play("damage")
 
 	if hp <= 0:
 		singletons.addScore(score)

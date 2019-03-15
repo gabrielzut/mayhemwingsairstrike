@@ -33,12 +33,13 @@ func _physics_process(delta):
 	
 	var colisao = move_and_collide(velocidade * delta)
 	
-	if $CanhaoEnemy1.destroyed == true:
-		if has_node("CanhaoEnemy2"):
-			if $CanhaoEnemy2.destroyed == true:
+	if has_node("CanhaoEnemy1"):
+		if $CanhaoEnemy1.destroyed == true:
+			if has_node("CanhaoEnemy2"):
+				if $CanhaoEnemy2.destroyed == true:
+					collision_mask = 8
+			else:
 				collision_mask = 8
-		else:
-			collision_mask = 8
 	
 func _on_VisibilityNotifier2D_screen_exited():
 	if !pausado:
@@ -46,7 +47,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func damage(dmg):
 	hp -= dmg
-	$".".get_node("AnimationPlayer").play("damage")
+	get_node("AnimationPlayer").stop()
+	get_node("AnimationPlayer").play("damage")
 	
 	if hp <= 0:
 		if drop != false:
@@ -74,6 +76,7 @@ func _explosion_exploded(confirmation):
 			$Collision.disabled = true
 			modulate = "ffffff"
 			$CanhaoEnemy1.visible = false
+			velocidade = Vector2(0,0)
 			
 			var destroyedFloor = preload("res://scenes/particles/DestroyedFloor.tscn").instance()
 			destroyedFloor.position = $AnimatedSprite.position

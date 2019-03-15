@@ -3,6 +3,8 @@
 [ext_resource path="res://scenes/stages/bgAviao.gd" type="Script" id=1]
 [ext_resource path="res://graphics/environment/aviaopequeno.png" type="Texture" id=2]
 
+
+
 [node name="bgAviao" type="KinematicBody2D"]
 
 input_pickable = false

@@ -8,6 +8,8 @@
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds5.png" type="Texture" id=6]
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds6.png" type="Texture" id=7]
 
+
+
 [node name="Boss1Clouds" type="KinematicBody2D" index="0"]
 
 input_pickable = false

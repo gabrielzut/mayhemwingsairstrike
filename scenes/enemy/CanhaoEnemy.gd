@@ -48,13 +48,13 @@ func _on_Timer_timeout():
 		
 func damage(dmg):
 	hp -= dmg
-	$".".get_node("AnimationPlayer").play("damage")
+	
+	get_node("AnimationPlayer").stop()
+	get_node("AnimationPlayer").play("damage")
 
 	if hp <= 0 and destroyed == false:
 		singletons.addScore(score)
 		var explosion = singletons.explosion.instance()
-		if tipo == 1:
-			explosion.scale = Vector2(0.5,0.5)
 		explosion.position = position
 		get_parent().add_child(explosion)
 		explosion.explode()
