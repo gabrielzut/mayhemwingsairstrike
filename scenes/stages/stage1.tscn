@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/stages/stage1.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scenes/powerups/LifePowerup.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/stages/Boss1Clouds.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/stages/Boundary.tscn" type="PackedScene" id=22]
 
 [node name="Stage1" type="Node2D"]
 
@@ -648,6 +649,11 @@ position = Vector2( 356.873, -2201.57 )
 rotation = 1.5708
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 scrollDown = 20
+
+[node name="Boundary" parent="." index="91" instance=ExtResource( 22 )]
+
+mode = 1
+_sections_unfolded = [ "Angular", "Collision", "Linear", "Transform" ]
 
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 

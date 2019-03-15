@@ -23,7 +23,7 @@ extents = Vector2( 4.93139, 12.6288 )
 z_index = 1
 input_pickable = false
 collision_layer = 2
-collision_mask = 12
+collision_mask = 28
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
@@ -33,7 +33,6 @@ drop = false
 powerup = ExtResource( 2 )
 aceleracao = 10
 maxVelocidade = 100
-padding = 15
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 

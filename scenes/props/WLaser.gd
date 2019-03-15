@@ -4,7 +4,6 @@ export var aceleracao = 50
 export var maxVelocidade = 600
 export var shootInterval = 0.13
 export var dmg = 1
-var nextLevel = preload("res://scenes/props/WLaser2.tscn")
 
 var velocidade = Vector2()
 

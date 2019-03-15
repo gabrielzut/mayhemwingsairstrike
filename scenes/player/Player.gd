@@ -2,8 +2,6 @@ extends "res://classes/destructable.gd"
 
 export var aceleracao = 10
 export var maxVelocidade = 100
-export var padding = 15
-onready var singletons = get_node("/root/Singletons")
 
 var velocidade = Vector2()
 
@@ -73,15 +71,6 @@ func _physics_process(delta):
 			if "ENM" in colisao.collider.name and singletons.gameStatus == 2:
 				colisao.collider.queue_free()
 				damage(1)
-		
-		if $".".position.x > get_viewport().size.x - padding:
-			$".".position.x = get_viewport().size.x - padding
-		if $".".position.x < padding:
-			$".".position.x = padding
-		if $".".position.y > get_viewport().size.y - padding:
-			$".".position.y = get_viewport().size.y - padding
-		if $".".position.y < padding:
-			$".".position.y = padding
 			
 		if Input.is_action_just_pressed("player_shoot"):
 			var shoot = singletons.getPlayerWeapon().instance()
