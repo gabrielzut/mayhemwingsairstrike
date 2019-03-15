@@ -66,7 +66,19 @@ func damage(dmg):
 
 func _explosion_exploded(confirmation):
 	if(confirmation):
-		queue_free()
+		if has_node("CanhaoEnemy2"):
+			queue_free()
+		else:
+			$Timer.stop()
+			$AnimationPlayer.stop()
+			$Collision.disabled = true
+			modulate = "ffffff"
+			$CanhaoEnemy1.visible = false
+			
+			var destroyedFloor = preload("res://scenes/particles/DestroyedFloor.tscn").instance()
+			destroyedFloor.position = $AnimatedSprite.position
+			add_child(destroyedFloor)
+			$AnimatedSprite.hide()
 
 func _on_Timer_timeout():
 	velocidade = Vector2(0,0)

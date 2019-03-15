@@ -77,10 +77,11 @@ drop = false
 powerup = ExtResource( 2 )
 weapon = ExtResource( 3 )
 destroyed = false
-scrollDown = 20.2
+scrollDown = 20
 pausado = true
 tipo = 0
 shootInterval = 2.0
+shootSpeed = 0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -121,6 +122,8 @@ anims/damage = SubResource( 3 )
 anims/normal = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

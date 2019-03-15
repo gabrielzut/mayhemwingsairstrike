@@ -68,3 +68,7 @@ func damage(dmg):
 		firedestroyed.position = $AnimatedSprite.position
 		add_child(firedestroyed)
 		$AnimatedSprite.hide()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	if pausado == false:
+		queue_free()

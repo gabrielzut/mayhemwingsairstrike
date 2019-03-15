@@ -66,8 +66,6 @@ func _physics_process(delta):
 						parent = parent.get_parent()
 					if parent.has_method("damage"):
 						parent.damage(1)
-			if "Powerup" in colisao.collider.name and singletons.gameStatus == 2:
-				colisao.collider.pick()
 			if "ENM" in colisao.collider.name and singletons.gameStatus == 2:
 				colisao.collider.queue_free()
 				damage(1)

@@ -71,7 +71,7 @@ tracks/1/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 8.69703, 11.2566 )
 
-[node name="TankEnemy" type="KinematicBody2D"]
+[node name="TankEnemy" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 0
@@ -84,7 +84,7 @@ score = 50
 drop = false
 powerup = ExtResource( 2 )
 maxVelocidade = 30
-scrollDown = 20.2
+scrollDown = 20
 tempoMov = 30
 pausado = true
 
@@ -104,17 +104,7 @@ position = Vector2( 0.0800549, -0.363984 )
 scale = Vector2( 1.10734, 1.22855 )
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="CanhaoEnemy1" parent="." index="2" instance=ExtResource( 5 )]
-
-position = Vector2( -0.1313, -0.461798 )
-hp = 21
-score = 30
-weapon = ExtResource( 6 )
-scrollDown = 0.0
-tipo = 1
-shootInterval = 0.8
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
 root_node = NodePath("../AnimatedSprite")
 autoplay = ""
@@ -126,19 +116,28 @@ anims/explode = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="Collision" type="CollisionShape2D" parent="." index="4"]
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( 0, -0.550919 )
 scale = Vector2( 1.26978, 1.10416 )
 shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Timer" type="Timer" parent="." index="5"]
+[node name="Timer" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="CanhaoEnemy1" parent="." index="5" instance=ExtResource( 5 )]
+
+position = Vector2( -0.210426, -0.980812 )
+hp = 21
+score = 20
+weapon = ExtResource( 6 )
+scrollDown = 0
+tipo = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/enemy/AviaoGrandeEnemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=3]
-[ext_resource path="res://graphics/enemy/aviaogrande1.png" type="Texture" id=4]
-[ext_resource path="res://graphics/enemy/aviaogrande2.png" type="Texture" id=5]
+[ext_resource path="res://scenes/enemy/AviaoGEnemy.gd" type="Script" id=4]
+[ext_resource path="res://graphics/enemy/aviaogrande1.png" type="Texture" id=5]
+[ext_resource path="res://graphics/enemy/aviaogrande2.png" type="Texture" id=6]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -17,7 +18,7 @@ _sections_unfolded = [ "Resource" ]
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "normal",
 "speed": 10.0
@@ -58,6 +59,7 @@ drop = false
 powerup = ExtResource( 2 )
 weapon = ExtResource( 3 )
 shootInterval = 1.0
+shootSpeed = 0
 pausado = true
 scrollDown = 0
 
@@ -87,6 +89,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/AviaoGEnemy" index="0"]

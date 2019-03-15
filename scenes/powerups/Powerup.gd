@@ -17,11 +17,14 @@ func _ready():
 	global_rotation = 0
 
 func _physics_process(delta):
-	var colisao = move_and_collide(velocidade * delta)
+	var colisao = move_and_slide(velocidade)
 	
-	if colisao != null:
-		if "Player" in colisao.collider.name:
-			pick()
+	var player = null
+	
+	if get_tree().get_root().get_child(1).has_node("Player"):
+		player = get_tree().get_root().get_child(1).get_node("Player")
+	if $Area2D.get_overlapping_bodies().has(player):
+		pick()
 
 func pick():
 	if type == Type.SCORE:
