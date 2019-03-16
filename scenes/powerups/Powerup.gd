@@ -17,7 +17,7 @@ func _ready():
 	global_rotation = 0
 
 func _physics_process(delta):
-	var colisao = move_and_slide(velocidade)
+	move_and_slide(velocidade)
 	
 	var player = null
 	

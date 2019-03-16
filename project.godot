@@ -69,6 +69,10 @@ player_special={
 2d_physics/layer_4="props"
 2d_render/layer_5="boundary"
 2d_physics/layer_5="boundary"
+2d_render/layer_6="player_powerup"
+2d_physics/layer_6="player_powerup"
+2d_render/layer_7="powerup"
+2d_physics/layer_7="powerup"
 
 [rendering]
 

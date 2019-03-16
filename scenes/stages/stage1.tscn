@@ -1,54 +1,60 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/stages/stage1.gd" type="Script" id=1]
-[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/stages/ParallaxBackground.gd" type="Script" id=4]
-[ext_resource path="res://graphics/environment/stage1.png" type="Texture" id=5]
-[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://graphics/environment/clouds.png" type="Texture" id=7]
-[ext_resource path="res://scenes/stages/bgAviao.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/props/Spawner.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/enemy/groups/Linha.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/powerups/PowerPowerup.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/enemy/BarcoEnemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/enemy/groups/SeguirPlayer.gd" type="Script" id=14]
-[ext_resource path="res://scenes/enemy/boss/Boss1.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/enemy/TankEnemy.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/enemy/AviaoEnemy.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/enemy/AviaoGrandeEnemy.tscn" type="PackedScene" id=18]
-[ext_resource path="res://scenes/powerups/LifePowerup.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=20]
-[ext_resource path="res://scenes/stages/Boss1Clouds.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/stages/Boundary.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/stages/ParallaxBackground.gd" type="Script" id=5]
+[ext_resource path="res://graphics/environment/stage1.png" type="Texture" id=6]
+[ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://graphics/environment/clouds.png" type="Texture" id=8]
+[ext_resource path="res://scenes/stages/bgAviao.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/props/Spawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/enemy/groups/Linha.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/powerups/PowerPowerup.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/enemy/BarcoEnemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/enemy/groups/SeguirPlayer.gd" type="Script" id=15]
+[ext_resource path="res://scenes/enemy/boss/Boss1.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/enemy/TankEnemy.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/enemy/AviaoEnemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/enemy/AviaoGrandeEnemy.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/powerups/LifePowerup.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/stages/Boss1Clouds.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/stages/Boundary.tscn" type="PackedScene" id=23]
 
 [node name="Stage1" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="Fade" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 157.525, 477.987 )
 
-[node name="hud" parent="." instance=ExtResource( 3 )]
+[node name="hud" parent="." instance=ExtResource( 4 )]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -2
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 0, -3016 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 
-[node name="CanhaoEnemy" parent="." instance=ExtResource( 6 )]
+[node name="CanhaoEnemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 196.518, -110.581 )
 hp = 21
 score = 30
 pausado = false
 
-[node name="CanhaoEnemy2" parent="." instance=ExtResource( 6 )]
+[node name="CanhaoEnemy2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 229.273, -117.055 )
 hp = 21
 score = 30
@@ -56,7 +62,7 @@ pausado = false
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 1
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
 motion_scale = Vector2( 1, 1.5 )
@@ -64,290 +70,290 @@ motion_mirroring = Vector2( 0, 512 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground2/ParallaxLayer2"]
 modulate = Color( 1, 1, 1, 0.237569 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 centered = false
 
 [node name="Tween" type="Tween" parent="ParallaxBackground2/ParallaxLayer2/Sprite"]
 
-[node name="bgAviao" parent="." instance=ExtResource( 8 )]
+[node name="bgAviao" parent="." instance=ExtResource( 9 )]
 position = Vector2( 180.653, -138.472 )
 rotation = 1.32645
 z_index = -3
 scrollDown = 20
 
-[node name="Spawner" parent="." instance=ExtResource( 9 )]
+[node name="Spawner" parent="." instance=ExtResource( 10 )]
 position = Vector2( 287.05, 443.929 )
 
-[node name="Linha" parent="." instance=ExtResource( 10 )]
+[node name="Linha" parent="." instance=ExtResource( 11 )]
 position = Vector2( 69.5264, -86.6529 )
 scrollDown = 20
 drop = true
 
-[node name="Linha2" parent="." instance=ExtResource( 10 )]
+[node name="Linha2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 117.526, -86.6529 )
 scrollDown = 20
 drop = true
-powerup = ExtResource( 11 )
+powerup = ExtResource( 12 )
 
-[node name="Spawner2" parent="." instance=ExtResource( 9 )]
+[node name="Spawner2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -144.273 )
 
-[node name="BarcoEnemy" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy" parent="." instance=ExtResource( 13 )]
 position = Vector2( 75.9952, -728.837 )
 
-[node name="BarcoEnemy5" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy5" parent="." instance=ExtResource( 13 )]
 position = Vector2( 146.136, -964.3 )
 
-[node name="BarcoEnemy2" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 219.392, -727.441 )
 
-[node name="Spawner3" parent="." instance=ExtResource( 9 )]
+[node name="Spawner3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, 288.936 )
 
-[node name="V" parent="." instance=ExtResource( 13 )]
+[node name="V" parent="." instance=ExtResource( 14 )]
 position = Vector2( 15.1246, -308.984 )
 scrollDown = 20
 
-[node name="V8" parent="." instance=ExtResource( 13 )]
+[node name="V8" parent="." instance=ExtResource( 14 )]
 position = Vector2( 15.1246, -402.984 )
 scrollDown = 20
 
-[node name="Spawner4" parent="." instance=ExtResource( 9 )]
+[node name="Spawner4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, 154.577 )
 
-[node name="Linha3" parent="." instance=ExtResource( 10 )]
+[node name="Linha3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 333.022, -235.745 )
 rotation = 0.785398
 scrollDown = 20
 
-[node name="Linha4" parent="." instance=ExtResource( 10 )]
+[node name="Linha4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 374.378, -350.765 )
 rotation = 0.785398
 scrollDown = 20
 
-[node name="Linha6" parent="." instance=ExtResource( 10 )]
+[node name="Linha6" parent="." instance=ExtResource( 11 )]
 position = Vector2( -82.6223, -350.765 )
 rotation = -0.785398
 scrollDown = 20
 
-[node name="Linha5" parent="." instance=ExtResource( 10 )]
+[node name="Linha5" parent="." instance=ExtResource( 11 )]
 position = Vector2( -41.714, -234.886 )
 rotation = -0.785398
 scrollDown = 20
 
-[node name="Spawner5" parent="." instance=ExtResource( 9 )]
+[node name="Spawner5" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, 9.5056 )
 
-[node name="BarcoEnemy3" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy3" parent="." instance=ExtResource( 13 )]
 position = Vector2( 381.059, -534.8 )
 rotation = 1.5708
 maxVelocidade = 50
 
-[node name="BarcoEnemy4" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy4" parent="." instance=ExtResource( 13 )]
 position = Vector2( 381.461, -470.726 )
 rotation = 1.5708
 maxVelocidade = 50
 
-[node name="Spawner6" parent="." instance=ExtResource( 9 )]
+[node name="Spawner6" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -253.356 )
 
-[node name="Linha7" parent="." instance=ExtResource( 10 )]
+[node name="Linha7" parent="." instance=ExtResource( 11 )]
 position = Vector2( 311.944, -749.801 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha16" parent="." instance=ExtResource( 10 )]
+[node name="Linha16" parent="." instance=ExtResource( 11 )]
 position = Vector2( 311.944, -998.801 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha9" parent="." instance=ExtResource( 10 )]
+[node name="Linha9" parent="." instance=ExtResource( 11 )]
 position = Vector2( 311.944, -885.801 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha8" parent="." instance=ExtResource( 10 )]
+[node name="Linha8" parent="." instance=ExtResource( 11 )]
 position = Vector2( -27.2351, -749.713 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha17" parent="." instance=ExtResource( 10 )]
+[node name="Linha17" parent="." instance=ExtResource( 11 )]
 position = Vector2( -27.2351, -998.713 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha10" parent="." instance=ExtResource( 10 )]
+[node name="Linha10" parent="." instance=ExtResource( 11 )]
 position = Vector2( -27.2351, -885.713 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Spawner7" parent="." instance=ExtResource( 9 )]
+[node name="Spawner7" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -366.092 )
 
-[node name="Boss1" parent="." instance=ExtResource( 15 )]
+[node name="Boss1" parent="." instance=ExtResource( 16 )]
 position = Vector2( 144, -2888 )
 
-[node name="Spawner8" parent="." instance=ExtResource( 9 )]
+[node name="Spawner8" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -2504 )
 
-[node name="TankEnemy" parent="." instance=ExtResource( 16 )]
+[node name="TankEnemy" parent="." instance=ExtResource( 17 )]
 position = Vector2( -35.0762, -1496.72 )
 rotation = -1.5708
 score = 40
 maxVelocidade = 15
 tempoMov = 9
 
-[node name="TankEnemy2" parent="." instance=ExtResource( 16 )]
+[node name="TankEnemy2" parent="." instance=ExtResource( 17 )]
 position = Vector2( -70.2332, -1550.38 )
 rotation = -1.5708
 score = 40
 maxVelocidade = 15
 tempoMov = 10
 
-[node name="TankEnemy4" parent="." instance=ExtResource( 16 )]
+[node name="TankEnemy4" parent="." instance=ExtResource( 17 )]
 position = Vector2( -13.391, -1585.12 )
 rotation = -1.5708
 score = 40
 maxVelocidade = 15
 tempoMov = 2
 
-[node name="Spawner9" parent="." instance=ExtResource( 9 )]
+[node name="Spawner9" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -938.216 )
 
-[node name="AviaoEnemy" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy" parent="." instance=ExtResource( 18 )]
 position = Vector2( 146.653, -1036.38 )
 rotation = 3.14159
 score = 20
 shootType = 2
 scrollDown = 20
 
-[node name="AviaoEnemy2" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy2" parent="." instance=ExtResource( 18 )]
 position = Vector2( 227.413, -1093.4 )
 rotation = 3.14159
 score = 20
 shootType = 2
 scrollDown = 20
 
-[node name="AviaoEnemy3" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy3" parent="." instance=ExtResource( 18 )]
 position = Vector2( 77.9579, -1139.48 )
 rotation = 3.14159
 score = 20
 shootType = 2
 scrollDown = 20
 
-[node name="Spawner10" parent="." instance=ExtResource( 9 )]
+[node name="Spawner10" parent="." instance=ExtResource( 10 )]
 position = Vector2( 287.393, -468.922 )
 rotation = -3.14159
 
-[node name="Spawner11" parent="." instance=ExtResource( 9 )]
+[node name="Spawner11" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -576.133 )
 
-[node name="V2" parent="." instance=ExtResource( 13 )]
+[node name="V2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 19.3639, -1281.29 )
 scrollDown = 20
 
-[node name="V3" parent="." instance=ExtResource( 13 )]
+[node name="V3" parent="." instance=ExtResource( 14 )]
 position = Vector2( 19.7819, -1210.3 )
 scrollDown = 20
 
-[node name="CanhaoEnemy3" parent="." instance=ExtResource( 6 )]
+[node name="CanhaoEnemy3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 59.1193, -1471.42 )
 hp = 21
 score = 30
 
-[node name="CanhaoEnemy4" parent="." instance=ExtResource( 6 )]
+[node name="CanhaoEnemy4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 85.7006, -1466.53 )
 hp = 21
 score = 30
 
-[node name="Spawner12" parent="." instance=ExtResource( 9 )]
+[node name="Spawner12" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -662.656 )
 
-[node name="AviaoEnemy4" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy4" parent="." instance=ExtResource( 18 )]
 position = Vector2( -35.5332, -1002.39 )
 rotation = 1.5708
 score = 20
 shootType = 2
 scrollDown = 20
 
-[node name="AviaoEnemy6" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy6" parent="." instance=ExtResource( 18 )]
 position = Vector2( -43.1332, -890.294 )
 rotation = 1.5708
 score = 20
 shootType = 2
 scrollDown = 20
 
-[node name="AviaoEnemy5" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy5" parent="." instance=ExtResource( 18 )]
 position = Vector2( 320.268, -951.027 )
 rotation = -1.5708
 score = 20
 shootType = 2
 scrollDown = 20
 
-[node name="Spawner13" parent="." instance=ExtResource( 9 )]
+[node name="Spawner13" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -792.355 )
 
-[node name="AviaoGrandeEnemy" parent="." instance=ExtResource( 18 )]
+[node name="AviaoGrandeEnemy" parent="." instance=ExtResource( 19 )]
 position = Vector2( 367.296, -1161.02 )
 score = 100
 drop = true
-powerup = ExtResource( 11 )
+powerup = ExtResource( 12 )
 scrollDown = 20
 
-[node name="Spawner14" parent="." instance=ExtResource( 9 )]
+[node name="Spawner14" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -1309.41 )
 
-[node name="Linha11" parent="." instance=ExtResource( 10 )]
+[node name="Linha11" parent="." instance=ExtResource( 11 )]
 position = Vector2( 256.842, -1809.73 )
 scrollDown = 20
 
-[node name="Linha12" parent="." instance=ExtResource( 10 )]
+[node name="Linha12" parent="." instance=ExtResource( 11 )]
 position = Vector2( 139.831, -1809.19 )
 scrollDown = 20
 
-[node name="Linha18" parent="." instance=ExtResource( 10 )]
+[node name="Linha18" parent="." instance=ExtResource( 11 )]
 position = Vector2( 26.831, -1809.19 )
 scrollDown = 20
 
-[node name="Linha13" parent="." instance=ExtResource( 10 )]
+[node name="Linha13" parent="." instance=ExtResource( 11 )]
 position = Vector2( 195.848, -1810.05 )
 scrollDown = 20
 drop = true
-powerup = ExtResource( 19 )
+powerup = ExtResource( 20 )
 
-[node name="Linha19" parent="." instance=ExtResource( 10 )]
+[node name="Linha19" parent="." instance=ExtResource( 11 )]
 position = Vector2( 86.848, -1810.05 )
 scrollDown = 20
-powerup = ExtResource( 19 )
+powerup = ExtResource( 20 )
 
-[node name="Spawner15" parent="." instance=ExtResource( 9 )]
+[node name="Spawner15" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -1488.41 )
 
-[node name="AviaoGrandeEnemy2" parent="." instance=ExtResource( 18 )]
+[node name="AviaoGrandeEnemy2" parent="." instance=ExtResource( 19 )]
 position = Vector2( 365.209, -1820.56 )
 score = 100
 shootInterval = 2.0
 scrollDown = 20
 
-[node name="AviaoEnemy7" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy7" parent="." instance=ExtResource( 18 )]
 position = Vector2( 73.3035, -2044.28 )
 rotation = 3.14159
 score = 20
-powerup = ExtResource( 20 )
+powerup = ExtResource( 21 )
 shootType = 1
 shootSpeed = 300
 scrollDown = 20
 
-[node name="AviaoEnemy8" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy8" parent="." instance=ExtResource( 18 )]
 position = Vector2( 107.599, -2094.01 )
 rotation = 3.14159
 score = 20
-powerup = ExtResource( 20 )
+powerup = ExtResource( 21 )
 shootType = 1
 shootSpeed = 300
 scrollDown = 20
 
-[node name="AviaoEnemy9" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy9" parent="." instance=ExtResource( 18 )]
 position = Vector2( 41.5805, -2124.87 )
 rotation = 3.14159
 score = 20
@@ -355,106 +361,107 @@ shootType = 1
 shootSpeed = 300
 scrollDown = 20
 
-[node name="Spawner16" parent="." instance=ExtResource( 9 )]
+[node name="Spawner16" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -1752.54 )
 
-[node name="V4" parent="." instance=ExtResource( 13 )]
+[node name="V4" parent="." instance=ExtResource( 14 )]
 position = Vector2( 16.8103, -2516.36 )
 scrollDown = 20
 
-[node name="V5" parent="." instance=ExtResource( 13 )]
+[node name="V5" parent="." instance=ExtResource( 14 )]
 position = Vector2( 16.7391, -2586 )
 scrollDown = 20
 
-[node name="V6" parent="." instance=ExtResource( 13 )]
+[node name="V6" parent="." instance=ExtResource( 14 )]
 position = Vector2( 16.5541, -2390.91 )
 scrollDown = 20
 
-[node name="V7" parent="." instance=ExtResource( 13 )]
+[node name="V7" parent="." instance=ExtResource( 14 )]
 position = Vector2( 16.9314, -2452.43 )
 scrollDown = 20
 
-[node name="Spawner17" parent="." instance=ExtResource( 9 )]
+[node name="Spawner17" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -1965.16 )
 
-[node name="BarcoEnemy6" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy6" parent="." instance=ExtResource( 13 )]
 position = Vector2( 47.0997, -2535.78 )
 
-[node name="BarcoEnemy7" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy7" parent="." instance=ExtResource( 13 )]
 position = Vector2( 114.754, -2535.63 )
 
-[node name="BarcoEnemy8" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy8" parent="." instance=ExtResource( 13 )]
 position = Vector2( 178.13, -2535.46 )
 
-[node name="BarcoEnemy9" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy9" parent="." instance=ExtResource( 13 )]
 position = Vector2( 243.202, -2535.66 )
 
-[node name="Spawner18" parent="." instance=ExtResource( 9 )]
+[node name="Spawner18" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -2281.06 )
 
-[node name="Linha14" parent="." instance=ExtResource( 10 )]
+[node name="Linha14" parent="." instance=ExtResource( 11 )]
 position = Vector2( 320.066, -2658.34 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha21" parent="." instance=ExtResource( 10 )]
+[node name="Linha21" parent="." instance=ExtResource( 11 )]
 position = Vector2( 239.875, -2818.42 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha15" parent="." instance=ExtResource( 10 )]
+[node name="Linha15" parent="." instance=ExtResource( 11 )]
 position = Vector2( -34.34, -2658 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Linha20" parent="." instance=ExtResource( 10 )]
+[node name="Linha20" parent="." instance=ExtResource( 11 )]
 position = Vector2( 44.4186, -2819.51 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 scrollDown = 20
 
-[node name="Boss1Clouds" parent="." instance=ExtResource( 21 )]
+[node name="Boss1Clouds" parent="." instance=ExtResource( 22 )]
 position = Vector2( 144, -2888 )
 
-[node name="Spawner19" parent="." instance=ExtResource( 9 )]
+[node name="Spawner19" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, 81.2122 )
 
-[node name="TankEnemy3" parent="." instance=ExtResource( 16 )]
+[node name="TankEnemy3" parent="." instance=ExtResource( 17 )]
 position = Vector2( 305.274, -223.288 )
 rotation = 1.5708
 tempoMov = 3
 
-[node name="Spawner20" parent="." instance=ExtResource( 9 )]
+[node name="Spawner20" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, 220.651 )
 
-[node name="Spawner21" parent="." instance=ExtResource( 9 )]
+[node name="Spawner21" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -730.077 )
 
-[node name="Spawner22" parent="." instance=ExtResource( 9 )]
+[node name="Spawner22" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -865.549 )
 
-[node name="AviaoEnemy10" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy10" parent="." instance=ExtResource( 18 )]
 position = Vector2( 70.0417, -1390.45 )
 rotation = -3.14159
 shootType = 2
 scrollDown = 20
 
-[node name="AviaoEnemy11" parent="." instance=ExtResource( 17 )]
+[node name="AviaoEnemy11" parent="." instance=ExtResource( 18 )]
 position = Vector2( 29.1916, -1390.45 )
 rotation = -3.14159
 scrollDown = 20
 
-[node name="Spawner23" parent="." instance=ExtResource( 9 )]
+[node name="Spawner23" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -1217.42 )
 
-[node name="Spawner24" parent="." instance=ExtResource( 9 )]
+[node name="Spawner24" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -1869.35 )
 
-[node name="BarcoEnemy10" parent="." instance=ExtResource( 12 )]
+[node name="BarcoEnemy10" parent="." instance=ExtResource( 13 )]
 position = Vector2( 356.873, -2201.57 )
 rotation = 1.5708
 
-[node name="Boundary" parent="." instance=ExtResource( 22 )]
+[node name="Boundary" parent="." instance=ExtResource( 23 )]
 
+[connection signal="animation" from="CanvasLayer/Fade" to="." method="_on_Fade_animation"]
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 [connection signal="collision" from="Spawner2" to="." method="_on_Spawner2_collision"]
 [connection signal="collision" from="Spawner3" to="." method="_on_Spawner3_collision"]

@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready():
+	$CanvasLayer/Fade.fadein("self")
+
 func _on_Spawner_collision(confirmation):
 	$Linha.start()
 	$Linha2.start()
@@ -114,3 +117,9 @@ func _on_Spawner24_collision(confirmation):
 
 func _on_Boss1_destroyed():
 	$Player.finish()
+	$CanvasLayer/Fade.fadeout("stage2")
+
+func _on_Fade_animation(source):
+	#if source == "stage2":
+		#get_tree().change_scene(stage2.tscn)
+	pass
