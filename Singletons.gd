@@ -44,7 +44,5 @@ func getPlayerWeapon():
 	elif playerPowerup == 3:
 		return playerWeapon3
 
-var gameStatus = 2 #0 - fora do jogo/1 - pausado/2 - em jogo
-
 # Para adicionar o singleton nos códigos usar
 # onready var singletons = get_node("/root/Singletons")

@@ -3,22 +3,32 @@ extends "res://classes/destructable.gd"
 export var aceleracao = 10
 export var maxVelocidade = 100
 
+signal finished()
+var finished = false
 var velocidade = Vector2()
 
 func _ready():
 	resetPos()
 	start()
+	$AnimationPlayer.play("Start")
 
 func resetPos():
-	$".".position.x = 144
-	$".".position.y = 450
+	position.x = 144
+	position.y = 530
 
 func start():
 	$TimerShoot.start()
 	$TimerScore.start()
+	
+func finish():
+	finished = true
+	$TimerScore.stop()
+	$TimerShoot.stop()
+	collision_layer = 0
+	collision_mask = 0
 
 func _physics_process(delta):
-	if singletons.gameStatus == 2:
+	if finished == false:
 		if Input.is_action_pressed("ui_up"):
 			if velocidade.y < -maxVelocidade:
 				velocidade.y = -maxVelocidade 
@@ -54,7 +64,7 @@ func _physics_process(delta):
 			velocidade.x = 0
 			
 		var colisao = move_and_collide(velocidade * delta)
-		
+			
 		if colisao:
 			if ("Enemy" in colisao.collider.name or "Hazard" in colisao.collider.name) and singletons.gameStatus == 2:
 				damage(1)
@@ -83,17 +93,20 @@ func _physics_process(delta):
 				var bomb = singletons.playerSpecial.instance()
 				bomb.position = $Position2D.get_global_position()
 				get_parent().add_child(bomb)
+	else:
+		move_and_slide(Vector2(0,-300))
+		
+		if global_position.y < -30:
+			emit_signal("finished")
 	
 func _on_TimerShoot_timeout():
-	if singletons.gameStatus == 2:
-		if Input.is_action_pressed("player_shoot"):
-			var shoot = singletons.getPlayerWeapon().instance()
-			$TimerShoot.wait_time = shoot.shootInterval
-			shoot.position = $Position2D.get_global_position()
-			get_parent().add_child(shoot)
-		else:
-			$TimerShoot.stop()
+	if Input.is_action_pressed("player_shoot"):
+		var shoot = singletons.getPlayerWeapon().instance()
+		$TimerShoot.wait_time = shoot.shootInterval
+		shoot.position = $Position2D.get_global_position()
+		get_parent().add_child(shoot)
+	else:
+		$TimerShoot.stop()
 
 func _on_TimerScore_timeout():
-	if singletons.gameStatus == 2:
-		singletons.addScore(10)
+	singletons.addScore(10)

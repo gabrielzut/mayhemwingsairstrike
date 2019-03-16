@@ -186,7 +186,6 @@ position = Vector2( 288, -366.092 )
 
 [node name="Boss1" parent="." instance=ExtResource( 15 )]
 position = Vector2( 144, -2888 )
-scrollDown = 20
 
 [node name="Spawner8" parent="." instance=ExtResource( 9 )]
 position = Vector2( 288, -2504 )
@@ -463,6 +462,7 @@ rotation = 1.5708
 [connection signal="collision" from="Spawner5" to="." method="_on_Spawner5_collision"]
 [connection signal="collision" from="Spawner6" to="." method="_on_Spawner6_collision"]
 [connection signal="collision" from="Spawner7" to="." method="_on_Spawner7_collision"]
+[connection signal="destroyed" from="Boss1" to="." method="_on_Boss1_destroyed"]
 [connection signal="collision" from="Spawner8" to="." method="_on_Spawner8_collision"]
 [connection signal="collision" from="Spawner9" to="." method="_on_Spawner9_collision"]
 [connection signal="collision" from="Spawner10" to="." method="_on_Spawner10_collision"]

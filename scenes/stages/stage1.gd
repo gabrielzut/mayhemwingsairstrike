@@ -111,3 +111,6 @@ func _on_Spawner23_collision(confirmation):
 
 func _on_Spawner24_collision(confirmation):
 	$BarcoEnemy10.start()
+
+func _on_Boss1_destroyed():
+	$Player.finish()
