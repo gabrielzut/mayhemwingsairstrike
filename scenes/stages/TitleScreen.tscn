@@ -1,16 +1,24 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/stages/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/bgtitle.jpg" type="Texture" id=2]
 [ext_resource path="res://graphics/images/Logo.png" type="Texture" id=3]
 [ext_resource path="res://scenes/stages/Buttons/TitleButtonDefault.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fonts/vegur/Vegur-Regular.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/stages/Buttons/TitleScreenButtonGroup.tres" type="ButtonGroup" id=5]
+[ext_resource path="res://fonts/vegur/Vegur-Regular.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sound/sfc/Menu__010.wav" type="AudioStream" id=8]
+[ext_resource path="res://sound/sfc/Menu__008.wav" type="AudioStream" id=9]
+[ext_resource path="res://sound/music/Alexander Ehlers - Great mission.ogg" type="AudioStream" id=10]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxLine" id=1]
+thickness = 10
+vertical = true
+
+[sub_resource type="DynamicFont" id=2]
 size = 14
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 
 [node name="TitleScreen" type="Control"]
 margin_right = 40.0
@@ -49,36 +57,74 @@ alignment = 1
 [node name="NovoJogo" parent="Botões" instance=ExtResource( 4 )]
 margin_top = 47.0
 margin_bottom = 78.0
+focus_neighbour_bottom = NodePath("../Highscores")
+focus_next = NodePath("../Highscores")
+group = ExtResource( 5 )
 
 [node name="Highscores" parent="Botões" instance=ExtResource( 4 )]
 margin_top = 82.0
 margin_bottom = 113.0
+focus_neighbour_top = NodePath("../NovoJogo")
+focus_neighbour_bottom = NodePath("../Options")
+focus_next = NodePath("../Options")
+focus_previous = NodePath("../NovoJogo")
+group = ExtResource( 5 )
 text = "Highscores"
 
 [node name="Options" parent="Botões" instance=ExtResource( 4 )]
 margin_top = 117.0
 margin_bottom = 148.0
+focus_neighbour_top = NodePath("../Highscores")
+focus_neighbour_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Highscores")
+group = ExtResource( 5 )
 text = "Options"
 
 [node name="Quit" parent="Botões" instance=ExtResource( 4 )]
 margin_top = 152.0
 margin_bottom = 183.0
+focus_neighbour_top = NodePath("../Options")
+focus_previous = NodePath("../Options")
+custom_styles/focus = SubResource( 1 )
+group = ExtResource( 5 )
 text = "Quit"
 
 [node name="Label" type="Label" parent="."]
 margin_top = 490.0
 margin_right = 291.0
 margin_bottom = 511.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.175781, 0.175781, 0.175781, 1 )
 text = "Made by Gabriel Zutião and Vinícius Perna"
 align = 1
 valign = 1
 
-[node name="Fade" parent="." instance=ExtResource( 6 )]
+[node name="Fade" parent="." instance=ExtResource( 7 )]
 rect_clip_content = true
 mouse_filter = 2
 
+[node name="PlayerFocus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -30.0
+
+[node name="PlayerSelection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -30.0
+
+[node name="PlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -30.0
+autoplay = true
+
+[connection signal="focus_entered" from="Botões/NovoJogo" to="." method="_on_MenuButton_focus_entered"]
+[connection signal="mouse_entered" from="Botões/NovoJogo" to="." method="_on_NovoJogo_mouse_entered"]
 [connection signal="pressed" from="Botões/NovoJogo" to="." method="_on_NovoJogo_pressed"]
+[connection signal="focus_entered" from="Botões/Highscores" to="." method="_on_MenuButton_focus_entered"]
+[connection signal="mouse_entered" from="Botões/Highscores" to="." method="_on_Highscores_mouse_entered"]
+[connection signal="focus_entered" from="Botões/Options" to="." method="_on_MenuButton_focus_entered"]
+[connection signal="mouse_entered" from="Botões/Options" to="." method="_on_Options_mouse_entered"]
+[connection signal="focus_entered" from="Botões/Quit" to="." method="_on_MenuButton_focus_entered"]
+[connection signal="mouse_entered" from="Botões/Quit" to="." method="_on_Quit_mouse_entered"]
 [connection signal="pressed" from="Botões/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="animation" from="Fade" to="." method="_on_Fade_animation"]

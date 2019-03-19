@@ -27,6 +27,7 @@ func damage(dmg):
 	hp -= dmg
 	get_node("AnimationPlayer").stop()
 	get_node("AnimationPlayer").play("damage")
+	$PlayerHit.play()
 
 	if hp <= 0 and destroyed == false:
 		singletons.addScore(score)

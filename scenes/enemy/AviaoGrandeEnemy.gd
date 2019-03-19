@@ -66,6 +66,7 @@ func damage(dmg):
 	hp -= dmg
 	$Path2D/PathFollow2D/AviaoGEnemy/AnimationPlayer.stop()
 	$Path2D/PathFollow2D/AviaoGEnemy/AnimationPlayer.play("damage")
+	$Path2D/PathFollow2D/AviaoGEnemy/PlayerHit.play()
 
 	if hp <= 0:
 		if drop != false:

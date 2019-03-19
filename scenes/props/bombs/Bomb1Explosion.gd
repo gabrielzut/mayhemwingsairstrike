@@ -8,6 +8,7 @@ func _ready():
 	$Timer.wait_time = damage_time
 	$Timer.start()
 	$AnimationPlayer.play("explode")
+	$PlayerBomb.play()
 
 func _on_Timer_timeout():
 	if duration_ticks <= 0:

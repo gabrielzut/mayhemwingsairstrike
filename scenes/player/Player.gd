@@ -9,6 +9,7 @@ signal gameOver()
 var starting = false
 var finished = false
 var velocidade = Vector2()
+var cdbomb = false
 
 func _ready():
 	start()
@@ -17,7 +18,7 @@ func start():
 	starting = true
 	position = Vector2(144,530)
 	collision_layer = 32
-	collision_mask = 64
+	collision_mask = 80
 	$AnimationPlayer.play("Start")
 	$TimerShoot.start()
 	$TimerScore.start()
@@ -86,6 +87,7 @@ func _physics_process(delta):
 					damage(1)
 				
 			if Input.is_action_just_pressed("player_shoot"):
+				$PlayerShoot.play()
 				var shoot = singletons.getPlayerWeapon().instance()
 				$TimerShoot.wait_time = shoot.shootInterval
 				shoot.position = $Position2D.get_global_position()
@@ -93,11 +95,14 @@ func _physics_process(delta):
 				$TimerShoot.start()
 				
 			if Input.is_action_just_pressed("player_special"):
-				if singletons.playerBomb >= 1:
+				if singletons.playerBomb >= 1 and cdbomb == false:
 					singletons.playerBomb -= 1
 					var bomb = singletons.playerSpecial.instance()
 					bomb.position = $Position2D.get_global_position()
 					get_parent().add_child(bomb)
+					cdbomb = true
+					$PlayerShoot.play()
+					$TimerCDBomb.start()
 	else:
 		move_and_slide(Vector2(0,-300))
 		
@@ -107,6 +112,8 @@ func _physics_process(delta):
 func _on_TimerShoot_timeout():
 	if starting == false and finished == false:
 		if Input.is_action_pressed("player_shoot"):
+			var vol = $PlayerShoot.volume_db
+			$PlayerShoot.play()
 			var shoot = singletons.getPlayerWeapon().instance()
 			$TimerShoot.wait_time = shoot.shootInterval
 			shoot.position = $Position2D.get_global_position()
@@ -128,14 +135,14 @@ func damage(dmg):
 		get_parent().add_child(explosion)
 		explosion.explode()
 		singletons.playerLife -= 1
+		collision_layer = 32
+		collision_mask = 80
 		respawn()
 
 func respawn():
 	if singletons.playerLife >= 0:
 		visible = false
 		position = Vector2(144,530)
-		collision_layer = 32
-		collision_mask = 64
 		$TimerRespawn.start()
 		starting = true
 	else:
@@ -156,3 +163,6 @@ func _on_TimerRespawn_timeout():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	starting = false
+
+func _on_TimerCDBomb_timeout():
+	cdbomb = false

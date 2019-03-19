@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sound/sfc/Pickup__008.wav" type="AudioStream" id=1]
+
+[node name="PlayerPickup" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -40.0
+pitch_scale = 0.8
+

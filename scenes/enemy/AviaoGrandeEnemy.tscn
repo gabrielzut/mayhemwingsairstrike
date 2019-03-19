@@ -1,34 +1,27 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/enemy/AviaoGrandeEnemy.gd" type="Script" id=1]
-[ext_resource path="res://scenes/powerups/BombPowerup.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/enemy/AviaoGEnemy.gd" type="Script" id=4]
-[ext_resource path="res://graphics/enemy/aviaogrande1.png" type="Texture" id=5]
-[ext_resource path="res://graphics/enemy/aviaogrande2.png" type="Texture" id=6]
+[ext_resource path="res://scenes/enemy/AviaoGEnemy.gd" type="Script" id=2]
+[ext_resource path="res://graphics/enemy/aviaogrande1.png" type="Texture" id=3]
+[ext_resource path="res://graphics/enemy/aviaogrande2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/sound/PlayerHit.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, -160.168, -32.2799, -3.57331, 51.6745, 0, 0, 0, 0, -151.099, -101.389 )
 }
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="SpriteFrames" id=2]
-
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "normal",
 "speed": 10.0
 } ]
 
 [sub_resource type="Animation" id=3]
-
 resource_name = "damage"
 length = 0.1
-loop = false
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -43,113 +36,62 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.484375, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="AviaoGrandeEnemy" type="KinematicBody2D" index="0"]
-
+[node name="AviaoGrandeEnemy" type="KinematicBody2D"]
 position = Vector2( 0.12851, 0 )
 z_index = 1
-input_pickable = false
 collision_layer = 4
 collision_mask = 10
-collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pause", "Transform", "Z Index", "collision" ]
 hp = 150
-score = 0
-drop = false
-powerup = ExtResource( 2 )
-weapon = ExtResource( 3 )
-shootInterval = 1.0
-shootSpeed = 0
-pausado = true
-scrollDown = 0
 
-[node name="Path2D" type="Path2D" parent="." index="0"]
-
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+[node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 0.571655, 3.88499 )
 scale = Vector2( 1.00395, 1.03763 )
 curve = SubResource( 1 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
-
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -3.57331, 51.6745 )
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
-_sections_unfolded = [ "Transform" ]
 
-[node name="AviaoGEnemy" type="KinematicBody2D" parent="Path2D/PathFollow2D" index="0"]
-
+[node name="AviaoGEnemy" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
 position = Vector2( 0.83295, 42.4578 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/AviaoGEnemy" index="0"]
-
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/AviaoGEnemy"]
 position = Vector2( -0.422061, 19.3524 )
 scale = Vector2( 0.996063, 0.963731 )
 frames = SubResource( 2 )
 animation = "normal"
+frame = 1
 playing = true
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/AviaoGEnemy" index="1"]
-
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/AviaoGEnemy"]
 position = Vector2( -0.197609, 5.80485 )
 scale = Vector2( 0.996063, 0.963731 )
-build_mode = 0
 polygon = PoolVector2Array( -6.9728, 37.0455, -12.9518, 37.3777, -16.7718, 40.2011, -17.1039, 44.0211, -13.7822, 47.0106, -1.65811, 48.3393, 1.33141, 48.5054, 13.9538, 46.6784, 16.7772, 43.855, 16.9433, 40.2011, 12.7912, 37.2116, 6.81218, 37.2116, 7.14435, 19.9389, 7.97477, 19.7728, 7.97476, -7.79716, 8.97127, -8.12933, 8.80518, -15.6031, 17.7737, -15.7692, 18.9363, -12.7797, 21.4276, -14.9388, 32.8874, -15.1049, 33.8839, -14.2744, 36.8734, -14.2744, 38.5342, -11.7832, 40.5272, -13.9423, 45.3437, -13.7762, 47.1706, -12.9458, 58.6304, -12.7797, 61.786, -16.1014, 62.1182, -22.5786, 59.4608, -24.7377, 53.1496, -25.236, 45.0115, -25.7342, 44.1811, -26.7307, 43.8489, -30.8828, 45.8419, -32.2115, 45.8419, -35.035, 42.8524, -36.6958, 37.5377, -36.8619, 34.5482, -35.3671, 34.05, -33.7063, 34.8804, -31.5472, 35.8769, -31.0489, 35.8769, -27.8933, 30.0639, -27.3951, 29.8979, -28.7238, 25.9118, -28.8898, 25.7458, -32.5437, 27.7388, -33.8724, 27.9049, -36.8619, 24.9153, -38.6888, 18.272, -38.6888, 15.1164, -36.6958, 15.1164, -34.0384, 16.9433, -32.0454, 16.9433, -30.2185, 14.9503, -30.3846, 7.14434, -30.8828, 5.64958, -39.021, 4.48699, -41.1801, 1.66357, -43.6713, -1.99029, -43.6713, -4.9798, -40.5157, -6.14239, -38.1906, -6.47456, -34.8689, -6.64064, -30.8828, -14.9448, -30.5507, -17.1039, -29.7203, -16.9379, -33.208, -14.6127, -34.3706, -14.6127, -36.6958, -17.9344, -38.5227, -24.7438, -39.021, -28.0655, -36.6958, -27.5672, -33.8724, -25.5742, -32.3776, -25.9064, -29.222, -29.5602, -29.0559, -29.8924, -27.8933, -36.0375, -28.0594, -36.0375, -30.8828, -34.2106, -32.3776, -34.2106, -35.035, -37.2001, -36.8619, -43.0131, -36.5297, -45.6704, -34.5367, -45.8365, -32.0454, -44.3417, -30.3846, -44.3417, -27.5612, -45.8365, -26.2325, -52.6459, -25.7342, -54.3068, -24.5717, -60.1197, -24.5717, -61.9467, -22.4126, -62.1127, -16.2674, -58.9571, -12.9458, -46.5008, -12.9458, -45.6704, -13.7762, -40.3557, -14.1084, -38.6949, -11.451, -36.2036, -13.9423, -33.5463, -14.2744, -31.8854, -14.9388, -21.5882, -14.7727, -19.263, -12.6136, -17.9344, -15.7692, -9.46407, -15.6031, -8.96582, -7.63107, -8.1354, 20.4371, -7.47106, 22.098 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position2D" type="Position2D" parent="Path2D/PathFollow2D/AviaoGEnemy" index="2"]
-
+[node name="Position2D" type="Position2D" parent="Path2D/PathFollow2D/AviaoGEnemy"]
 position = Vector2( -0.244551, 2.23372 )
 scale = Vector2( 0.996063, 0.963731 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/AviaoGEnemy" index="3"]
-
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/AviaoGEnemy"]
 position = Vector2( -0.499877, 8.43303 )
 scale = Vector2( 6.32724, 4.54461 )
-rect = Rect2( -10, -10, 20, 20 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Timer" type="Timer" parent="Path2D/PathFollow2D/AviaoGEnemy" index="4"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
+[node name="Timer" type="Timer" parent="Path2D/PathFollow2D/AviaoGEnemy"]
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/AviaoGEnemy" index="5"]
-
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/AviaoGEnemy"]
 root_node = NodePath("../AnimatedSprite")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
 anims/damage = SubResource( 3 )
-blend_times = [  ]
 
-[node name="Timer" type="Timer" parent="." index="1"]
+[node name="PlayerHit" parent="Path2D/PathFollow2D/AviaoGEnemy" instance=ExtResource( 5 )]
 
-process_mode = 1
+[node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
-autostart = false
 
 [connection signal="screen_exited" from="Path2D/PathFollow2D/AviaoGEnemy/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-
 [connection signal="timeout" from="Path2D/PathFollow2D/AviaoGEnemy/Timer" to="." method="_on_Timer_timeout"]
-
 [connection signal="timeout" from="Timer" to="." method="_on_Global_Timer_timeout"]
-
-

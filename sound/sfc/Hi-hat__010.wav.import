@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hi-hat__010.wav-7e35e7a1e183f2bc5629abc9736f704f.sample"
+
+[deps]
+
+source_file="res://sound/sfc/Hi-hat__010.wav"
+dest_files=[ "res://.import/Hi-hat__010.wav-7e35e7a1e183f2bc5629abc9736f704f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

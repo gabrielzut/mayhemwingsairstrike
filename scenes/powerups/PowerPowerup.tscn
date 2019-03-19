@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/powerups/Powerup.gd" type="Script" id=1]
 [ext_resource path="res://graphics/powerups/powerpowerup.png" type="Texture" id=2]
+[ext_resource path="res://scenes/sound/PlayerPickup.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,9 +25,11 @@ animation = "normal"
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 2
+collision_layer = 64
+collision_mask = 32
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( 0.107277, -15.0112, -15.3896, -0.0954361, -0.0864334, 15.0141, 15.0231, -0.0954361 )
+
+[node name="PlayerPickup" parent="." instance=ExtResource( 3 )]
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Alexander Ehlers - Doomed.ogg-342cb456a96c46523b21853b3cba3909.oggstr"
+
+[deps]
+
+source_file="res://sound/music/Alexander Ehlers - Doomed.ogg"
+dest_files=[ "res://.import/Alexander Ehlers - Doomed.ogg-342cb456a96c46523b21853b3cba3909.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

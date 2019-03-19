@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Menu__008.wav-aef7f6fd0ab588ee73629517f06c2d86.sample"
+
+[deps]
+
+source_file="res://sound/sfc/Menu__008.wav"
+dest_files=[ "res://.import/Menu__008.wav-aef7f6fd0ab588ee73629517f06c2d86.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

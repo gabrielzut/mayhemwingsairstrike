@@ -80,6 +80,7 @@ func _on_Spawner16_collision(confirmation):
 	$V5.start()
 	$V6.start()
 	$V7.start()
+	$PlayerMusic.stop()
 
 func _on_Spawner17_collision(confirmation):
 	$BarcoEnemy6.start()
@@ -123,3 +124,7 @@ func _on_Fade_animation(source):
 	#if source == "stage2":
 		#get_tree().change_scene(stage2.tscn)
 	pass
+
+func _on_Spawner25_collision(confirmation):
+	$PlayerMusic.stream = preload("res://sound/music/Alexander Ehlers - Doomed.ogg")
+	$PlayerMusic.play()

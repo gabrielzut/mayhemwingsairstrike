@@ -25,8 +25,11 @@ func _physics_process(delta):
 		player = get_tree().get_root().get_child(1).get_node("Player")
 	if $Area2D.get_overlapping_bodies().has(player):
 		pick()
+		$Area2D/CollisionPolygon2D.disabled = true
+		visible = false
 
 func pick():
+	$PlayerPickup.play()
 	if type == Type.SCORE:
 		singletons.addScore(100)
 	elif type == Type.BOMB:
@@ -35,7 +38,9 @@ func pick():
 		singletons.addPower(1)
 	elif type == Type.LIFE:
 		singletons.addLife(1)
-	queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+
+func _on_PlayerPickup_finished():
 	queue_free()
