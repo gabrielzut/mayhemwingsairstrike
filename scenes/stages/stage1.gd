@@ -1,5 +1,7 @@
 extends Node2D
 
+var bossDestroyed = false
+
 func _ready():
 	$CanvasLayer/Fade.fadein("self")
 
@@ -80,7 +82,6 @@ func _on_Spawner16_collision(confirmation):
 	$V5.start()
 	$V6.start()
 	$V7.start()
-	$PlayerMusic.stop()
 
 func _on_Spawner17_collision(confirmation):
 	$BarcoEnemy6.start()
@@ -126,5 +127,22 @@ func _on_Fade_animation(source):
 	pass
 
 func _on_Spawner25_collision(confirmation):
-	$PlayerMusic.stream = preload("res://sound/music/Alexander Ehlers - Doomed.ogg")
-	$PlayerMusic.play()
+	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,3,Tween.TRANS_SINE,Tween.EASE_IN)
+	$PlayerMusic/Tween.start()
+
+func _on_Spawner26_collision(confirmation):
+	$PlayerMusic.play(66.10)
+
+func _on_Tween_tween_completed(object, key):
+	$PlayerMusic.volume_db = -25
+	if bossDestroyed == true:
+		$PlayerMusic.stream = preload("res://sound/music/Alexander Ehlers - Flags.ogg")
+		$PlayerMusic.play(34.20)
+	else:
+		$PlayerMusic.stream = preload("res://sound/music/Alexander Ehlers - Doomed.ogg")
+		$PlayerMusic.play()
+
+func _on_Boss1_finished():
+	bossDestroyed = true
+	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,2,Tween.TRANS_SINE,Tween.EASE_IN)
+	$PlayerMusic/Tween.start()

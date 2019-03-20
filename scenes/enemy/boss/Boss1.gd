@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export var scrollDown = 20
 export var pausado = true
+signal finished()
 signal destroyed()
 var destroyed = false
 
@@ -20,7 +21,7 @@ func start():
 	scrollDown = 0
 	
 	for child in get_children():
-		if child.has_method("start") and child.name != "Boss1Center":
+		if child.has_method("start") and child.name != "Boss1Center" and child.name != "TimerDestroyed":
 			child.start()
 	
 func _physics_process(delta):
@@ -30,5 +31,12 @@ func _physics_process(delta):
 		$Boss1Center.start()
 		
 	if $Boss1Center.destroyed == true and destroyed == false:
-		emit_signal("destroyed")
+		$TimerDestroyed.start()
 		destroyed = true
+		emit_signal("finished")
+		for child in get_tree().get_root().get_child(1).get_children():
+			if "Shot" in child.name:
+				child.queue_free()
+
+func _on_TimerDestroyed_timeout():
+	emit_signal("destroyed")

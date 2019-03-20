@@ -339,7 +339,7 @@ powerup = ExtResource( 20 )
 position = Vector2( 288, -1488.41 )
 
 [node name="AviaoGrandeEnemy2" parent="." instance=ExtResource( 19 )]
-position = Vector2( 365.209, -1820.56 )
+position = Vector2( 365.209, -1847.56 )
 score = 100
 drop = true
 powerup = ExtResource( 12 )
@@ -478,8 +478,13 @@ stream = ExtResource( 25 )
 volume_db = -25.0
 autoplay = true
 
+[node name="Tween" type="Tween" parent="PlayerMusic"]
+
 [node name="Spawner25" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -2357.57 )
+
+[node name="Spawner26" parent="." instance=ExtResource( 10 )]
+position = Vector2( 288, -1673.16 )
 
 [connection signal="animation" from="CanvasLayer/Fade" to="." method="_on_Fade_animation"]
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
@@ -490,6 +495,7 @@ position = Vector2( 288, -2357.57 )
 [connection signal="collision" from="Spawner6" to="." method="_on_Spawner6_collision"]
 [connection signal="collision" from="Spawner7" to="." method="_on_Spawner7_collision"]
 [connection signal="destroyed" from="Boss1" to="." method="_on_Boss1_destroyed"]
+[connection signal="finished" from="Boss1" to="." method="_on_Boss1_finished"]
 [connection signal="collision" from="Spawner8" to="." method="_on_Spawner8_collision"]
 [connection signal="collision" from="Spawner9" to="." method="_on_Spawner9_collision"]
 [connection signal="collision" from="Spawner10" to="." method="_on_Spawner10_collision"]
@@ -507,4 +513,6 @@ position = Vector2( 288, -2357.57 )
 [connection signal="collision" from="Spawner22" to="." method="_on_Spawner22_collision"]
 [connection signal="collision" from="Spawner23" to="." method="_on_Spawner23_collision"]
 [connection signal="collision" from="Spawner24" to="." method="_on_Spawner24_collision"]
+[connection signal="tween_completed" from="PlayerMusic/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="collision" from="Spawner25" to="." method="_on_Spawner25_collision"]
+[connection signal="collision" from="Spawner26" to="." method="_on_Spawner26_collision"]

@@ -67,3 +67,8 @@ score = 100
 scrollDown = 0
 shootInterval = 1.5
 
+[node name="TimerDestroyed" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="TimerDestroyed" to="." method="_on_TimerDestroyed_timeout"]

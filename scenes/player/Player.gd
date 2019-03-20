@@ -104,7 +104,7 @@ func _physics_process(delta):
 					$PlayerShoot.play()
 					$TimerCDBomb.start()
 	else:
-		move_and_slide(Vector2(0,-300))
+		move_and_slide(Vector2(0,-200))
 		
 		if global_position.y < -30:
 			emit_signal("finished")
