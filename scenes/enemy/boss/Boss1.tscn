@@ -1,11 +1,12 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/enemy/boss/Boss1.gd" type="Script" id=1]
-[ext_resource path="res://graphics/enemy/boss/boss1_base.png" type="Texture" id=2]
+[ext_resource path="res://graphics/enemy/boss/boss1/boss1_base.png" type="Texture" id=2]
 [ext_resource path="res://scenes/enemy/boss/Boss1Center.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/enemy/boss/Boss1Gun.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/enemy/boss/Boss1Launcher.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=6]
+
 
 [node name="Boss1" type="KinematicBody2D"]
 script = ExtResource( 1 )

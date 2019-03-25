@@ -10,6 +10,7 @@ var starting = false
 var finished = false
 var velocidade = Vector2()
 var cdbomb = false
+var muted = false
 
 func _ready():
 	start()
@@ -108,6 +109,10 @@ func _physics_process(delta):
 		
 		if global_position.y < -30:
 			emit_signal("finished")
+			
+	if Input.is_action_just_pressed("mute"):
+		muted = !muted
+		AudioServer.set_bus_mute(0,muted)
 	
 func _on_TimerShoot_timeout():
 	if starting == false and finished == false:

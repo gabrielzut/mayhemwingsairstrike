@@ -122,8 +122,8 @@ func _on_Boss1_destroyed():
 	$CanvasLayer/Fade.fadeout("stage2")
 
 func _on_Fade_animation(source):
-	#if source == "stage2":
-		#get_tree().change_scene(stage2.tscn)
+	if source == "stage2":
+		get_tree().change_scene("res://scenes/stages/stage2.tscn")
 	pass
 
 func _on_Spawner25_collision(confirmation):

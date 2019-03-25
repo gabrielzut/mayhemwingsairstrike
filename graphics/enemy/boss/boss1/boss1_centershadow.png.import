@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss1_center.png-ba02a9a16b70ac849c97187024999aa9.stex"
+path="res://.import/boss1_centershadow.png-92b0c7f62d108fd8b2873033775725a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/enemy/boss/boss1_center.png"
-dest_files=[ "res://.import/boss1_center.png-ba02a9a16b70ac849c97187024999aa9.stex" ]
+source_file="res://graphics/enemy/boss/boss1/boss1_centershadow.png"
+dest_files=[ "res://.import/boss1_centershadow.png-92b0c7f62d108fd8b2873033775725a7.stex" ]
 
 [params]
 
