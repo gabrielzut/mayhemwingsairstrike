@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/enemy/BarcoEnemy2.gd" type="Script" id=1]
+[ext_resource path="res://graphics/enemy/barco.png" type="Texture" id=2]
+[ext_resource path="res://scenes/particles/explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/sound/PlayerHit.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "damage"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.854902, 0.227451, 0.227451, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "explode"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.352941, 0.352941, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="BarcoEnemy2" type="KinematicBody2D"]
+script = ExtResource( 1 )
+hp = 40
+score = 100
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 2 )
+
+[node name="Explosion" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( 15, 0 )
+scale = Vector2( 1.4, 1.4 )
+
+[node name="Explosion2" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( -13, 0 )
+scale = Vector2( 1.4, 1.4 )
+
+[node name="Explosion3" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( -41, 0 )
+scale = Vector2( 1.4, 1.4 )
+
+[node name="Explosion4" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( 42, 0 )
+scale = Vector2( 1.4, 1.4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+rotation = 1.5708
+polygon = PoolVector2Array( -44.9687, 13.1119, -61.1612, 4.88714, -62.7034, 0.64624, -62.8319, -1.53847, -44.3261, -10.7913, 44.8613, -10.7913, 62.8597, -1.66698, 62.7311, 1.03178, 60.932, 4.88714, 44.6109, 12.8549 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.965866, 0.32196 )
+scale = Vector2( 1.20391, 6.31231 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/damage = SubResource( 1 )
+anims/explode = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PlayerHit" parent="." instance=ExtResource( 4 )]
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -3, -12 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( -3, -32 )
+
+[node name="Position2D4" type="Position2D" parent="."]
+position = Vector2( -3, -22 )
+
+[node name="Position2D5" type="Position2D" parent="."]
+position = Vector2( -3, -2 )
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( -3, 8 )
+
+[connection signal="exploded" from="Sprite/Explosion" to="." method="_on_Explosion_exploded"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

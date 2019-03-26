@@ -3,10 +3,18 @@ extends KinematicBody2D
 export var aceleracao = 50
 export var maxVelocidade = 100
 export var dmg = 1
+export var seguir = true
 
 var velocidade = Vector2()
 
 func _ready():
+	if seguir == true:
+		if get_tree().get_root().get_child(1).has_node("Player"):
+			var pos = get_tree().get_root().get_child(1).get_node("Player").position
+			look_at(pos)
+			global_rotation_degrees += 90
+		else:
+			global_rotation_degrees = 180
 	velocidade = Vector2(0,-maxVelocidade).rotated(rotation)
 
 func _process(delta):

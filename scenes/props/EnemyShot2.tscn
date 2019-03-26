@@ -5,7 +5,6 @@
 [ext_resource path="res://graphics/weapon/missel2.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
@@ -14,54 +13,30 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
 extents = Vector2( 3.95197, 12.4767 )
 
 [node name="ENMShot2" type="KinematicBody2D"]
-
 scale = Vector2( 0.5, 0.5 )
-input_pickable = false
-collision_layer = 1
 collision_mask = 2
-collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
-aceleracao = 20
-maxVelocidade = 40
-dmg = 1
-seguir = true
 
-[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
-
+[node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "normal"
+frame = 1
 playing = true
-_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0117283, -3.57339 )
 scale = Vector2( 1.02116, 1 )
 shape = SubResource( 2 )
-_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
-
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -0.212971, 0.0989704 )
 scale = Vector2( 0.600032, 1.60544 )
-rect = Rect2( -10, -10, 20, 20 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Timer" type="Timer" parent="." index="3"]
-
-process_mode = 1
+[node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
-one_shot = false
-autostart = false
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-
-

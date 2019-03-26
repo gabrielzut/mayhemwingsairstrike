@@ -40,6 +40,9 @@ func _on_Timer_timeout():
 		var shoot1 = weapon.instance()
 		var shoot2 = weapon.instance()
 		var shoot3 = weapon.instance()
+		shoot1.seguir = false
+		shoot2.seguir = false
+		shoot3.seguir = false
 		
 		if shootSpeed > 0:
 			shoot1.maxVelocidade = shootSpeed

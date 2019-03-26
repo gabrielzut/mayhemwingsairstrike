@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/enemy/AviaoEnemy.gd" type="Script" id=1]
+[ext_resource path="res://graphics/enemy/heli1.png" type="Texture" id=2]
+[ext_resource path="res://graphics/enemy/heli2.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "normal",
+"speed": 10.0
+} ]
+
+[node name="HeliEnemy" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource( 1 )
+shootType = 2
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 3.14159
+frames = SubResource( 1 )
+animation = "normal"
+playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+rotation = 3.14159
+polygon = PoolVector2Array( 0.867882, 14.9336, -0.994995, 15.0146, -2.85788, 12.7467, -3.82981, 9.02098, -4.0728, 6.10517, -7.87955, 6.18616, -7.87955, 3.02737, -3.9108, 2.94637, -3.9108, -0.131424, -2.93887, -0.21242, -3.01986, -3.69519, -2.04793, -3.77619, -1.80494, -6.85399, -1.15699, -6.692, -0.994995, -10.8227, -4.0728, -10.8227, -3.82981, -13.0096, -1.07599, -12.9286, -0.994995, -15.0345, 1.19186, -15.1154, 1.11087, -13.0096, 4.10767, -12.9286, 4.02668, -11.0657, 1.02987, -10.9037, 1.11087, -7.09697, 2.1638, -7.01597, 2.0828, -3.85718, 3.05474, -3.85718, 3.05474, -0.0504303, 4.10767, 0.0305653, 4.18867, 3.02737, 7.75243, 3.10836, 7.75243, 5.94318, 4.10767, 6.18616, 4.02668, 9.50695, 3.21673, 13.1517 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -17 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.244171, 0.0610437 )
+scale = Vector2( 0.81687, 1.45782 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -5,7 +5,6 @@
 [ext_resource path="res://graphics/enemy/boss/boss1/boss1_centershadow.png" type="Texture" id=3]
 [ext_resource path="res://scenes/sound/PlayerHit.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "damage"
 length = 0.1
