@@ -5,6 +5,7 @@ export var shootInterval = 1.0
 export var shootSpeed = 0
 export var pausado = true
 export var scrollDown = 20
+var ended = false
 
 func start():
 	visible = true
@@ -32,7 +33,7 @@ func _physics_process(delta):
 			$Path2D/PathFollow2D/HeliEnemy/Timer.start()
 
 func _on_VisibilityNotifier2D_screen_exited():
-	if !pausado:
+	if !pausado and ended:
 		queue_free()
 
 func _on_Timer_timeout():
@@ -51,7 +52,7 @@ func _on_Timer_timeout():
 
 func _on_GlobalTimer_timeout():
 	$Path2D/PathFollow2D/AnimationPlayer.play("EndPath1")
-	pausado = true
+	ended = true
 
 func damage(dmg):
 	hp -= dmg

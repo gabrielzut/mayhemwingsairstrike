@@ -6,7 +6,7 @@
 [ext_resource path="res://graphics/enemy/heli1.png" type="Texture" id=4]
 [ext_resource path="res://graphics/enemy/heli2.png" type="Texture" id=5]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -14,8 +14,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="Animation" id=1]
-resource_name = "EndPath1"
+[sub_resource type="Animation" id=2]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:offset")
@@ -42,8 +41,7 @@ tracks/1/keys = {
 "values": [ 84.0, -26.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "StartPath1"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:offset")
@@ -91,8 +89,9 @@ collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/HeliEnemy"]
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "normal"
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/HeliEnemy"]
@@ -109,8 +108,8 @@ scale = Vector2( 0.81687, 1.45782 )
 [node name="Timer" type="Timer" parent="Path2D/PathFollow2D/HeliEnemy"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D"]
-anims/EndPath1 = SubResource( 1 )
-anims/StartPath1 = SubResource( 2 )
+anims/EndPath1 = SubResource( 2 )
+anims/StartPath1 = SubResource( 3 )
 
 [node name="GlobalTimer" type="Timer" parent="."]
 wait_time = 10.0

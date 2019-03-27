@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/stages/stage2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=2]
@@ -14,9 +14,17 @@
 [ext_resource path="res://scenes/enemy/BarcoEnemy2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/enemy/LancaMisselEnemy.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/enemy/HeliEnemy.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/enemy/groups/Linha.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/enemy/groups/SeguirPlayer.gd" type="Script" id=16]
+[ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/enemy/TruckEnemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/enemy/TankEnemy.tscn" type="PackedScene" id=19]
 
 [node name="Stage2" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -923.226 ]
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 11
@@ -90,22 +98,110 @@ position = Vector2( 288, 276 )
 position = Vector2( 288, 295 )
 
 [node name="HeliEnemy" parent="." instance=ExtResource( 14 )]
-position = Vector2( 38.648, -333.117 )
+position = Vector2( 38.648, -288.117 )
 rotation = -3.14159
 shootInterval = 1.5
 
 [node name="HeliEnemy3" parent="." instance=ExtResource( 14 )]
-position = Vector2( 105.648, -333.117 )
+position = Vector2( 105.648, -288.117 )
 rotation = -3.14159
 shootInterval = 1.5
 
 [node name="HeliEnemy2" parent="." instance=ExtResource( 14 )]
-position = Vector2( 72.2491, -313.732 )
+position = Vector2( 72.2491, -268.732 )
 rotation = -3.14159
 shootInterval = 1.5
+
+[node name="Linha" parent="." instance=ExtResource( 15 )]
+position = Vector2( 317.587, -659.394 )
+rotation = 0.785398
+script = ExtResource( 16 )
+scrollDown = 20
+
+[node name="Linha3" parent="." instance=ExtResource( 15 )]
+position = Vector2( 425.937, -884.994 )
+rotation = 0.785398
+script = ExtResource( 16 )
+scrollDown = 20
+
+[node name="Linha2" parent="." instance=ExtResource( 15 )]
+position = Vector2( -30.4146, -658.178 )
+rotation = -0.785398
+script = ExtResource( 16 )
+scrollDown = 20
+
+[node name="Linha4" parent="." instance=ExtResource( 15 )]
+position = Vector2( -136.339, -884.078 )
+rotation = -0.785398
+script = ExtResource( 16 )
+scrollDown = 20
+
+[node name="Spawner5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 288, -210 )
+scale = Vector2( 1, 1 )
+
+[node name="Spawner6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 287.59, -114.066 )
+scale = Vector2( 1, 1 )
+
+[node name="HelicopteroEnemy4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 263.663, -629.593 )
+scale = Vector2( -1, 1 )
+weapon = ExtResource( 11 )
+shootInterval = 1.25
+shootSpeed = 100
+
+[node name="HelicopteroEnemy5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 384.115, -629.165 )
+scale = Vector2( -1, 1 )
+weapon = ExtResource( 11 )
+shootInterval = 1.25
+shootSpeed = 100
+
+[node name="Spawner7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 287.704, -264 )
+
+[node name="Spawner9" parent="." instance=ExtResource( 9 )]
+position = Vector2( 287.704, -393 )
+
+[node name="V" parent="." instance=ExtResource( 17 )]
+position = Vector2( 347.751, -906.725 )
+rotation = 0.785398
+scrollDown = 20
+
+[node name="Spawner8" parent="." instance=ExtResource( 9 )]
+position = Vector2( 288, -316 )
+
+[node name="TruckEnemy" parent="." instance=ExtResource( 18 )]
+position = Vector2( 317.405, -759.455 )
+rotation = 1.5708
+
+[node name="TruckEnemy2" parent="." instance=ExtResource( 18 )]
+position = Vector2( -32.1017, -905.443 )
+rotation = 1.5708
+scale = Vector2( 1, -1 )
+
+[node name="TankEnemy" parent="." instance=ExtResource( 19 )]
+position = Vector2( 310.813, -995.646 )
+rotation = 0.785398
+tempoMov = 3
+
+[node name="TankEnemy2" parent="." instance=ExtResource( 19 )]
+position = Vector2( -23, -995.646 )
+rotation = -0.785398
+tempoMov = 3
+
+[node name="Spawner10" parent="." instance=ExtResource( 9 )]
+position = Vector2( 288.881, -473.646 )
 
 [connection signal="tween_completed" from="PlayerMusic/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 [connection signal="collision" from="Spawner2" to="." method="_on_Spawner2_collision"]
 [connection signal="collision" from="Spawner3" to="." method="_on_Spawner3_collision"]
 [connection signal="collision" from="Spawner4" to="." method="_on_Spawner4_collision"]
+[connection signal="collision" from="Spawner5" to="." method="_on_Spawner5_collision"]
+[connection signal="collision" from="Spawner6" to="." method="_on_Spawner6_collision"]
+[connection signal="collision" from="Spawner7" to="." method="_on_Spawner7_collision"]
+[connection signal="collision" from="Spawner9" to="." method="_on_Spawner9_collision"]
+[connection signal="collision" from="Spawner8" to="." method="_on_Spawner8_collision"]
+[connection signal="collision" from="Spawner10" to="." method="_on_Spawner10_collision"]

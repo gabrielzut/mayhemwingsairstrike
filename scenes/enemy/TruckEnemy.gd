@@ -1,6 +1,6 @@
 extends "res://classes/destructable.gd"
 
-export var maxVelocidade = 60
+export var maxVelocidade = 30
 export var scrollDown = 20
 var velocidade = Vector2(0,0)
 export var pausado = true
@@ -55,4 +55,14 @@ func damage(dmg):
 
 func _on_Explosion_exploded(confirmation):
 	if(confirmation):
-		queue_free()
+		$AnimationPlayer.stop()
+		$CollisionPolygon2D.disabled = true
+		modulate = "ffffff"
+		$LancaMisselEnemy.visible = false
+		velocidade = Vector2(0,0)
+		
+		var destroyedFloor = preload("res://scenes/particles/DestroyedFloor.tscn").instance()
+		destroyedFloor.position = $AnimatedSprite.position
+		destroyedFloor.scale = Vector2(1.2,1.2)
+		add_child(destroyedFloor)
+		$AnimatedSprite.hide()

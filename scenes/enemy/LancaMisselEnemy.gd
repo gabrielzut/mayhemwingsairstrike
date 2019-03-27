@@ -4,7 +4,7 @@ export var weapon = preload("res://scenes/props/EnemyShot2.tscn")
 export var destroyed = false
 export var scrollDown = 20
 export var pausado = true
-export var shootInterval = 2
+export var shootInterval = 2.0
 export var shootSpeed = 70
 
 func _ready():

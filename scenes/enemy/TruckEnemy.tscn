@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/enemy/LancaMisselEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/sound/PlayerHit.tscn" type="PackedScene" id=6]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
@@ -62,12 +62,12 @@ tracks/1/keys = {
 
 [node name="TruckEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
-hp = 25
+hp = 15
 score = 50
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = -1.5708
-frames = SubResource( 4 )
+frames = SubResource( 1 )
 animation = "normal"
 playing = true
 
@@ -96,9 +96,10 @@ polygon = PoolVector2Array( 26.8278, 7.77173, -22.8921, 9.06445, -23.8865, -3.96
 [node name="LancaMisselEnemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( -1, -8 )
 rotation = -1.5708
-hp = 20
+hp = 18
 score = 30
 scrollDown = 0
+shootInterval = 2.5
 
 [node name="PlayerHit" parent="." instance=ExtResource( 6 )]
 
