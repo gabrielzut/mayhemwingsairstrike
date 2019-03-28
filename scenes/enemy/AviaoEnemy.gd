@@ -57,6 +57,7 @@ func _on_Timer_timeout():
 		shoot.position = $Position2D.get_global_position()
 		if shootType == ShootType.STRAIGHT:
 			shoot.rotation_degrees = global_rotation_degrees
+			shoot.seguir = false
 		elif shootType == ShootType.FOLLOW:
 			if get_tree().get_root().get_child(1).has_node("Player"):
 				var pos = get_tree().get_root().get_child(1).get_node("Player").position
