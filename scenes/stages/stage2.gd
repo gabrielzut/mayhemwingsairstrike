@@ -41,3 +41,21 @@ func _on_Spawner9_collision(confirmation):
 func _on_Spawner10_collision(confirmation):
 	$TankEnemy.start()
 	$TankEnemy2.start()
+
+func _on_Spawner11_collision(confirmation):
+	$HelicopteroEnemy6.start()
+	$HelicopteroEnemy7.start()
+
+func _on_Spawner12_collision(confirmation):
+	$BarcoEnemy3.start()
+	$BarcoEnemy4.start()
+
+func _on_Spawner13_collision(confirmation):
+	$LancaMisselEnemy2.start()
+	$LancaMisselEnemy3.start()
+	$LancaMisselEnemy4.start()
+	$LancaMisselEnemy5.start()
+
+func _on_Spawner14_collision(confirmation):
+	$Linha5.start()
+	$Linha6.start()

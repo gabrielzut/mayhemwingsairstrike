@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/enemy/boss/Boss2/Boss2Minigun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://graphics/enemy/boss/boss2/boss2.png" type="Texture" id=2]
+[ext_resource path="res://scenes/enemy/boss/Boss2/Boss2Cannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemy/boss/Boss2/Boss2Flak.tscn" type="PackedScene" id=4]
+
+[node name="Boss2" type="KinematicBody2D"]
+
+[node name="Boss2Minigun" parent="." instance=ExtResource( 1 )]
+z_index = 1
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Boss2Cannon" parent="." instance=ExtResource( 3 )]
+
+[node name="Boss2Flak" parent="." instance=ExtResource( 4 )]
+

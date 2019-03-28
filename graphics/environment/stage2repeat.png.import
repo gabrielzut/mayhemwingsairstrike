@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss2.png-ceefa72e74cf0dc8fc3ec110d2f5b1e6.stex"
+path="res://.import/stage2repeat.png-e830dff173f52936f95244d14e969390.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/enemy/boss/boss2/boss2.png"
-dest_files=[ "res://.import/boss2.png-ceefa72e74cf0dc8fc3ec110d2f5b1e6.stex" ]
+source_file="res://graphics/environment/stage2repeat.png"
+dest_files=[ "res://.import/stage2repeat.png-e830dff173f52936f95244d14e969390.stex" ]
 
 [params]
 

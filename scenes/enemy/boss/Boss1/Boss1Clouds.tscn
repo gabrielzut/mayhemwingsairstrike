@@ -1,12 +1,13 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/stages/Boss1Clouds.gd" type="Script" id=1]
+[ext_resource path="res://scenes/enemy/boss/Boss1/Boss1Clouds.gd" type="Script" id=1]
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds1.png" type="Texture" id=2]
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds2.png" type="Texture" id=3]
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds3.png" type="Texture" id=4]
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds4.png" type="Texture" id=5]
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds5.png" type="Texture" id=6]
 [ext_resource path="res://graphics/environment/boss1clouds/boss1clouds6.png" type="Texture" id=7]
+
 
 
 
