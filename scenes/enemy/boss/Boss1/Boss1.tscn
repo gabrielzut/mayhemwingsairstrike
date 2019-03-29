@@ -7,8 +7,6 @@
 [ext_resource path="res://scenes/enemy/boss/Boss1/Boss1Launcher.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/enemy/CanhaoEnemy.tscn" type="PackedScene" id=6]
 
-
-
 [node name="Boss1" type="KinematicBody2D"]
 script = ExtResource( 1 )
 

@@ -1,20 +1,83 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://graphics/enemy/boss/boss2/boss2minigun1.png" type="Texture" id=1]
-[ext_resource path="res://graphics/enemy/boss/boss2/boss2minigun2.png" type="Texture" id=2]
+[ext_resource path="res://scenes/enemy/boss/Boss2/Boss2Minigun.gd" type="Script" id=1]
+[ext_resource path="res://graphics/enemy/boss/boss2/boss2minigun1.png" type="Texture" id=2]
+[ext_resource path="res://graphics/enemy/boss/boss2/boss2minigun2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/sound/PlayerHit.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "normal",
 "speed": 10.0
 } ]
 
+[sub_resource type="Animation" id=2]
+resource_name = "damage"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "shooting"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 4, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 45.0, -45.0, 0.0 ]
+}
+
 [node name="Boss2Minigun" type="KinematicBody2D"]
+script = ExtResource( 1 )
+hp = 21
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 13 )
 frames = SubResource( 1 )
 animation = "normal"
+frame = 1
 playing = true
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 13 )
+polygon = PoolVector2Array( 4.88284, 2.18029, -4.88412, 2.05178, -5.01264, -18.6388, -6.81182, -18.7673, -6.6833, -30.719, -5.91223, -30.8475, -5.78371, -33.6748, 6.03946, -33.6748, 6.00392, -30.9254, 7.02486, -30.8743, 7.02486, -28.8835, 10.9555, -28.9346, 10.9555, -23.0131, 7.02486, -23.0131, 7.02486, -19.0314, 4.98298, -19.0314 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, 18 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite")
+anims/damage = SubResource( 2 )
+
+[node name="PlayerHit" parent="." instance=ExtResource( 4 )]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/shooting = SubResource( 3 )
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_AnimationTimer_timeout"]

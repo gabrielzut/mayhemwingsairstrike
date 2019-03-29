@@ -1,26 +1,70 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon1.png" type="Texture" id=1]
-[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon2.png" type="Texture" id=2]
-[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon3.png" type="Texture" id=3]
-[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon4.png" type="Texture" id=4]
+[ext_resource path="res://scenes/enemy/boss/Boss2/Boss2Cannon.gd" type="Script" id=1]
+[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon1.png" type="Texture" id=2]
+[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon2.png" type="Texture" id=3]
+[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon3.png" type="Texture" id=4]
+[ext_resource path="res://graphics/enemy/boss/boss2/boss2cannon4.png" type="Texture" id=5]
+[ext_resource path="res://scenes/sound/PlayerHit.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "normal",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": false,
 "name": "shoot",
 "speed": 13.0
 } ]
 
+[sub_resource type="Animation" id=2]
+resource_name = "damage"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.92549, 0.254902, 0.254902, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Boss2Cannon" type="KinematicBody2D"]
+script = ExtResource( 1 )
+hp = 21
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 15, 0 )
+rotation = -1.5708
 frames = SubResource( 1 )
 animation = "normal"
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 15, 0 )
+rotation = -1.57079
+polygon = PoolVector2Array( 18.9561, 8.22641, -18.5165, 8.07652, -31.7068, -24.2998, 0.0699539, -47.8326, 31.9966, -25.349 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 53, -9 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 53, 10 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite")
+anims/damage = SubResource( 2 )
+
+[node name="PlayerHit" parent="." instance=ExtResource( 6 )]
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
