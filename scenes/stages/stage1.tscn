@@ -429,6 +429,8 @@ scrollDown = 20
 position = Vector2( 44.4186, -2819.51 )
 script = ExtResource( 15 )
 scrollDown = 20
+drop = true
+powerup = ExtResource( 12 )
 
 [node name="Boss1Clouds" parent="." instance=ExtResource( 23 )]
 position = Vector2( 144, -2888 )

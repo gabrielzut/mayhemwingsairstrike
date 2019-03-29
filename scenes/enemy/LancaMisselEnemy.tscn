@@ -47,4 +47,5 @@ anims/damage = SubResource( 2 )
 
 [node name="PlayerHit" parent="." instance=ExtResource( 3 )]
 
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

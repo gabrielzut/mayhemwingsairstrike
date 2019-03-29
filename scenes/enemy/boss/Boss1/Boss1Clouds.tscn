@@ -11,6 +11,9 @@
 
 
 
+
+
+
 [node name="Boss1Clouds" type="KinematicBody2D" index="0"]
 
 input_pickable = false

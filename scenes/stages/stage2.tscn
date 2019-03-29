@@ -263,11 +263,14 @@ position = Vector2( 288, -1276 )
 position = Vector2( 323.145, -1595.38 )
 script = ExtResource( 17 )
 scrollDown = 20
+drop = true
+powerup = ExtResource( 20 )
 
 [node name="Linha6" parent="." instance=ExtResource( 16 )]
 position = Vector2( -34.1848, -1595.96 )
 script = ExtResource( 17 )
 scrollDown = 20
+drop = true
 
 [node name="Boss2" parent="." instance=ExtResource( 22 )]
 position = Vector2( 145.12, -1861.85 )
