@@ -7,11 +7,14 @@
 [ext_resource path="res://scenes/enemy/boss/Boss2/Boss2Flak.tscn" type="PackedScene" id=5]
 
 [node name="Boss2" type="KinematicBody2D"]
+modulate = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
 
 [node name="Boss2Minigun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -13 )
 z_index = 2
+hp = 100
+score = 200
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
@@ -20,20 +23,30 @@ texture = ExtResource( 3 )
 position = Vector2( 0, -14 )
 rotation = 1.5708
 z_index = 1
+hp = 150
+score = 500
 
 [node name="Boss2Flak" parent="." instance=ExtResource( 5 )]
 position = Vector2( -53, 0 )
+hp = 50
+score = 50
 
 [node name="Boss2Flak3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 52, 0 )
 scale = Vector2( -1, 1 )
+hp = 50
+score = 50
 
 [node name="Boss2Flak2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -53, 25 )
+hp = 50
+score = 50
 
 [node name="Boss2Flak4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 52, 25 )
 scale = Vector2( -1, 1 )
+hp = 50
+score = 50
 
 [node name="TimerDestroyed" type="Timer" parent="."]
 wait_time = 5.0
@@ -47,7 +60,7 @@ autostart = true
 position = Vector2( 0, 55 )
 
 [node name="TimerMove" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="timeout" from="TimerDestroyed" to="." method="_on_TimerDestroyed_timeout"]

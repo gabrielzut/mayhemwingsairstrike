@@ -51,6 +51,7 @@ func damage(dmg):
 		explosion.position = position
 		explosion.scale = Vector2(1.5,1.5)
 		get_parent().add_child(explosion)
+		explosion.z_index = 2
 		explosion.explode()
 		queue_free()
 
@@ -73,7 +74,7 @@ func _on_AnimationTimer_timeout():
 	elif state == "shooting":
 		state = "stopped"
 		$AnimationTimer.stop()
-		$AnimationTimer.wait_time = 1.5
+		$AnimationTimer.wait_time = 0.5
 		$AnimationTimer.start()
 
 func _on_AnimationPlayer2_animation_finished(anim_name):

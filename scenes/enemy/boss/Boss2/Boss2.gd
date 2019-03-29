@@ -13,9 +13,8 @@ func _ready():
 func start():
 	pausado = false
 	$TimerMove.start()
-	
-	$Boss2Cannon.start()
-	$Boss2Minigun.start()	
+	$Boss2Cannon.visible = true
+	$Boss2Minigun.visible = true
 	
 func _physics_process(delta):
 	move_and_slide(Vector2(0,scrollDown))
@@ -26,14 +25,22 @@ func _physics_process(delta):
 		$Boss2Flak3.start()
 		$Boss2Flak4.start()
 		$Boss2Cannon.setTargetable()
+		$Boss2Cannon/Timer.stop()
+		$Boss2Cannon.shootInterval = 1.5
+		$Boss2Cannon/Timer.start()
 		
 	if $Boss2Cannon.destroyed == true and destroyed == false:
 		$Boss2Cannon.z_index = 1
 		scrollDown = 20
-		$Boss2Flak.damage(300)
-		$Boss2Flak2.damage(300)
-		$Boss2Flak3.damage(300)
-		$Boss2Flak4.damage(300)
+		
+		if !$Boss2Flak.destroyed:
+			$Boss2Flak.damage(300)
+		if !$Boss2Flak2.destroyed:
+			$Boss2Flak2.damage(300)
+		if !$Boss2Flak3.destroyed:
+			$Boss2Flak3.damage(300)
+		if !$Boss2Flak4.destroyed:
+			$Boss2Flak4.damage(300)
 		$TimerDestroyed.start()
 		destroyed = true
 		emit_signal("finished")
@@ -47,8 +54,10 @@ func _on_TimerDestroyed_timeout():
 func _on_TimerTrail_timeout():
 	var trail = preload("res://scenes/enemy/boss/Boss2/Boss2Trail.tscn").instance()
 	trail.global_position = $Position2D.global_position
-	trail.z_index = -1
+	trail.z_index = -2
 	get_tree().get_root().get_child(1).add_child(trail)
 
 func _on_TimerMove_timeout():
 	scrollDown = 0
+	$Boss2Cannon.start()
+	$Boss2Minigun.start()

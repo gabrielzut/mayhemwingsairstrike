@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/stages/stage2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://graphics/environment/stage2repeat.png" type="Texture" id=6]
 [ext_resource path="res://graphics/environment/stage2.png" type="Texture" id=7]
 [ext_resource path="res://scenes/stages/Boundary.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sound/music/Alexander Ehlers - Warped.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sound/music/Alexander Ehlers - Twists.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/props/Spawner.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/enemy/HelicopteroEnemy.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/props/EnemyShot4.tscn" type="PackedScene" id=12]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scenes/enemy/TruckEnemy.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/powerups/PowerPowerup.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/enemy/TankEnemy.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/enemy/boss/Boss2/Boss2.tscn" type="PackedScene" id=22]
 
 [node name="Stage2" type="Node2D"]
 script = ExtResource( 1 )
@@ -268,6 +269,14 @@ position = Vector2( -34.1848, -1595.96 )
 script = ExtResource( 17 )
 scrollDown = 20
 
+[node name="Boss2" parent="." instance=ExtResource( 22 )]
+position = Vector2( 145.12, -1861.85 )
+z_index = -1
+
+[node name="Spawner15" parent="." instance=ExtResource( 10 )]
+position = Vector2( 288, -1237 )
+
+[connection signal="animation" from="CanvasLayer/Fade" to="." method="_on_Fade_animation"]
 [connection signal="tween_completed" from="PlayerMusic/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="collision" from="Spawner" to="." method="_on_Spawner_collision"]
 [connection signal="collision" from="Spawner2" to="." method="_on_Spawner2_collision"]
@@ -283,3 +292,6 @@ scrollDown = 20
 [connection signal="collision" from="Spawner12" to="." method="_on_Spawner12_collision"]
 [connection signal="collision" from="Spawner13" to="." method="_on_Spawner13_collision"]
 [connection signal="collision" from="Spawner14" to="." method="_on_Spawner14_collision"]
+[connection signal="destroyed" from="Boss2" to="." method="_on_Boss2_destroyed"]
+[connection signal="finished" from="Boss2" to="." method="_on_Boss2_finished"]
+[connection signal="collision" from="Spawner15" to="." method="_on_Spawner15_collision"]
