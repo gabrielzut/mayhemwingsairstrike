@@ -82,8 +82,8 @@ func _on_Tween_tween_completed(object, key):
 		$PlayerMusic.play()
 
 func _on_Fade_animation(source):
-	#if source == "stage3":
-		#get_tree().change_scene("res://scenes/stages/stage3.tscn")
+	if source == "stage3":
+		get_tree().change_scene("res://scenes/stages/stage3.tscn")
 	pass
 
 func _on_Spawner15_collision(confirmation):

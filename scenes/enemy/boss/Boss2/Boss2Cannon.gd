@@ -7,7 +7,6 @@ export var shootInterval = 2.0
 export var shootSpeed = 0
 
 func _ready():
-	
 	$Timer.wait_time = shootInterval
 	
 	if pausado:
@@ -25,6 +24,8 @@ func start():
 func setTargetable():
 	collision_layer = 1
 	collision_mask = 8
+	$Timer.wait_time = shootInterval/2
+	$Timer.start()
 
 func _physics_process(delta):
 	if get_tree().get_root().get_child(1).has_node("Player") and destroyed == false:

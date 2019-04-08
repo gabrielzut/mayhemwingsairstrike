@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/stages/stage3.gd" type="Script" id=1]
+[ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/stages/ParallaxBackground.gd" type="Script" id=5]
+[ext_resource path="res://scenes/stages/Boundary.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sound/music/Alexander Ehlers - Twists.ogg" type="AudioStream" id=7]
+
+[node name="Stage3" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -1375.92 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="Fade" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 157.525, 477.987 )
+
+[node name="hud" parent="." instance=ExtResource( 4 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -2
+script = ExtResource( 5 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 0, -3016 )
+centered = false
+
+[node name="Boundary" parent="." instance=ExtResource( 6 )]
+
+[node name="PlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -25.0
+autoplay = true
+
+[node name="Tween" type="Tween" parent="PlayerMusic"]
+
+[connection signal="animation" from="CanvasLayer/Fade" to="." method="_on_Fade_animation"]
+[connection signal="tween_completed" from="PlayerMusic/Tween" to="." method="_on_Tween_tween_completed"]

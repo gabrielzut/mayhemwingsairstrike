@@ -13,6 +13,7 @@ func _ready():
 func start():
 	pausado = false
 	$TimerMove.start()
+	$TimerTrail.start()
 	$Boss2Cannon.visible = true
 	$Boss2Minigun.visible = true
 	
@@ -25,9 +26,6 @@ func _physics_process(delta):
 		$Boss2Flak3.start()
 		$Boss2Flak4.start()
 		$Boss2Cannon.setTargetable()
-		$Boss2Cannon/Timer.stop()
-		$Boss2Cannon.shootInterval = 1.0
-		$Boss2Cannon/Timer.start()
 		
 	if $Boss2Cannon.destroyed == true and destroyed == false:
 		$Boss2Cannon.z_index = 1
