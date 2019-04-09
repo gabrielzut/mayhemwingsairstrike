@@ -1,23 +1,30 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/stages/stage3.gd" type="Script" id=1]
 [ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/stages/ParallaxBackground.gd" type="Script" id=5]
-[ext_resource path="res://scenes/stages/Boundary.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sound/music/Alexander Ehlers - Twists.ogg" type="AudioStream" id=7]
+[ext_resource path="res://graphics/environment/stage3.png" type="Texture" id=6]
+[ext_resource path="res://scenes/stages/Boundary.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sound/music/Alexander Ehlers - Twists.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/enemy/TankEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/enemy/groups/V.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/enemy/TruckEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/enemy/AviaoGrandeEnemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/enemy/groups/Linha.tscn" type="PackedScene" id=13]
 
 [node name="Stage3" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ -1375.92 ]
+"_edit_horizontal_guides_": [  ]
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 11
 
 [node name="Fade" parent="CanvasLayer" instance=ExtResource( 2 )]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 157.525, 477.987 )
@@ -32,16 +39,92 @@ script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 0, -3016 )
+texture = ExtResource( 6 )
 centered = false
 
-[node name="Boundary" parent="." instance=ExtResource( 6 )]
+[node name="Boundary" parent="." instance=ExtResource( 7 )]
 
 [node name="PlayerMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -25.0
 autoplay = true
 
 [node name="Tween" type="Tween" parent="PlayerMusic"]
+
+[node name="TankEnemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 304.498, -86.1827 )
+rotation = 1.5708
+
+[node name="TankEnemy2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -16.9903, -82.8902 )
+rotation = -1.5708
+
+[node name="V" parent="." instance=ExtResource( 10 )]
+position = Vector2( 6.09229, -179.534 )
+scrollDown = 20
+
+[node name="TruckEnemy" parent="." instance=ExtResource( 11 )]
+position = Vector2( 31.5536, -517.272 )
+
+[node name="TruckEnemy2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 255.322, -519.357 )
+
+[node name="AviaoGrandeEnemy" parent="." instance=ExtResource( 12 )]
+position = Vector2( 363.728, -831.119 )
+
+[node name="AviaoGrandeEnemy2" parent="." instance=ExtResource( 12 )]
+position = Vector2( -72.0975, -830.349 )
+scale = Vector2( -1, 1 )
+
+[node name="TankEnemy3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32.4632, -1381.96 )
+
+[node name="TankEnemy7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 256.463, -1381.96 )
+
+[node name="TankEnemy4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32.3109, -1421.49 )
+
+[node name="TankEnemy8" parent="." instance=ExtResource( 9 )]
+position = Vector2( 256.311, -1421.49 )
+
+[node name="TankEnemy5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32.3141, -1463 )
+
+[node name="TankEnemy6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 256.314, -1463 )
+
+[node name="Linha" parent="." instance=ExtResource( 13 )]
+position = Vector2( -34.3094, -1865.8 )
+scrollDown = 20
+
+[node name="Linha6" parent="." instance=ExtResource( 13 )]
+position = Vector2( 322.353, -1864.75 )
+scrollDown = 20
+
+[node name="Linha2" parent="." instance=ExtResource( 13 )]
+position = Vector2( -103.267, -1995.63 )
+scrollDown = 20
+
+[node name="Linha5" parent="." instance=ExtResource( 13 )]
+position = Vector2( 393.396, -1994.59 )
+scrollDown = 20
+
+[node name="Linha3" parent="." instance=ExtResource( 13 )]
+position = Vector2( -169.74, -2087.21 )
+scrollDown = 20
+
+[node name="Linha4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 460.923, -2086.17 )
+scrollDown = 20
+
+[node name="TruckEnemy3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 315.159, -2567.5 )
+rotation = 1.5708
+
+[node name="TankEnemy9" parent="." instance=ExtResource( 9 )]
+position = Vector2( -12.8544, -2539 )
+rotation = -1.5708
 
 [connection signal="animation" from="CanvasLayer/Fade" to="." method="_on_Fade_animation"]
 [connection signal="tween_completed" from="PlayerMusic/Tween" to="." method="_on_Tween_tween_completed"]
