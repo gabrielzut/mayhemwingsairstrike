@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/enemy/MissileEnemy.gd" type="Script" id=1]
+[ext_resource path="res://graphics/enemy/missile1.png" type="Texture" id=2]
+[ext_resource path="res://graphics/enemy/missile2.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="MissileEnemy" type="KinematicBody2D"]
+script = ExtResource( 1 )
+hp = 10
+score = 15
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+playing = true
+flip_v = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 3.14159
+polygon = PoolVector2Array( -0.188221, 35.005, -3.91398, 29.9834, -3.99498, 14.1084, -4.88592, 14.1084, -10.7985, 1.79717, -10.7985, -1.92859, -4.15696, -1.92859, -3.99497, -16.9936, -4.88591, -16.9936, -7.88272, -23.1492, -7.88272, -24.9311, 7.83027, -24.9311, 7.91126, -22.9872, 4.91446, -16.9936, 4.02351, -16.9936, 4.10451, -1.92859, 10.8271, -1.8476, 10.9081, 1.87817, 4.99545, 14.0274, 4.10451, 14.0274, 3.94252, 29.9833 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -3.8147e-006, 0.196021 )
+scale = Vector2( 1.08996, 3.47034 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

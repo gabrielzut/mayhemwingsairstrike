@@ -31,3 +31,50 @@ func _on_Fade_animation(source):
 #func _on_Spawner_collision(confirmation):
 #	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,3,Tween.TRANS_SINE,Tween.EASE_IN)
 #	$PlayerMusic/Tween.start()
+
+func _on_Spawner_collision(confirmation):
+	$V.start()
+	$TankEnemy.start()
+	$TankEnemy2.start()
+
+func _on_Spawner2_collision(confirmation):
+	$TruckEnemy.start()
+	$TruckEnemy2.start()
+
+func _on_Spawner3_collision(confirmation):
+	$AviaoGrandeEnemy.start()
+	$AviaoGrandeEnemy2.start()
+
+func _on_Spawner4_collision(confirmation):
+	$TankEnemy3.start()
+	$TankEnemy4.start()
+	$TankEnemy5.start()
+	$TankEnemy6.start()
+	$TankEnemy7.start()
+	$TankEnemy8.start()
+
+func _on_Spawner5_collision(confirmation):
+	$Linha.start()
+	$Linha2.start()
+	$Linha3.start()
+	$Linha4.start()
+	$Linha5.start()
+
+func _on_Spawner6_collision(confirmation):
+	$MissileEnemy.start()
+	$MissileEnemy2.start()
+	$MissileEnemy3.start()
+	$MissileEnemy4.start()
+	$MissileEnemy5.start()
+	$MissileEnemy6.start()
+	$MissileEnemy7.start()
+	$MissileEnemy8.start()
+	$MissileEnemy9.start()
+	$MissileEnemy10.start()
+	$MissileEnemy11.start()
+	$MissileEnemy12.start()
+	$MissileEnemy13.start()
+
+func _on_Spawner7_collision(confirmation):
+	$TankEnemy9.start()
+	$TruckEnemy3.start()

@@ -69,6 +69,7 @@ score = 50
 rotation = -1.5708
 frames = SubResource( 1 )
 animation = "normal"
+frame = 1
 playing = true
 
 [node name="Explosion" parent="AnimatedSprite" instance=ExtResource( 4 )]
@@ -103,5 +104,8 @@ shootInterval = 2.5
 
 [node name="PlayerHit" parent="." instance=ExtResource( 6 )]
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="exploded" from="AnimatedSprite/Explosion" to="." method="_on_Explosion_exploded"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

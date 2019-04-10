@@ -2,6 +2,7 @@ extends "res://classes/destructable.gd"
 
 export var maxVelocidade = 30
 export var scrollDown = 20
+export var tempoMov = 30
 var velocidade = Vector2(0,0)
 export var pausado = true
 
@@ -12,6 +13,9 @@ func start():
 	collision_mask = 0
 	velocidade = Vector2(0,maxVelocidade).rotated(rotation)
 	$LancaMisselEnemy.start()
+	$Timer.wait_time = tempoMov
+	$Timer.one_shot = true
+	$Timer.start()
 
 func _ready():
 	if pausado:
@@ -66,3 +70,6 @@ func _on_Explosion_exploded(confirmation):
 		destroyedFloor.scale = Vector2(1.2,1.2)
 		add_child(destroyedFloor)
 		$AnimatedSprite.hide()
+		
+func _on_Timer_timeout():
+	velocidade = Vector2(0,0)
