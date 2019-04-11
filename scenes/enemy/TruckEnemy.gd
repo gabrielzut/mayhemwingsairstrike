@@ -73,3 +73,4 @@ func _on_Explosion_exploded(confirmation):
 		
 func _on_Timer_timeout():
 	velocidade = Vector2(0,0)
+	$AnimatedSprite.playing = false

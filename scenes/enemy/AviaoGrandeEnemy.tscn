@@ -63,7 +63,6 @@ position = Vector2( -0.422061, 19.3524 )
 scale = Vector2( 0.996063, 0.963731 )
 frames = SubResource( 2 )
 animation = "normal"
-frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/AviaoGEnemy"]

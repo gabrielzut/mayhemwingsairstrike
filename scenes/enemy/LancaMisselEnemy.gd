@@ -59,6 +59,7 @@ func damage(dmg):
 		$CollisionShape2D.disabled = true
 		firedestroyed.position = $Sprite.position
 		firedestroyed.scale = Vector2(1.3,1.3)
+		firedestroyed.global_rotation_degrees = 0
 		add_child(firedestroyed)
 		$Sprite.hide()
 

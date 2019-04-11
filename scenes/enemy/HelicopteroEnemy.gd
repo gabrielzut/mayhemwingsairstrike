@@ -37,7 +37,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 		queue_free()
 
 func _on_Timer_timeout():
-	if $Path2D/PathFollow2D/HeliEnemy/VisibilityNotifier2D.is_on_screen() and pausado == false:
+	if $Path2D/PathFollow2D/HeliEnemy/VisibilityNotifier2D.is_on_screen() and pausado == false and ended == false:
 		var shoot = weapon.instance()
 		
 		if shootSpeed > 0:
@@ -67,4 +67,8 @@ func damage(dmg):
 		explosion.position = $Path2D/PathFollow2D/HeliEnemy.global_position
 		get_parent().add_child(explosion)
 		explosion.explode()
+		queue_free()
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if "EndPath" in anim_name:
 		queue_free()

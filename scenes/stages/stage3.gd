@@ -74,7 +74,60 @@ func _on_Spawner6_collision(confirmation):
 	$MissileEnemy11.start()
 	$MissileEnemy12.start()
 	$MissileEnemy13.start()
+	$MissileEnemy20.start()
+	$MissileEnemy21.start()
+	$MissileEnemy22.start()
+	$MissileEnemy23.start()
+	$MissileEnemy24.start()
+	$MissileEnemy25.start()
+	$MissileEnemy26.start()
+	$MissileEnemy27.start()
 
 func _on_Spawner7_collision(confirmation):
 	$TankEnemy9.start()
 	$TruckEnemy3.start()
+
+func _on_Spawner8_collision(confirmation):
+	$HelicopteroEnemy.start()
+	$HelicopteroEnemy2.start()
+
+func _on_Spawner9_collision(confirmation):
+	$HeliEnemy.start()
+	$HeliEnemy2.start()
+	$HeliEnemy3.start()
+
+func _on_Spawner10_collision(confirmation):
+	$V2.start()
+	$V3.start()
+
+func _on_Spawner11_collision(confirmation):
+	$MissileEnemy14.start()
+	$MissileEnemy15.start()
+	$MissileEnemy16.start()
+	$MissileEnemy17.start()
+	$MissileEnemy18.start()
+	$MissileEnemy19.start()
+
+func _on_Spawner12_collision(confirmation):
+	$V4.start()
+
+func _on_Spawner13_collision(confirmation):
+	$V5.start()
+	$V6.start()
+
+func _on_Spawner14_collision(confirmation):
+	$Linha7.start()
+	$Linha8.start()
+	$Linha9.start()
+	$Linha10.start()
+	$Linha11.start()
+
+func _on_Spawner15_collision(confirmation):
+	$Linha12.start()
+	$Linha13.start()
+
+func _on_Spawner16_collision(confirmation):
+	$ParallaxBackground.pausado = true
+	$TankEnemy9.scrollDown = 0
+	$TruckEnemy3.scrollDown = 0
+	#$Boss3.start()
