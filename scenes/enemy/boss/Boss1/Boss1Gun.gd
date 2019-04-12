@@ -2,6 +2,7 @@ extends "res://classes/destructable.gd"
 
 export var weapon = preload("res://scenes/props/EnemyShot3.tscn")
 export var pausado = true
+export var burst = 3
 var shots = 0
 
 func _ready():
@@ -21,7 +22,7 @@ func _on_Timer_timeout():
 		$Timer2.start()
 	
 func _on_Timer2_timeout():
-	if shots < 3:
+	if shots < burst:
 		var shoot = weapon.instance()
 		shoot.global_position = $Position2D.get_global_position()
 		get_tree().get_root().get_child(1).add_child(shoot)

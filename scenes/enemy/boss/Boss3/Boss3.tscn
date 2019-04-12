@@ -1,39 +1,199 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://graphics/enemy/boss/boss3/Boss3.png" type="Texture" id=1]
-[ext_resource path="res://scenes/enemy/boss/Boss3/Boss3MG.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/enemy/boss/Boss3/Boss3Flak.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/enemy/boss/Boss3/Boss3Cannon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemy/boss/Boss3/Boss3.gd" type="Script" id=1]
+[ext_resource path="res://scenes/enemy/boss/Boss3/Trem.gd" type="Script" id=2]
+[ext_resource path="res://graphics/enemy/boss/boss3/Boss3.png" type="Texture" id=3]
+[ext_resource path="res://scenes/enemy/boss/Boss3/Boss3MG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemy/boss/Boss3/Boss3Flak.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/enemy/boss/Boss3/Boss3Cannon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/sound/PlayerHit.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "move1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TremBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 530, 0 ), Vector2( 200, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "move2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TremBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 200, 0 ), Vector2( -250, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TremBoss:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "move3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TremBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -250, 33 ), Vector2( 280, 33 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "move4"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TremBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 280, 33 ), Vector2( 520, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TremBoss:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "move5"
+length = 1.4
+step = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("TremBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 520, 0 ), Vector2( 325, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "damage"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.862745, 0.129412, 0.129412, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Boss3" type="KinematicBody2D"]
+script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/move1 = SubResource( 1 )
+anims/move2 = SubResource( 2 )
+anims/move3 = SubResource( 3 )
+anims/move4 = SubResource( 4 )
+anims/move5 = SubResource( 5 )
 
-[node name="Boss3MG" parent="." instance=ExtResource( 2 )]
-position = Vector2( -14, 2 )
+[node name="TremBoss" type="KinematicBody2D" parent="."]
+position = Vector2( 530, 0 )
+script = ExtResource( 2 )
+hp = 200
+score = 400
 
-[node name="Boss3MG2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 8, 2 )
+[node name="Sprite" type="Sprite" parent="TremBoss"]
+position = Vector2( -2.44022, -3.66512 )
+texture = ExtResource( 3 )
 
-[node name="Boss3MG3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 30, 2 )
+[node name="Boss3MG" parent="TremBoss" instance=ExtResource( 4 )]
+position = Vector2( -16.4402, -1.66512 )
 
-[node name="Boss3MG4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 162, 2 )
+[node name="Boss3MG2" parent="TremBoss" instance=ExtResource( 4 )]
+position = Vector2( 5.55978, -1.66512 )
 
-[node name="Boss3MG5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 184, 2 )
+[node name="Boss3MG3" parent="TremBoss" instance=ExtResource( 4 )]
+position = Vector2( 27.5598, -1.66512 )
 
-[node name="Boss3MG6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 206, 2 )
+[node name="Boss3MG4" parent="TremBoss" instance=ExtResource( 4 )]
+position = Vector2( 159.56, -1.66512 )
 
-[node name="Boss3Flak" parent="." instance=ExtResource( 3 )]
-position = Vector2( -102, 0 )
+[node name="Boss3MG5" parent="TremBoss" instance=ExtResource( 4 )]
+position = Vector2( 181.56, -1.66512 )
 
-[node name="Boss3Flak2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -58, 0 )
+[node name="Boss3MG6" parent="TremBoss" instance=ExtResource( 4 )]
+position = Vector2( 203.56, -1.66512 )
 
-[node name="Boss3Cannon" parent="." instance=ExtResource( 4 )]
-position = Vector2( 84, 7 )
+[node name="Boss3Flak" parent="TremBoss" instance=ExtResource( 5 )]
+position = Vector2( -104.44, -3.66512 )
 
+[node name="Boss3Flak2" parent="TremBoss" instance=ExtResource( 5 )]
+position = Vector2( -60.4402, -3.66512 )
+
+[node name="Boss3Cannon" parent="TremBoss" instance=ExtResource( 6 )]
+position = Vector2( 78.5598, -1.66512 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TremBoss"]
+position = Vector2( -2.44022, -3.66512 )
+polygon = PoolVector2Array( -127.883, 22.991, -227.634, 22.789, -227.634, 15.7216, -224, 8.45229, -223.798, -8.10563, -160.999, -8.50948, -160.797, -22.6443, -128.287, -22.4424 )
+
+[node name="Timer" type="Timer" parent="TremBoss"]
+wait_time = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TremBoss"]
+anims/damage = SubResource( 6 )
+
+[node name="PlayerHit" parent="TremBoss" instance=ExtResource( 7 )]
+
+[node name="Position2D" type="Position2D" parent="TremBoss"]
+position = Vector2( -155, 3 )
+
+[node name="TimerDestroyed" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="TremBoss/Timer" to="TremBoss" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimerDestroyed" to="." method="_on_TimerDestroyed_timeout"]

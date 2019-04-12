@@ -128,6 +128,7 @@ func _on_Spawner15_collision(confirmation):
 
 func _on_Spawner16_collision(confirmation):
 	$ParallaxBackground.pausado = true
+	$Boss3.scrollDown = 0
 	$TankEnemy9.scrollDown = 0
 	$TruckEnemy3.scrollDown = 0
-	#$Boss3.start()
+	$Boss3.start()
