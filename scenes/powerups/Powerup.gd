@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const VELOCIDADE = 50
+var picked = false
 
 onready var singletons = get_node("/root/Singletons")
 
@@ -23,7 +24,8 @@ func _physics_process(delta):
 	
 	if get_tree().get_root().get_child(1).has_node("Player"):
 		player = get_tree().get_root().get_child(1).get_node("Player")
-	if $Area2D.get_overlapping_bodies().has(player):
+	if $Area2D.get_overlapping_bodies().has(player) and picked == false:
+		picked = true
 		pick()
 		$Area2D/CollisionPolygon2D.disabled = true
 		visible = false

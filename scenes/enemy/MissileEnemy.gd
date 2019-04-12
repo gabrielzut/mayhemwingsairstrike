@@ -45,6 +45,7 @@ func damage(dmg):
 		singletons.addScore(score)
 		var explosion = singletons.explosion.instance()
 		explosion.position = global_position
+		explosion.scale = Vector2(2,2)
 		get_parent().add_child(explosion)
 		explosion.explode()
 		queue_free()

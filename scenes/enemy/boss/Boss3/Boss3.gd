@@ -32,7 +32,8 @@ func _physics_process(delta):
 		for child in get_tree().get_root().get_child(1).get_children():
 			if "Shot" in child.name:
 				child.queue_free()
-		destroyed == true
+		destroyed = true
+		$AnimationPlayer.play("move6")
 
 func _on_TimerDestroyed_timeout():
 	emit_signal("destroyed")

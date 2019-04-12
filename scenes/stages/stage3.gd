@@ -5,14 +5,13 @@ var bossDestroyed = false
 func _ready():
 	$CanvasLayer/Fade.fadein("self")
 
-#func _on_Boss3_destroyed():
-#	$Player.finish()
-#	$CanvasLayer/Fade.fadeout("stage3")
+func _on_Boss3_destroyed():
+	$bgLauncher.start()
 
-#func _on_Boss3_finished():
-#	bossDestroyed = true
-#	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,2,Tween.TRANS_SINE,Tween.EASE_IN)
-#	$PlayerMusic/Tween.start()
+func _on_Boss3_finished():
+	bossDestroyed = true
+	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,2,Tween.TRANS_SINE,Tween.EASE_IN)
+	$PlayerMusic/Tween.start()
 
 func _on_Tween_tween_completed(object, key):
 	$PlayerMusic.volume_db = -25
@@ -24,13 +23,9 @@ func _on_Tween_tween_completed(object, key):
 		$PlayerMusic.play()
 
 func _on_Fade_animation(source):
-	#if source == "stage4":
-		#get_tree().change_scene("res://scenes/stages/stage4.tscn")
+	if source == "stage4":
+		get_tree().change_scene("res://scenes/stages/stage4.tscn")
 	pass
-	
-#func _on_Spawner_collision(confirmation):
-#	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,3,Tween.TRANS_SINE,Tween.EASE_IN)
-#	$PlayerMusic/Tween.start()
 
 func _on_Spawner_collision(confirmation):
 	$V.start()
@@ -131,4 +126,13 @@ func _on_Spawner16_collision(confirmation):
 	$Boss3.scrollDown = 0
 	$TankEnemy9.scrollDown = 0
 	$TruckEnemy3.scrollDown = 0
+	$bgLauncher.scrollDown = 0
 	$Boss3.start()
+
+func _on_bgLauncher_finished():
+	$Player.finish()
+	$CanvasLayer/Fade.fadeout("stage3")
+
+func _on_Spawner17_collision(confirmation):
+	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,3,Tween.TRANS_SINE,Tween.EASE_IN)
+	$PlayerMusic/Tween.start()

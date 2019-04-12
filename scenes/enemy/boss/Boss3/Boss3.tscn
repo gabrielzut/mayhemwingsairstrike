@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/enemy/boss/Boss3/Boss3.gd" type="Script" id=1]
 [ext_resource path="res://scenes/enemy/boss/Boss3/Trem.gd" type="Script" id=2]
@@ -113,8 +113,23 @@ tracks/0/keys = {
 "values": [ Vector2( 520, 0 ), Vector2( 325, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "damage"
+[sub_resource type="Animation" id=8]
+resource_name = "move6"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TremBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 325, 0 ), Vector2( -230, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 0.1
 step = 0.05
 tracks/0/type = "value"
@@ -139,6 +154,7 @@ anims/move2 = SubResource( 2 )
 anims/move3 = SubResource( 3 )
 anims/move4 = SubResource( 4 )
 anims/move5 = SubResource( 5 )
+anims/move6 = SubResource( 8 )
 
 [node name="TremBoss" type="KinematicBody2D" parent="."]
 position = Vector2( 530, 0 )
@@ -185,7 +201,7 @@ polygon = PoolVector2Array( -127.883, 22.991, -227.634, 22.789, -227.634, 15.721
 wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TremBoss"]
-anims/damage = SubResource( 6 )
+anims/damage = SubResource( 7 )
 
 [node name="PlayerHit" parent="TremBoss" instance=ExtResource( 7 )]
 
