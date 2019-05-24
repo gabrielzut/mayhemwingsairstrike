@@ -29,9 +29,6 @@ func _on_MenuButton_focus_entered():
 	if som == true:
 		$PlayerFocus.play()
 
-func _on_MenuButton_mouse_entered():
-	grab_focus()
-
 func _on_NovoJogo_mouse_entered():
 	$"Botões/NovoJogo".grab_focus()
 
@@ -48,3 +45,6 @@ func playSelection():
 	if som == true:
 		$PlayerSelection.play()
 		som = false
+
+func _on_Options_pressed():
+	get_tree().change_scene("res://scenes/stages/MenuOptions.tscn")

@@ -4,13 +4,11 @@ export var aceleracao = 10
 export var maxVelocidade = 100
 
 signal finished()
-signal gameOver()
 
 var starting = false
 var finished = false
 var velocidade = Vector2()
 var cdbomb = false
-var muted = false
 
 func _ready():
 	start()
@@ -111,9 +109,8 @@ func _physics_process(delta):
 			emit_signal("finished")
 			
 	if Input.is_action_just_pressed("mute"):
-		muted = !muted
-		AudioServer.set_bus_mute(0,muted)
-	
+		singletons.mute()
+
 func _on_TimerShoot_timeout():
 	if starting == false and finished == false:
 		if Input.is_action_pressed("player_shoot"):
@@ -151,8 +148,10 @@ func respawn():
 		$TimerRespawn.start()
 		starting = true
 	else:
-		emit_signal("gameOver")
-		queue_free()
+		$CollisionShape2D.disabled = true
+		visible = false
+		position = Vector2(144,530)
+		$TimerGameOver.start()
 
 func _on_TimerScore_timeout():
 	singletons.addScore(10)
@@ -171,3 +170,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_TimerCDBomb_timeout():
 	cdbomb = false
+
+func _on_TimerGameOver_timeout():
+	if get_tree().get_root().get_child(1).has_node("CanvasLayer/Fade"):
+		get_tree().get_root().get_child(1).get_node("CanvasLayer/Fade").fadein("GameOver")
+	get_tree().change_scene("res://scenes/stages/GameOver.tscn")

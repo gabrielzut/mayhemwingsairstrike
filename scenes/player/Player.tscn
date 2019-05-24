@@ -95,9 +95,13 @@ pitch_scale = 0.5
 wait_time = 5.0
 one_shot = true
 
+[node name="TimerGameOver" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="TimerShoot" to="." method="_on_TimerShoot_timeout"]
 [connection signal="timeout" from="TimerScore" to="." method="_on_TimerScore_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="TimerIFrames" to="." method="_on_TimerIFrames_timeout"]
 [connection signal="timeout" from="TimerRespawn" to="." method="_on_TimerRespawn_timeout"]
 [connection signal="timeout" from="TimerCDBomb" to="." method="_on_TimerCDBomb_timeout"]
+[connection signal="timeout" from="TimerGameOver" to="." method="_on_TimerGameOver_timeout"]

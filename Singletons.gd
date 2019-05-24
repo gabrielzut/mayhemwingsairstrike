@@ -15,6 +15,7 @@ var playerPowerup = 1
 var playerLife = 3
 var playerBomb = 2
 var playerScore = 0
+var muted = false
 
 func addPower(var power):
 	if playerPowerup + power <= 3:
@@ -43,6 +44,10 @@ func getPlayerWeapon():
 		return playerWeapon2
 	elif playerPowerup == 3:
 		return playerWeapon3
+
+func mute():
+	muted = !muted
+	AudioServer.set_bus_mute(0,muted)
 
 # Para adicionar o singleton nos códigos usar
 # onready var singletons = get_node("/root/Singletons")

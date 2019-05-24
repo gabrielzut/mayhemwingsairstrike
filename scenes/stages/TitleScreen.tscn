@@ -7,9 +7,9 @@
 [ext_resource path="res://scenes/stages/Buttons/TitleScreenButtonGroup.tres" type="ButtonGroup" id=5]
 [ext_resource path="res://fonts/vegur/Vegur-Regular.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sound/sfc/Menu__010.wav" type="AudioStream" id=8]
-[ext_resource path="res://sound/sfc/Menu__008.wav" type="AudioStream" id=9]
-[ext_resource path="res://sound/music/Alexander Ehlers - Great mission.ogg" type="AudioStream" id=10]
+[ext_resource path="res://scenes/sound/PlayerFocus.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/sound/PlayerSelection.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/sound/PlayerMusic.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxLine" id=1]
 thickness = 10
@@ -104,18 +104,11 @@ valign = 1
 rect_clip_content = true
 mouse_filter = 2
 
-[node name="PlayerFocus" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-volume_db = -30.0
+[node name="PlayerFocus" parent="." instance=ExtResource( 8 )]
 
-[node name="PlayerSelection" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-volume_db = -30.0
+[node name="PlayerSelection" parent="." instance=ExtResource( 9 )]
 
-[node name="PlayerMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
-volume_db = -30.0
-autoplay = true
+[node name="PlayerMusic" parent="." instance=ExtResource( 10 )]
 
 [connection signal="focus_entered" from="Botões/NovoJogo" to="." method="_on_MenuButton_focus_entered"]
 [connection signal="mouse_entered" from="Botões/NovoJogo" to="." method="_on_NovoJogo_mouse_entered"]
@@ -124,6 +117,7 @@ autoplay = true
 [connection signal="mouse_entered" from="Botões/Highscores" to="." method="_on_Highscores_mouse_entered"]
 [connection signal="focus_entered" from="Botões/Options" to="." method="_on_MenuButton_focus_entered"]
 [connection signal="mouse_entered" from="Botões/Options" to="." method="_on_Options_mouse_entered"]
+[connection signal="pressed" from="Botões/Options" to="." method="_on_Options_pressed"]
 [connection signal="focus_entered" from="Botões/Quit" to="." method="_on_MenuButton_focus_entered"]
 [connection signal="mouse_entered" from="Botões/Quit" to="." method="_on_Quit_mouse_entered"]
 [connection signal="pressed" from="Botões/Quit" to="." method="_on_Quit_pressed"]
