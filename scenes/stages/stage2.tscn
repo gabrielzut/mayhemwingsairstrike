@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/stages/stage2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://scenes/powerups/PowerPowerup.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/enemy/TankEnemy.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/enemy/boss/Boss2/Boss2.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/props/Pause.tscn" type="PackedScene" id=23]
 
 [node name="Stage2" type="Node2D"]
 script = ExtResource( 1 )
@@ -278,6 +279,8 @@ z_index = -1
 
 [node name="Spawner15" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, -1237 )
+
+[node name="Pause" parent="." instance=ExtResource( 23 )]
 
 [connection signal="animation" from="CanvasLayer/Fade" to="." method="_on_Fade_animation"]
 [connection signal="tween_completed" from="PlayerMusic/Tween" to="." method="_on_Tween_tween_completed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/stages/stage3.gd" type="Script" id=1]
 [ext_resource path="res://scenes/stages/Fade.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scenes/enemy/HeliEnemy.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/stages/bgLauncher.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/enemy/boss/Boss3/Boss3.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/props/Pause.tscn" type="PackedScene" id=22]
 
 [node name="Stage3" type="Node2D"]
 script = ExtResource( 1 )
@@ -436,6 +437,8 @@ position = Vector2( 0, -2923.5 )
 
 [node name="Spawner17" parent="." instance=ExtResource( 17 )]
 position = Vector2( 288, -2344 )
+
+[node name="Pause" parent="." instance=ExtResource( 22 )]
 
 [connection signal="animation" from="CanvasLayer/Fade" to="." method="_on_Fade_animation"]
 [connection signal="tween_completed" from="PlayerMusic/Tween" to="." method="_on_Tween_tween_completed"]

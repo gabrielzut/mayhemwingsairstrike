@@ -55,25 +55,15 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="NovoJogo" parent="Botões" instance=ExtResource( 4 )]
-margin_top = 47.0
-margin_bottom = 78.0
+margin_top = 64.0
+margin_bottom = 95.0
 focus_neighbour_bottom = NodePath("../Highscores")
 focus_next = NodePath("../Highscores")
 group = ExtResource( 5 )
 
-[node name="Highscores" parent="Botões" instance=ExtResource( 4 )]
-margin_top = 82.0
-margin_bottom = 113.0
-focus_neighbour_top = NodePath("../NovoJogo")
-focus_neighbour_bottom = NodePath("../Options")
-focus_next = NodePath("../Options")
-focus_previous = NodePath("../NovoJogo")
-group = ExtResource( 5 )
-text = "Highscores"
-
 [node name="Options" parent="Botões" instance=ExtResource( 4 )]
-margin_top = 117.0
-margin_bottom = 148.0
+margin_top = 99.0
+margin_bottom = 130.0
 focus_neighbour_top = NodePath("../Highscores")
 focus_neighbour_bottom = NodePath("../Quit")
 focus_next = NodePath("../Quit")
@@ -82,8 +72,8 @@ group = ExtResource( 5 )
 text = "Options"
 
 [node name="Quit" parent="Botões" instance=ExtResource( 4 )]
-margin_top = 152.0
-margin_bottom = 183.0
+margin_top = 134.0
+margin_bottom = 165.0
 focus_neighbour_top = NodePath("../Options")
 focus_previous = NodePath("../Options")
 custom_styles/focus = SubResource( 1 )
@@ -113,8 +103,6 @@ mouse_filter = 2
 [connection signal="focus_entered" from="Botões/NovoJogo" to="." method="_on_MenuButton_focus_entered"]
 [connection signal="mouse_entered" from="Botões/NovoJogo" to="." method="_on_NovoJogo_mouse_entered"]
 [connection signal="pressed" from="Botões/NovoJogo" to="." method="_on_NovoJogo_pressed"]
-[connection signal="focus_entered" from="Botões/Highscores" to="." method="_on_MenuButton_focus_entered"]
-[connection signal="mouse_entered" from="Botões/Highscores" to="." method="_on_Highscores_mouse_entered"]
 [connection signal="focus_entered" from="Botões/Options" to="." method="_on_MenuButton_focus_entered"]
 [connection signal="mouse_entered" from="Botões/Options" to="." method="_on_Options_mouse_entered"]
 [connection signal="pressed" from="Botões/Options" to="." method="_on_Options_pressed"]

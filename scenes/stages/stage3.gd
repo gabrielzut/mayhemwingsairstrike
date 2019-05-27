@@ -23,8 +23,8 @@ func _on_Tween_tween_completed(object, key):
 		$PlayerMusic.play()
 
 func _on_Fade_animation(source):
-	if source == "stage4":
-		get_tree().change_scene("res://scenes/stages/stage4.tscn")
+	if source == "youWin":
+		get_tree().change_scene("res://scenes/stages/YouWin.tscn")
 	pass
 
 func _on_Spawner_collision(confirmation):
@@ -131,7 +131,7 @@ func _on_Spawner16_collision(confirmation):
 
 func _on_bgLauncher_finished():
 	$Player.finish()
-	$CanvasLayer/Fade.fadeout("stage3")
+	$CanvasLayer/Fade.fadeout("youWin")
 
 func _on_Spawner17_collision(confirmation):
 	$PlayerMusic/Tween.interpolate_property($PlayerMusic,"volume_db",-25,-80,3,Tween.TRANS_SINE,Tween.EASE_IN)
